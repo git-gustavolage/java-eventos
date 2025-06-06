@@ -10,7 +10,7 @@ public class Auth {
     
     public Auth(UserDao model){
         Auth.model = model;
-        this.user = null;
+        Auth.user = null;
     }
     
     public static User login(User user) {
@@ -19,10 +19,20 @@ public class Auth {
         String username = user.getUser();
         String password = user.getPassword();
         
-        if (Auth.validate(, user.getPassword()))
+        if (Auth.validate(username, password))
         {
-
+            User result = model.find(user);
+            
+            Auth.user = result;
+            
+            //tbm salvar na sessão
+            
+            return result;
+        } else {
+            //invalida a sessão atual...
         }
+        
+        return null;
     }
     
     public static User user() {
