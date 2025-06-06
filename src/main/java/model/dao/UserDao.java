@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.bean.User;
 
-public class UserDao {
+public class UserDao extends Model {
 
     public boolean create(User user) {
 
