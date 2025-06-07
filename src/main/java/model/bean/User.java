@@ -10,15 +10,14 @@ public class User {
     private String password;
     private Date data_nascimento;
 
-    public User(String user, String nome, String email, String password) {
-        this.user = user;
-        this.nome = nome;
-        this.email = email;
-        this.password = password;
-    }
+    public User() {}
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUser() {
