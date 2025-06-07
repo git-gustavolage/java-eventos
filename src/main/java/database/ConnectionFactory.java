@@ -15,15 +15,8 @@ public class ConnectionFactory {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
-    private static Connection conn;
-
     public static Connection getConnection() {
-        if (conn == null) {
-            conn = open();
-            return conn;
-        } else {
-            return conn;
-        }
+        return open();
     }
 
     public static Connection open() {
@@ -41,7 +34,7 @@ public class ConnectionFactory {
                 conn.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, "Erro ao fechar conexão com o banco de dados!", ex);
         }
 
     }
@@ -54,7 +47,7 @@ public class ConnectionFactory {
                 stmt.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, "Erro ao fechar conexão com o banco de dados!", ex);
         }
     }
 
@@ -66,7 +59,7 @@ public class ConnectionFactory {
                 rs.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, "Erro ao fechar conexão com o banco de dados!", ex);
         }
     }
 
