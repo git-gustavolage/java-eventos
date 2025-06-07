@@ -17,7 +17,7 @@ public class Auth {
 
     public static User login(User user) {
         Session.expire();
-        
+
         if (user == null) {
             return null;
         }
@@ -25,21 +25,20 @@ public class Auth {
         String username = user.getUsername();
         String password = user.getPassword();
 
-        if (Auth.validate(username, password)) {
-            User result = UserDao.findByUsername(username);
-
-            result.setPassword(null);
-
-            Auth.authenticatedUser = result;
-            Session.set(result);
-
-            return Auth.user();
-        } else {
+        if (!Auth.validate(username, password)) {
             Auth.logout();
             Logger.getLogger(Auth.class.getName()).log(Level.SEVERE, "Credenciais incorretas!");
+            return null;
         }
 
-        return null;
+        User result = UserDao.findByUsername(username);
+
+        result.setPassword(null);
+
+        Auth.authenticatedUser = result;
+        Session.set(result);
+
+        return Auth.user();
     }
 
     public static void logout() {
