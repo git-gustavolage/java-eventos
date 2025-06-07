@@ -3,25 +3,34 @@ package model.bean;
 import java.util.Date;
 
 public class User {
-    private String user;
+    private Integer id;
+    private String username;
     private String nome;
     private String email;
     private String password;
     private Date data_nascimento;
 
-    public User(String user, String nome, String email, String password) {
-        this.user = user;
-        this.nome = nome;
-        this.email = email;
-        this.password = password;
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", username=" + username + ", nome=" + nome + ", email=" + email + ", password=" + password + ", data_nascimento=" + data_nascimento + '}';
     }
 
-    public String getUser() {
-        return user;
+    public User() {}
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String user) {
+        this.username = user;
     }
 
     public String getNome() {
