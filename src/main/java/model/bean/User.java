@@ -3,8 +3,8 @@ package model.bean;
 import java.util.Date;
 
 public class User {
-    private int id;
-    private String user;
+    private Integer id;
+    private String username;
     private String nome;
     private String email;
     private String password;
@@ -12,7 +12,7 @@ public class User {
 
     public User() {}
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -20,12 +20,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsername(String user) {
+        this.username = user;
     }
 
     public String getNome() {
