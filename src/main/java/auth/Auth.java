@@ -1,60 +1,74 @@
 package auth;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import model.bean.User;
 import model.dao.UserDao;
 import support.Hash;
 
 public class Auth {
-    
-    private static User AuthenticatedUser;
-    
-    public Auth(UserDao model){
-        Auth.AuthenticatedUser = null;
+
+    private static User authenticatedUser;
+
+    public Auth(UserDao model) {
+        Auth.authenticatedUser = null;
     }
-    
+
     public static User login(User user) {
-        if(user == null) return null;
+        if (user == null) {
+            return null;
+        }
 
         String username = user.getUsername();
         String password = user.getPassword();
-        
-        if (Auth.validate(username, password))
-        {
+
+        if (Auth.validate(username, password)) {
             User result = UserDao.findByUsername(username);
-            
-            Auth.AuthenticatedUser = result;
-            
-            //tbm salvar na sessão
-            
-            return null;
+
+            result.setPassword(null);
+
+            Auth.authenticatedUser = result;
+            Session.set(result);
+
+            return Auth.user();
         } else {
-            Auth.AuthenticatedUser = null;
-            //invalida a sessão atual...
+            Auth.logout();
+            Logger.getLogger(Auth.class.getName()).log(Level.SEVERE, "Credenciais incorretas!");
         }
-        
+
         return null;
     }
-    
+
+    public static void logout() {
+        Auth.authenticatedUser = null;
+        Session.set(null);
+    }
+
     public static User user() {
-        return AuthenticatedUser;
+        return authenticatedUser;
     }
-    
+
     public static boolean check() {
-        return AuthenticatedUser != null;
+        return authenticatedUser != null;
     }
-    
+
     public static boolean guest() {
-        return AuthenticatedUser == null;
+        return authenticatedUser == null;
     }
-    
+
     public static boolean validate(String username, String password) {
-        if (username == null || username.length() == 0) return false;
-        
+        if (username == null || username.length() == 0) {
+            return false;
+        }
+
         User user = UserDao.findByUsername(username);
 
-        if(user == null) return false;
+        if (user == null) {
+            return false;
+        }
 
         return Hash.verify(password, user.getPassword());
     }
-    
+
 }
