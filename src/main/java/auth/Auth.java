@@ -2,33 +2,33 @@ package auth;
 
 import model.bean.User;
 import model.dao.UserDao;
+import support.Hash;
 
 public class Auth {
     
-    private static UserDao model;
-    private static User user;
+    private static User AuthenticatedUser;
     
     public Auth(UserDao model){
-        Auth.model = model;
-        Auth.user = null;
+        Auth.AuthenticatedUser = null;
     }
     
     public static User login(User user) {
-        if(Auth.check()) return Auth.user();
-        
-        String username = user.getUser();
+        if(user == null) return null;
+
+        String username = user.getUsername();
         String password = user.getPassword();
         
         if (Auth.validate(username, password))
         {
-            User result = model.find(user);
+            User result = UserDao.findByUsername(username);
             
-            Auth.user = result;
+            Auth.AuthenticatedUser = result;
             
             //tbm salvar na sessão
             
-            return result;
+            return null;
         } else {
+            Auth.AuthenticatedUser = null;
             //invalida a sessão atual...
         }
         
@@ -36,21 +36,25 @@ public class Auth {
     }
     
     public static User user() {
-        return user;
+        return AuthenticatedUser;
     }
     
     public static boolean check() {
-        return user != null;
+        return AuthenticatedUser != null;
     }
     
     public static boolean guest() {
-        return user == null;
+        return AuthenticatedUser == null;
     }
     
     public static boolean validate(String username, String password) {
-        //
-        return true;
+        if (username == null || username.length() == 0) return false;
+        
+        User user = UserDao.findByUsername(username);
+
+        if(user == null) return false;
+
+        return Hash.verify(password, user.getPassword());
     }
-    
     
 }
