@@ -3,6 +3,7 @@ package model.bean;
 import java.util.Date;
 
 public class User {
+    private int id;
     private String user;
     private String nome;
     private String email;
@@ -14,6 +15,10 @@ public class User {
         this.nome = nome;
         this.email = email;
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getUser() {
