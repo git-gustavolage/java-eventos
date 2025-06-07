@@ -54,6 +54,7 @@ public class Session {
         Session.session.clear();
         createdAt = null;
         Auth.logout();
+        Session.regenerate();
     }
 
     private static boolean isExpired() {

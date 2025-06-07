@@ -16,6 +16,8 @@ public class Auth {
     }
 
     public static User login(User user) {
+        Session.expire();
+        
         if (user == null) {
             return null;
         }
