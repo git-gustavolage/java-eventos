@@ -10,6 +10,11 @@ public class User {
     private String password;
     private Date data_nascimento;
 
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", username=" + username + ", nome=" + nome + ", email=" + email + ", password=" + password + ", data_nascimento=" + data_nascimento + '}';
+    }
+
     public User() {}
 
     public Integer getId() {
