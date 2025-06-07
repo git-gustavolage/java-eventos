@@ -57,9 +57,18 @@ public class Session {
     }
 
     private static boolean isExpired() {
-        if (createdAt == null) return true;
+        if (createdAt == null) {
+            return true;
+        }
         Duration elapsed = Duration.between(createdAt, LocalDateTime.now());
         return elapsed.compareTo(SESSION_TIMEOUT) > 0;
+    }
+
+    //controle de erros:
+    
+    //expoe os erros na tela
+    public static void flesh() {
+        //TODO
     }
 
 }
