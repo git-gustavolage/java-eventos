@@ -32,11 +32,11 @@ public class Tela_login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        botao_acessar = new javax.swing.JButton();
+        campo_senha = new javax.swing.JPasswordField();
+        campo_usuario = new javax.swing.JTextField();
+        question_cadastro = new javax.swing.JLabel();
+        text_cadastro = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         jTextField1.setText("jTextField1");
@@ -54,43 +54,43 @@ public class Tela_login extends javax.swing.JFrame {
         jLabel1.setText("EVENTOS");
         jLabel1.setToolTipText("");
 
-        jButton1.setBackground(new java.awt.Color(0, 212, 146));
-        jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("ENTRAR");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botao_acessar.setBackground(new java.awt.Color(0, 212, 146));
+        botao_acessar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        botao_acessar.setForeground(new java.awt.Color(255, 255, 255));
+        botao_acessar.setText("ENTRAR");
+        botao_acessar.setBorderPainted(false);
+        botao_acessar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botao_acessarActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(212, 212, 216));
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jPasswordField1.setText("Senha");
-        jPasswordField1.setToolTipText("");
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        campo_senha.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        campo_senha.setForeground(new java.awt.Color(212, 212, 216));
+        campo_senha.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campo_senha.setText("Senha");
+        campo_senha.setToolTipText("");
+        campo_senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                campo_senhaActionPerformed(evt);
             }
         });
 
-        jTextField2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(212, 212, 216));
-        jTextField2.setText("Nome de usuário");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        campo_usuario.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        campo_usuario.setForeground(new java.awt.Color(212, 212, 216));
+        campo_usuario.setText("Nome de usuário");
+        campo_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                campo_usuarioActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel2.setText("Não possui cadastro? ");
+        question_cadastro.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        question_cadastro.setText("Não possui cadastro? ");
 
-        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(43, 127, 255));
-        jLabel4.setText("Cadastra-se");
+        text_cadastro.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        text_cadastro.setForeground(new java.awt.Color(43, 127, 255));
+        text_cadastro.setText("Cadastra-se");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,17 +99,14 @@ public class Tela_login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPasswordField1)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField2)
-                        .addContainerGap())))
+                    .addComponent(campo_senha, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(campo_usuario, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(question_cadastro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(text_cadastro)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(96, Short.MAX_VALUE)
@@ -117,7 +114,7 @@ public class Tela_login extends javax.swing.JFrame {
                 .addGap(96, 96, 96))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
-                .addComponent(jButton1)
+                .addComponent(botao_acessar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -126,17 +123,22 @@ public class Tela_login extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
+                    .addComponent(question_cadastro)
+                    .addComponent(text_cadastro))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(botao_acessar)
                 .addGap(12, 12, 12))
         );
+
+        campo_senha.getAccessibleContext().setAccessibleName("campo_senha");
+        campo_senha.getAccessibleContext().setAccessibleParent(campo_senha);
+        campo_usuario.getAccessibleContext().setAccessibleName("campo_usuario");
+        campo_usuario.getAccessibleContext().setAccessibleParent(jLabel1);
 
         jPanel2.setBackground(new java.awt.Color(43, 127, 255));
         jPanel2.setForeground(new java.awt.Color(43, 127, 255));
@@ -149,7 +151,7 @@ public class Tela_login extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 430, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,7 +168,7 @@ public class Tela_login extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81))
         );
@@ -174,17 +176,17 @@ public class Tela_login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void campo_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_usuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_campo_usuarioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botao_acessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_acessarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botao_acessarActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void campo_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_senhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_campo_senhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,17 +224,17 @@ public class Tela_login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botao_acessar;
+    private javax.swing.JPasswordField campo_senha;
+    private javax.swing.JTextField campo_usuario;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JLabel question_cadastro;
+    private javax.swing.JLabel text_cadastro;
     // End of variables declaration//GEN-END:variables
 }
