@@ -52,6 +52,4 @@ public class Ambiente {
     public void setId_tipo_ambiente(Integer id_tipo_ambiente) {
         this.id_tipo_ambiente = id_tipo_ambiente;
     }
-    
-    
 }
