@@ -33,12 +33,12 @@ public class Tela_cadastro extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botao_cadastro_cdtr = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        text_senha_cdtr = new javax.swing.JPasswordField();
         campo_email_cdtr = new javax.swing.JTextField();
         text_conta_cdtr = new javax.swing.JLabel();
         botao_entrar_cdtr = new javax.swing.JLabel();
         Campo_usuario_cdtr = new javax.swing.JTextField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        rec_senha_cdtr = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
 
         jTextField1.setText("jTextField1");
@@ -67,14 +67,14 @@ public class Tela_cadastro extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(212, 212, 216));
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jPasswordField1.setText("Senha");
-        jPasswordField1.setToolTipText("");
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        text_senha_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        text_senha_cdtr.setForeground(new java.awt.Color(212, 212, 216));
+        text_senha_cdtr.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        text_senha_cdtr.setText("Senha");
+        text_senha_cdtr.setToolTipText("");
+        text_senha_cdtr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                text_senha_cdtrActionPerformed(evt);
             }
         });
 
@@ -104,14 +104,14 @@ public class Tela_cadastro extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jPasswordField2.setForeground(new java.awt.Color(212, 212, 216));
-        jPasswordField2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jPasswordField2.setText("Confirmação da senha");
-        jPasswordField2.setToolTipText("");
-        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+        rec_senha_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        rec_senha_cdtr.setForeground(new java.awt.Color(212, 212, 216));
+        rec_senha_cdtr.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        rec_senha_cdtr.setText("Confirmação da senha");
+        rec_senha_cdtr.setToolTipText("");
+        rec_senha_cdtr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField2ActionPerformed(evt);
+                rec_senha_cdtrActionPerformed(evt);
             }
         });
 
@@ -124,8 +124,8 @@ public class Tela_cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPasswordField2)
-                            .addComponent(jPasswordField1)
+                            .addComponent(rec_senha_cdtr)
+                            .addComponent(text_senha_cdtr)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(text_conta_cdtr)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -154,9 +154,9 @@ public class Tela_cadastro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(campo_email_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_senha_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rec_senha_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text_conta_cdtr)
@@ -210,17 +210,17 @@ public class Tela_cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_cadastro_cdtrActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void text_senha_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_senha_cdtrActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_text_senha_cdtrActionPerformed
 
     private void Campo_usuario_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo_usuario_cdtrActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Campo_usuario_cdtrActionPerformed
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+    private void rec_senha_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rec_senha_cdtrActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
+    }//GEN-LAST:event_rec_senha_cdtrActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,11 +267,11 @@ public class Tela_cadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JPasswordField rec_senha_cdtr;
     private javax.swing.JLabel text_conta_cdtr;
+    private javax.swing.JPasswordField text_senha_cdtr;
     // End of variables declaration//GEN-END:variables
 }
