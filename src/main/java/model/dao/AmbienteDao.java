@@ -105,4 +105,25 @@ public class AmbienteDao {
         return true;
     }
 
+    public static boolean destroy(Ambiente ambiente) {
+        String sql = "DELETE FROM ambientes WHERE id = ?";
+
+        Connection conn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, ambiente.getId());
+
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AmbienteDao.class.getName()).log(Level.SEVERE, "Erro ao deletar ambiente!", ex);
+            return false;
+        } finally {
+            ConnectionFactory.close(conn, stmt);
+        }
+
+        return true;
+    }
 }
