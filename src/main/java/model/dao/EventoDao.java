@@ -29,4 +29,15 @@ public class EventoDao {
             EventoDao.class
         );
     }
+     public static Evento findByUuid(String uuid) {
+        String sql = "SELECT * FROM eventos WHERE uuid = ? LIMIT 1;";
+        return Dao.executeQueryForSingleResult(
+            sql,
+            stmt -> stmt.setString(1, uuid),
+            EventoDao::parse,
+            "Erro ao buscar evento por UUID!",
+            EventoDao.class
+        );
+    }
 }
+
