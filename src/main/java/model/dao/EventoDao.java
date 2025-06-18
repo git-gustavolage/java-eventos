@@ -58,6 +58,25 @@ public class EventoDao {
             EventoDao.class
         );
     }
+       public static boolean update(Evento evento) {
+        String sql = "UPDATE eventos SET titulo = ?, descricao = ?, data_inicio = ?, " +
+                   "data_termino = ?, id_formato = ?, updated_at = ? WHERE id = ?";
+        return Dao.execute(
+            sql,
+            stmt -> {
+                stmt.setString(1, evento.getTitulo());
+                stmt.setString(2, evento.getDescricao());
+                stmt.setDate(3, new java.sql.Date(evento.getDataInicio().getTime()));
+                stmt.setDate(4, new java.sql.Date(evento.getDataTermino().getTime()));
+                stmt.setLong(5, evento.getIdFormato());
+                stmt.setTimestamp(6, new java.sql.Timestamp(new Date().getTime()));
+                stmt.setLong(7, evento.getId());
+            },
+            "Erro ao atualizar evento!",
+            EventoDao.class
+        );
+    }
 }
+
 
 
