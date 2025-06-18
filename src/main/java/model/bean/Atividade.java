@@ -12,7 +12,6 @@ public class Atividade {
     private String descricao;
     private LocalTime hora_inicio;
     private LocalTime hora_termino;
-    private Boolean is_cancelada;
 
     public Atividade() {
     }
@@ -25,8 +24,7 @@ public class Atividade {
             String titulo,
             String descricao,
             LocalTime hora_inicio,
-            LocalTime hora_termino,
-            Boolean is_cancelada
+            LocalTime hora_termino
     ) {
         this.id = id;
         this.id_evento = id_evento;
@@ -36,12 +34,11 @@ public class Atividade {
         this.descricao = descricao;
         this.hora_inicio = hora_inicio;
         this.hora_termino = hora_termino;
-        this.is_cancelada = is_cancelada;
     }
 
     @Override
     public String toString() {
-        return "Atividade{" + "id=" + id + ", id_evento=" + id_evento + ", id_responsavel=" + id_responsavel + ", id_ambiente=" + id_ambiente + ", titulo=" + titulo + ", descricao=" + descricao + ", hora_inicio=" + hora_inicio + ", hora_termino=" + hora_termino + ", is_cancelada=" + is_cancelada + '}';
+        return "Atividade{" + "id=" + id + ", id_evento=" + id_evento + ", id_responsavel=" + id_responsavel + ", id_ambiente=" + id_ambiente + ", titulo=" + titulo + ", descricao=" + descricao + ", hora_inicio=" + hora_inicio + ", hora_termino=" + hora_termino + '}';
     }
 
     public Long getId() {
@@ -106,14 +103,6 @@ public class Atividade {
 
     public void setHora_termino(LocalTime hora_termino) {
         this.hora_termino = hora_termino;
-    }
-
-    public Boolean getIs_cancelada() {
-        return is_cancelada;
-    }
-
-    public void setIs_cancelada(Boolean is_cancelada) {
-        this.is_cancelada = is_cancelada;
     }
 
 }
