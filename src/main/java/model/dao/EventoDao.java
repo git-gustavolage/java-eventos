@@ -39,5 +39,25 @@ public class EventoDao {
             EventoDao.class
         );
     }
+      public static boolean create(Evento evento) {
+        String sql = "INSERT INTO eventos (uuid, titulo, descricao, data_inicio, data_termino, id_formato, created_at, updated_at) " +
+                   "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        return Dao.execute(
+            sql,
+            stmt -> {
+                stmt.setString(1, evento.getUuid());
+                stmt.setString(2, evento.getTitulo());
+                stmt.setString(3, evento.getDescricao());
+                stmt.setDate(4, new java.sql.Date(evento.getDataInicio().getTime()));
+                stmt.setDate(5, new java.sql.Date(evento.getDataTermino().getTime()));
+                stmt.setLong(6, evento.getIdFormato());
+                stmt.setTimestamp(7, new java.sql.Timestamp(new Date().getTime()));
+                stmt.setTimestamp(8, new java.sql.Timestamp(new Date().getTime()));
+            },
+            "Erro ao criar evento!",
+            EventoDao.class
+        );
+    }
 }
+
 
