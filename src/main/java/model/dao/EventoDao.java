@@ -76,7 +76,17 @@ public class EventoDao {
             EventoDao.class
         );
     }
+        public static boolean destroy(long id) {
+        String sql = "DELETE FROM eventos WHERE id = ?";
+        return Dao.execute(
+            sql,
+            stmt -> stmt.setLong(1, id),
+            "Erro ao deletar evento!",
+            EventoDao.class
+        );
+    }
 }
+
 
 
 
