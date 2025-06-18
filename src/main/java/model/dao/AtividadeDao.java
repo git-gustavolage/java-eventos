@@ -24,4 +24,14 @@ public class AtividadeDao {
             return null;
         }
     }
+
+    public static Atividade findById(Integer id) {
+        String sql = "SELECT * FROM atividades WHERE id = ? LIMIT 1;";
+        return Dao.executeQueryForSingleResult(sql,
+                stmt -> stmt.setInt(1, id),
+                AtividadeDao::parse,
+                "Erro ao buscar atividade!",
+                AtividadeDao.class
+        );
+    }
 }
