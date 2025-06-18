@@ -19,4 +19,14 @@ public class EventoDao {
         evento.setUpdatedAt(result.getTimestamp("updated_at"));
         return evento;
     }
+     public static Evento findById(long id) {
+        String sql = "SELECT * FROM eventos WHERE id = ? LIMIT 1;";
+        return Dao.executeQueryForSingleResult(
+            sql,
+            stmt -> stmt.setLong(1, id),
+            EventoDao::parse,
+            "Erro ao buscar evento por ID!",
+            EventoDao.class
+        );
+    }
 }
