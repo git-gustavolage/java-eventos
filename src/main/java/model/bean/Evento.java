@@ -2,40 +2,41 @@ package model.bean;
 
 import java.util.Date;
 
+import model.vo.EventoFormato;
+
 public class Evento {
+
     private Long id;
-    private String uuid;
     private String titulo;
     private String descricao;
     private Date dataInicio;
     private Date dataTermino;
-    private Long idFormato;
-    private Date createdAt;
-    private Date updatedAt;
+    private EventoFormato formato;
 
     public Evento() {
     }
 
-    public Evento(Long id, String uuid, String titulo, String descricao, 
-                 Date dataInicio, Date dataTermino, Long idFormato, 
-                 Date createdAt, Date updatedAt) {
+    public Evento(
+            Long id,
+            String titulo,
+            String descricao,
+            Date dataInicio,
+            Date dataTermino,
+            EventoFormato formato
+    ) {
         this.id = id;
-        this.uuid = uuid;
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
-        this.idFormato = idFormato;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.formato = formato;
     }
 
     @Override
     public String toString() {
-        return "Evento{" + "id=" + id + ", uuid=" + uuid + ", titulo=" + titulo + 
-               ", descricao=" + descricao + ", dataInicio=" + dataInicio + 
-               ", dataTermino=" + dataTermino + ", idFormato=" + idFormato + 
-               ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
+        return "Evento{" + "id=" + id + ", titulo=" + titulo
+                + ", descricao=" + descricao + ", dataInicio=" + dataInicio
+                + ", dataTermino=" + dataTermino + ", formato=" + formato.name() + '}';
     }
 
     // Getters e Setters
@@ -45,14 +46,6 @@ public class Evento {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
     }
 
     public String getTitulo() {
@@ -87,27 +80,11 @@ public class Evento {
         this.dataTermino = dataTermino;
     }
 
-    public Long getIdFormato() {
-        return idFormato;
+    public EventoFormato getFormato() {
+        return formato;
     }
 
-    public void setIdFormato(Long idFormato) {
-        this.idFormato = idFormato;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setFormato(EventoFormato formato) {
+        this.formato = formato;
     }
 }
