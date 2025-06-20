@@ -133,7 +133,7 @@ public class TelaCadastroEvento extends javax.swing.JPanel {
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel22.setText("◦ Atividades");
 
-        jLabel23.setText("◦ Geral");
+        jLabel23.setText("◦ Origanizadores");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
