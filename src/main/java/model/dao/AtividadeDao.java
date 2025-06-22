@@ -37,7 +37,7 @@ public class AtividadeDao {
 
     public static List<Atividade> findByTitulo(String titulo) {
         String tituloTratado = "%" + titulo + "%";
-        String sql = "SELECT * FROM atividades WHERE titulo like ? LIMIT 1;";
+        String sql = "SELECT * FROM atividades WHERE titulo like ?;";
         return Dao.executeQueryForMultipleResults(sql,
                 stmt -> stmt.setString(1, tituloTratado),
                 AtividadeDao::parse,
