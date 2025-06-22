@@ -80,8 +80,8 @@ public class Evento {
         this.dataTermino = dataTermino;
     }
 
-    public EventoFormato getFormato() {
-        return formato;
+    public String getFormato() {
+        return formato.name();
     }
 
     public void setFormato(EventoFormato formato) {
