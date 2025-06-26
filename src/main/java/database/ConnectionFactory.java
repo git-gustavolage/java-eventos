@@ -2,8 +2,6 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,52 +13,37 @@ public class ConnectionFactory {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
-    public static Connection getConnection() {
-        return open();
-    }
+    private static ConnectionFactory instance;
+    private Connection connection;
 
-    public static Connection open() {
+    private ConnectionFactory() {
         try {
             Class.forName(DRIVER);
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+            this.connection = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException | SQLException ex) {
             throw new RuntimeException("Erro ao estabelecer conexão com o banco de dados!", ex);
         }
     }
 
-    public static void close(Connection conn) {
-        try {
-            if (conn != null) {
-                conn.close();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, "Erro ao fechar conexão com o banco de dados!", ex);
+    public static synchronized ConnectionFactory getInstance() {
+        if (instance == null || instance.connection == null) {
+            instance = new ConnectionFactory();
         }
-
+        return instance;
     }
 
-    public static void close(Connection conn, PreparedStatement stmt) {
-        close(conn);
-
-        try {
-            if (stmt != null) {
-                stmt.close();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, "Erro ao fechar conexão com o banco de dados!", ex);
-        }
+    public Connection getConnection() {
+        return connection;
     }
 
-    public static void close(Connection conn, PreparedStatement stmt, ResultSet rs) {
-        close(conn, stmt);
-
+    public void closeConnection() {
         try {
-            if (rs != null) {
-                rs.close();
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
             }
+            connection = null;
         } catch (SQLException ex) {
             Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, "Erro ao fechar conexão com o banco de dados!", ex);
         }
     }
-
 }
