@@ -36,6 +36,14 @@ public class ConnectionFactory {
         return connection;
     }
 
+    public Connection open() {
+        try {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro ao estabelecer conexão com o banco de dados!", ex);
+        }
+    }
+
     public void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
