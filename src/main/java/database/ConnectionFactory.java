@@ -22,6 +22,10 @@ public class ConnectionFactory {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
+    public static Connection getNewConnection() {
+        return new ConnectionFactory().open();
+    }
+
     public Connection open() {
         try {
             Class.forName(DRIVER);

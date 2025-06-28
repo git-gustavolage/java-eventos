@@ -44,6 +44,29 @@ public class DB {
         }
     }
 
+
+    /**
+     * Executa um comando SQL.
+     * Inicia e finaliza uma conexão com o banco.
+     *
+     * 
+     * @param sql o SQL statement
+     * @param setter o StatementSetter, responsavel por preencher o statement
+     * (stmt) com os parâmetros da query
+     *
+     * @throws DatabaseException caso ocorra algum erro
+     * @return true se o statement foi executado com sucesso ou false caso
+     * contrário
+     */
+    public boolean execute(String sql, StatementSetter setter) throws DatabaseException {
+        try (Connection conn = ConnectionFactory.getNewConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            setter.setValues(stmt);
+            return stmt.execute();
+        } catch (SQLException ex) {
+            throw new DatabaseException("Erro ao executar SQL", ex);
+        }
+    }
+
     /**
      * Executa um update SQL.
      *
@@ -57,6 +80,28 @@ public class DB {
      */
     public int executeUpdate(Connection conn, String sql, StatementSetter setter) throws DatabaseException {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            setter.setValues(stmt);
+            return stmt.executeUpdate();
+        } catch (SQLException ex) {
+            throw new DatabaseException("Erro ao executar SQL", ex);
+        }
+    }
+
+
+    /**
+     * Executa um update SQL.
+     * Inicia e finaliza uma conexão com o banco.
+     *
+     * 
+     * @param sql o SQL statement
+     * @param setter o StatementSetter, responsavel por preencher o statement
+     * (stmt) com os parâmetros da query
+     *
+     * @throws DatabaseException caso ocorra algum erro
+     * @return o numero de linhas afetadas
+     */
+    public int executeUpdate(String sql, StatementSetter setter) throws DatabaseException {
+        try (Connection conn = ConnectionFactory.getNewConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             setter.setValues(stmt);
             return stmt.executeUpdate();
         } catch (SQLException ex) {
@@ -78,6 +123,30 @@ public class DB {
      */
     public <T> T executeQuery(Connection conn, String sql, StatementSetter setter, ResultHandler<T> handler) throws DatabaseException {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            setter.setValues(stmt);
+            try (ResultSet rs = stmt.executeQuery()) {
+                return handler.handle(rs);
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException("Erro ao executar query", ex);
+        }
+    }
+
+
+    /**
+     * Executa uma query SQL.
+     * Inicia e finaliza uma conexão com o banco.
+     * 
+     * @param sql o SQL statement
+     * @param setter o StatementSetter, responsavel por preencher o statement
+     * (stmt) com os parâmetros da query
+     * @param handler o ResultHandler, responsavel por processar o ResultSet
+     *
+     * @throws DatabaseException caso ocorra algum erro
+     * @return o resultado da query
+     */
+    public <T> T executeQuery(String sql, StatementSetter setter, ResultHandler<T> handler) throws DatabaseException {
+        try (Connection conn = ConnectionFactory.getNewConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             setter.setValues(stmt);
             try (ResultSet rs = stmt.executeQuery()) {
                 return handler.handle(rs);

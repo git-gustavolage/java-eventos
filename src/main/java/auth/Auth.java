@@ -1,75 +1,77 @@
 package auth;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import exceptions.AuthenticationException;
 import model.bean.User;
-import model.dao.UserDao;
 import support.Hash;
+import usecases.CSFindUserByUsername;
 
 public class Auth {
 
-    // private static User authenticatedUser;
+    private static User authenticatedUser;
 
-    // public Auth(UserDao model) {
-    //     Auth.authenticatedUser = null;
-    // }
+    private Auth() {
+        Auth.authenticatedUser = null;
+    }
 
-    // public static User login(User user) {
-    //     Session.expire();
+    public static User login(User user) throws AuthenticationException {
+        Session.expire();
 
-    //     if (user == null) {
-    //         return null;
-    //     }
+        if (user == null) {
+            return null;
+        }
 
-    //     String username = user.getUsername();
-    //     String password = user.getPassword();
+        String username = user.getUsername();
+        String password = user.getPassword();
 
-    //     if (!Auth.validate(username, password)) {
-    //         Auth.logout();
-    //         Logger.getLogger(Auth.class.getName()).log(Level.SEVERE, "Credenciais incorretas!");
-    //         return null;
-    //     }
+        if (!Auth.validate(username, password)) {
+            Auth.logout();
+            throw new AuthenticationException("Credenciais incorretas!");
+        }
 
-    //     User result = UserDao.findByUsername(username);
+        User result = CSFindUserByUsername.execute(username);
 
-    //     result.setPassword(null);
+        if (result == null) {
+            Auth.logout();
+            throw new AuthenticationException("Credenciais incorretas!");
+        }
 
-    //     Auth.authenticatedUser = result;
-    //     Session.set(result);
+        result.setPassword(null);
 
-    //     return Auth.user();
-    // }
+        Auth.authenticatedUser = result;
+        Session.set(result);
 
-    // public static void logout() {
-    //     Auth.authenticatedUser = null;
-    //     Session.set(null);
-    // }
+        return Auth.user();
+    }
 
-    // public static User user() {
-    //     return authenticatedUser;
-    // }
+    public static void logout() {
+        Auth.authenticatedUser = null;
+        Session.set(null);
+    }
 
-    // public static boolean check() {
-    //     return authenticatedUser != null;
-    // }
+    public static User user() {
+        return authenticatedUser;
+    }
 
-    // public static boolean guest() {
-    //     return authenticatedUser == null;
-    // }
+    public static boolean check() {
+        return authenticatedUser != null;
+    }
 
-    // public static boolean validate(String username, String password) {
-    //     if (username == null || username.length() == 0) {
-    //         return false;
-    //     }
+    public static boolean guest() {
+        return authenticatedUser == null;
+    }
 
-    //     User user = UserDao.findByUsername(username);
+    public static boolean validate(String username, String password) {
+        if (username == null || username.length() == 0) {
+            return false;
+        }
 
-    //     if (user == null) {
-    //         return false;
-    //     }
+        User user = CSFindUserByUsername.execute(username);
 
-    //     return Hash.verify(password, user.getPassword());
-    // }
+        if (user == null) {
+            return false;
+        }
+
+        return Hash.verify(password, user.getPassword());
+    }
 
 }
