@@ -1,75 +1,61 @@
 package model.dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import database.DB;
+import exceptions.DatabaseException;
 import model.bean.Evento;
 import model.vo.EventoFormato;
 
-public class EventoDao {
+public class EventoDAO {
 
-    // private static Evento parse(ResultSet result) throws SQLException {
-    //     Evento evento = new Evento();
-    //     evento.setId(result.getLong("id"));
-    //     evento.setTitulo(result.getString("titulo"));
-    //     evento.setDescricao(result.getString("descricao"));
-    //     evento.setDataInicio(result.getDate("data_inicio"));
-    //     evento.setDataTermino(result.getDate("data_termino"));
-    //     evento.setFormato(EventoFormato.valueOf(result.getString("formato")));
-    //     return evento;
-    // }
+    public int create(Connection conn, Evento evento) throws DatabaseException {
+        String sql = "INSERT INTO eventos (id_organizador, titulo, descricao, data_inicio, data_termino, formato) VALUES (?, ?, ?, ?, ?, ?);";
 
-    // public static Evento findById(long id) {
-    //     String sql = "SELECT * FROM eventos WHERE id = ? LIMIT 1;";
-    //     return Dao.executeQueryForSingleResult(
-    //             sql,
-    //             stmt -> stmt.setLong(1, id),
-    //             EventoDao::parse,
-    //             "Erro ao buscar evento por ID!",
-    //             EventoDao.class
-    //     );
-    // }
+        return new DB().executeUpdate(conn, sql, stmt -> {
+            stmt.setLong(1, evento.getId_organizador());
+            stmt.setString(2, evento.getTitulo());
+            stmt.setString(3, evento.getDescricao());
+            stmt.setDate(4, new java.sql.Date(evento.getDataInicio().getTime()));
+            stmt.setDate(5, new java.sql.Date(evento.getDataTermino().getTime()));
+            stmt.setString(6, evento.getFormatoNome());
+        });
+    }
 
-    // public static boolean create(Evento evento) {
-    //     String sql = "INSERT INTO eventos (titulo, descricao, data_inicio, data_termino, formato) VALUES (?, ?, ?, ?, ?);";
-    //     return Dao.execute(
-    //             sql,
-    //             stmt -> {
-    //                 stmt.setString(1, evento.getTitulo());
-    //                 stmt.setString(2, evento.getDescricao());
-    //                 stmt.setDate(3, new java.sql.Date(evento.getDataInicio().getTime()));
-    //                 stmt.setDate(4, new java.sql.Date(evento.getDataTermino().getTime()));
-    //                 stmt.setString(5, evento.getFormato());
-    //             },
-    //             "Erro ao criar evento!",
-    //             EventoDao.class
-    //     );
-    // }
+    public Evento findById(Connection conn, Long id) throws DatabaseException {
+        String sql = "SELECT * FROM eventos WHERE id = ? LIMIT 1;";
+        return new DB().executeQuery(conn, sql, stmt -> stmt.setLong(1, id), rs -> parse(rs));
+    }
 
-    // public static boolean update(Evento evento) {
-    //     String sql = "UPDATE eventos SET titulo = ?, descricao = ?, data_inicio = ?, data_termino = ?, formato = ? WHERE id = ?";
-    //     return Dao.execute(
-    //             sql,
-    //             stmt -> {
-    //                 stmt.setString(1, evento.getTitulo());
-    //                 stmt.setString(2, evento.getDescricao());
-    //                 stmt.setDate(3, new java.sql.Date(evento.getDataInicio().getTime()));
-    //                 stmt.setDate(4, new java.sql.Date(evento.getDataTermino().getTime()));
-    //                 stmt.setString(5, evento.getFormato());
-    //                 stmt.setLong(6, evento.getId());
-    //             },
-    //             "Erro ao atualizar evento!",
-    //             EventoDao.class
-    //     );
-    // }
+    public int delete(Connection conn, Long id) throws DatabaseException {
+        String sql = "DELETE FROM eventos WHERE id = (?)";
+        return new DB().executeUpdate(conn, sql, stmt -> stmt.setLong(1, id));
+    }
 
-    // public static boolean destroy(long id) {
-    //     String sql = "DELETE FROM eventos WHERE id = ?";
-    //     return Dao.execute(
-    //             sql,
-    //             stmt -> stmt.setLong(1, id),
-    //             "Erro ao deletar evento!",
-    //             EventoDao.class
-    //     );
-    // }
+    public int publish(Connection conn, Long id) throws DatabaseException {
+        String sql = "UPDATE eventos SET is_publicado = 1 WHERE id = (?)";
+        return new DB().executeUpdate(conn, sql, stmt -> stmt.setLong(1, id));
+    }
+
+    public int cancel(Connection conn, Long id) throws DatabaseException {
+        String sql = "UPDATE eventos SET is_cancelado = 1 WHERE id = (?)";
+        return new DB().executeUpdate(conn, sql, stmt -> stmt.setLong(1, id));
+    }
+
+    private Evento parse(ResultSet rs) throws DatabaseException {
+        try (rs) {
+            Evento evento = new Evento();
+            evento.setId(rs.getLong("id"));
+            evento.setTitulo(rs.getString("titulo"));
+            evento.setDescricao(rs.getString("descricao"));
+            evento.setDataInicio(rs.getDate("data_inicio"));
+            evento.setDataTermino(rs.getDate("data_termino"));
+            evento.setFormato(EventoFormato.valueOf(rs.getString("formato")));
+            return evento;
+        } catch (SQLException e) {
+            throw new DatabaseException(e.getMessage());
+        }
+    }
 }
