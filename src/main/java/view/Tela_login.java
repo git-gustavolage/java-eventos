@@ -1,12 +1,26 @@
 package view;
 
+import javax.swing.JOptionPane;
+
+import auth.Auth;
+import controllers.AuthController;
+import exceptions.AuthenticationException;
+import model.bean.User;
+
 public class Tela_login extends javax.swing.JFrame {
+
+    private final AuthController controller;
 
     /**
      * Creates new form Tela_login
      */
     public Tela_login() {
         initComponents();
+        controller = new AuthController();
+
+        if(Auth.check()) {
+            this.dispose();
+        }
     }
 
     /**
@@ -173,11 +187,34 @@ public class Tela_login extends javax.swing.JFrame {
     }//GEN-LAST:event_campo_usuarioActionPerformed
 
     private void botao_acessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_acessarActionPerformed
-        // TODO add your handling code here:
+        String username = campo_usuario.getText();
+        String password = "";
+        for (char c : campo_senha.getPassword()) {
+            password += c;
+        }
+
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            return;
+        }
+
+        try {
+            User user = this.controller.login(username, password);
+            if (user != null) {
+                this.dispose();
+
+                //TODO: renderizar a pagina inicial
+
+            } else {
+                throw new AuthenticationException("Erro ao efetuar login!");
+            }
+        } catch (AuthenticationException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_botao_acessarActionPerformed
 
     private void campo_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_senhaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_campo_senhaActionPerformed
 
     /**
