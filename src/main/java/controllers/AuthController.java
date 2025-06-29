@@ -1,23 +1,19 @@
 package controllers;
 
+import auth.Auth;
+import exceptions.AuthenticationException;
 import model.bean.User;
 
 public class AuthController {
 
-    public void login(String username, String password) {
+    public User login(String username, String password) throws AuthenticationException {
         User user = new User();
         
         user.setUsername(username);
         user.setPassword(password);
 
-        // Auth.login(user);
+        Auth.login(user);
 
-        // if(Auth.guest()){
-        //     //adicionar erros na sessão e retornar para a tela de login
-        // }
-
-        // if(Auth.check()){
-        //     //redirecionar para a tela principal
-        // }
+        return Auth.user();
     }
 }
