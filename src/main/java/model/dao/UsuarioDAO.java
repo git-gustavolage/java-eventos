@@ -60,7 +60,7 @@ public class UsuarioDAO {
     }
 
     private User parse(ResultSet rs) throws DatabaseException {
-        try (rs) {
+        try {
             User user = new User();
             user.setId(rs.getLong("id"));
             user.setNome(rs.getString("nome"));
