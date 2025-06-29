@@ -10,7 +10,7 @@ import database.DB;
 import exceptions.DatabaseException;
 import model.bean.Ambiente;
 
-public class AmbienteDao {
+public class AmbienteDAO {
 
     private Ambiente parse(ResultSet result) throws DatabaseException {
         try {

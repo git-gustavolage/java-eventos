@@ -9,7 +9,7 @@ import exceptions.DatabaseException;
 import exceptions.DomainException;
 import model.bean.Atividade;
 import model.bean.Evento;
-import model.dao.AtividadeDao;
+import model.dao.AtividadeDAO;
 
 public class CSCancelarAtividade {
 
@@ -44,7 +44,7 @@ public class CSCancelarAtividade {
         }
 
         try (Connection conn = ConnectionFactory.getNewConnection()) {
-            return new AtividadeDao().cancel(conn, id) == 1;
+            return new AtividadeDAO().cancel(conn, id) == 1;
         } catch (DatabaseException | SQLException e) {
             System.err.println("Error: " + e.getMessage());
             return false;

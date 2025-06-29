@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import database.ConnectionFactory;
 import exceptions.DatabaseException;
 import model.bean.Ambiente;
-import model.dao.AmbienteDao;
+import model.dao.AmbienteDAO;
 
 public class CSFindAmbiente {
 
@@ -18,7 +18,7 @@ public class CSFindAmbiente {
      */
     public Ambiente execute(Long id) {
         try (Connection conn = ConnectionFactory.getNewConnection()) {
-            return new AmbienteDao().find(conn, id);
+            return new AmbienteDAO().find(conn, id);
         } catch (DatabaseException | SQLException e) {
             System.err.println("Error: " + e.getMessage());
             return null;

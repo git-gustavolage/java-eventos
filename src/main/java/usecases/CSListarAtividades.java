@@ -7,7 +7,7 @@ import java.util.List;
 import database.ConnectionFactory;
 import exceptions.DatabaseException;
 import model.bean.Atividade;
-import model.dao.AtividadeDao;
+import model.dao.AtividadeDAO;
 
 public class CSListarAtividades {
 
@@ -18,7 +18,7 @@ public class CSListarAtividades {
      */
     public List<Atividade> execute(Long id_evento) {
         try (Connection conn = ConnectionFactory.getNewConnection()) {
-            return new AtividadeDao().all(conn, id_evento);
+            return new AtividadeDAO().all(conn, id_evento);
         } catch (DatabaseException | SQLException e) {
             System.err.println("Error: " + e.getMessage());
             return null;
@@ -32,7 +32,7 @@ public class CSListarAtividades {
      */
     public List<Atividade> execute() {
         try (Connection conn = ConnectionFactory.getNewConnection()) {
-            return new AtividadeDao().all(conn);
+            return new AtividadeDAO().all(conn);
         } catch (DatabaseException | SQLException e) {
             System.err.println("Error: " + e.getMessage());
             return null;

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import database.ConnectionFactory;
 import exceptions.DatabaseException;
 import model.bean.Atividade;
-import model.dao.AtividadeDao;
+import model.dao.AtividadeDAO;
 
 public class CSFindAtividade {
 
@@ -18,7 +18,7 @@ public class CSFindAtividade {
      */
     public Atividade execute(Long id) {
         try (Connection conn = ConnectionFactory.getNewConnection()) {
-            return new AtividadeDao().find(conn, id);
+            return new AtividadeDAO().find(conn, id);
         } catch (DatabaseException | SQLException e) {
             System.err.println("Error: " + e.getMessage());
             return null;

@@ -11,7 +11,7 @@ import database.DB;
 import exceptions.DatabaseException;
 import model.bean.Atividade;
 
-public class AtividadeDao {
+public class AtividadeDAO {
 
     private Atividade parse(ResultSet result) throws SQLException {
         try {

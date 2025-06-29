@@ -7,7 +7,7 @@ import java.util.List;
 import database.ConnectionFactory;
 import exceptions.DatabaseException;
 import model.bean.Ambiente;
-import model.dao.AmbienteDao;
+import model.dao.AmbienteDAO;
 
 public class CSListarAmbientes {
 
@@ -18,7 +18,7 @@ public class CSListarAmbientes {
      */
     public List<Ambiente> execute() {
         try (Connection conn = ConnectionFactory.getNewConnection()) {
-            return new AmbienteDao().all(conn);
+            return new AmbienteDAO().all(conn);
         } catch (DatabaseException | SQLException e) {
             System.err.println("Error: " + e.getMessage());
             return null;

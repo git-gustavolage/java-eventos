@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import database.ConnectionFactory;
 import exceptions.DatabaseException;
 import model.bean.Ambiente;
-import model.dao.AmbienteDao;
+import model.dao.AmbienteDAO;
 
 public class CSCadastrarAmbiente {
 
@@ -18,7 +18,7 @@ public class CSCadastrarAmbiente {
      */
     public boolean execute(Ambiente ambiente) {
         try (Connection conn = ConnectionFactory.getNewConnection()) {
-            return new AmbienteDao().create(conn, ambiente) == 1;
+            return new AmbienteDAO().create(conn, ambiente) == 1;
         } catch (DatabaseException | SQLException e) {
             System.err.println("Error: " + e.getMessage());
             return false;

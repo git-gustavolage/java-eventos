@@ -11,7 +11,7 @@ import exceptions.DatabaseException;
 import exceptions.DomainException;
 import model.bean.Atividade;
 import model.bean.Evento;
-import model.dao.AtividadeDao;
+import model.dao.AtividadeDAO;
 
 public class CSCadastrarAtividade {
 
@@ -76,7 +76,7 @@ public class CSCadastrarAtividade {
         }
 
         try (Connection conn = ConnectionFactory.getNewConnection()) {
-            return new AtividadeDao().create(conn, atividade) == 1;
+            return new AtividadeDAO().create(conn, atividade) == 1;
         } catch (DatabaseException | SQLException e) {
             System.err.println("Error: " + e.getMessage());
             return false;
