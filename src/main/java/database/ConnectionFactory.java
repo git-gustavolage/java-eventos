@@ -8,14 +8,17 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import support.Config;
+
 public class ConnectionFactory {
 
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/eventos";
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
+    private static final String DRIVER = Config.get("db.driver");
+    private static final String URL = Config.get("db.url");
+    private static final String USER = Config.get("db.user");
+    private static final String PASSWORD = Config.get("db.password");
 
     public ConnectionFactory() {
+
     }
 
     private Connection connect() throws SQLException {
