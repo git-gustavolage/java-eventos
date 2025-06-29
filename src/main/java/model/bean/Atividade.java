@@ -1,5 +1,6 @@
 package model.bean;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Atividade {
@@ -10,8 +11,10 @@ public class Atividade {
     private Long id_ambiente;
     private String titulo;
     private String descricao;
+    private LocalDate data;
     private LocalTime hora_inicio;
     private LocalTime hora_termino;
+    private Boolean cancelada;
 
     public Atividade() {
     }
@@ -23,8 +26,10 @@ public class Atividade {
             Long id_ambiente,
             String titulo,
             String descricao,
+            LocalDate data,
             LocalTime hora_inicio,
-            LocalTime hora_termino
+            LocalTime hora_termino,
+            Boolean cancelada
     ) {
         this.id = id;
         this.id_evento = id_evento;
@@ -32,13 +37,15 @@ public class Atividade {
         this.id_ambiente = id_ambiente;
         this.titulo = titulo;
         this.descricao = descricao;
+        this.data = data;
         this.hora_inicio = hora_inicio;
         this.hora_termino = hora_termino;
+        this.cancelada = cancelada;
     }
 
     @Override
     public String toString() {
-        return "Atividade{" + "id=" + id + ", id_evento=" + id_evento + ", id_responsavel=" + id_responsavel + ", id_ambiente=" + id_ambiente + ", titulo=" + titulo + ", descricao=" + descricao + ", hora_inicio=" + hora_inicio + ", hora_termino=" + hora_termino + '}';
+        return "Atividade{" + "id=" + id + ", id_evento=" + id_evento + ", id_responsavel=" + id_responsavel + ", id_ambiente=" + id_ambiente + ", titulo=" + titulo + ", descricao=" + descricao + ", data=" + data + ", hora_inicio=" + hora_inicio + ", hora_termino=" + hora_termino + ", cancelada=" + cancelada + '}';
     }
 
     public Long getId() {
@@ -89,6 +96,14 @@ public class Atividade {
         this.descricao = descricao;
     }
 
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
     public LocalTime getHora_inicio() {
         return hora_inicio;
     }
@@ -103,6 +118,14 @@ public class Atividade {
 
     public void setHora_termino(LocalTime hora_termino) {
         this.hora_termino = hora_termino;
+    }
+
+    public Boolean isCancelada() {
+        return cancelada;
+    }
+
+    public void setCancelada(Boolean cancelada) {
+        this.cancelada = cancelada;
     }
 
 }
