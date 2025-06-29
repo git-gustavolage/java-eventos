@@ -2,6 +2,7 @@ package usecases;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import database.ConnectionFactory;
 import exceptions.DatabaseException;
@@ -33,7 +34,7 @@ public class CSPublicarEvento {
             throw new DomainException("Não é possivel publicar um evento cancelado.");
         }
 
-        if (evento.getDataTermino().before(new java.util.Date())) {
+        if (evento.getDataTermino().isBefore(LocalDate.now())) {
             throw new DomainException("Não é possivel publicar um evento cuja data de termino ja passou.");
         }
 

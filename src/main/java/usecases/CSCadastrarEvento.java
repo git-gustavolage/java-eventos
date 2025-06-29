@@ -3,8 +3,6 @@ package usecases;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 
 import database.ConnectionFactory;
 import exceptions.DatabaseException;
@@ -19,8 +17,9 @@ public class CSCadastrarEvento {
      * id_organizador, titulo, descricao, dataInicio, dataTermino, formato
      *
      * @param evento
-     * @return (true) se o cadastro foi realizado com sucesso ou (false) caso tenha
-     * ocorrido algum erro
+     * @return (true) se o cadastro foi realizado com sucesso ou (false) caso
+     * tenha ocorrido algum erro
+     * @throws DomainException caso tenha ocorrido algum erro de domínio
      */
     public boolean execute(Evento evento) throws DomainException {
         if (evento == null) {
@@ -28,8 +27,8 @@ public class CSCadastrarEvento {
         }
 
         LocalDate hoje = LocalDate.now();
-        LocalDate inicio = toLocalDate(evento.getDataInicio());
-        LocalDate termino = toLocalDate(evento.getDataTermino());
+        LocalDate inicio = evento.getDataInicio();
+        LocalDate termino = evento.getDataTermino();
 
         if (termino.isBefore(inicio)) {
             throw new DomainException("A data de término não pode ser anterior à data de início.");
@@ -49,10 +48,6 @@ public class CSCadastrarEvento {
             System.err.println("Error: " + e.getMessage());
             return false;
         }
-    }
-
-    private LocalDate toLocalDate(Date date) {
-        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
 }

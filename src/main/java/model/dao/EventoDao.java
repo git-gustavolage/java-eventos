@@ -20,15 +20,20 @@ public class EventoDAO {
             stmt.setLong(1, evento.getId_organizador());
             stmt.setString(2, evento.getTitulo());
             stmt.setString(3, evento.getDescricao());
-            stmt.setDate(4, new java.sql.Date(evento.getDataInicio().getTime()));
-            stmt.setDate(5, new java.sql.Date(evento.getDataTermino().getTime()));
+            stmt.setString(4, evento.getDataInicio().toString());
+            stmt.setString(5, evento.getDataTermino().toString());
             stmt.setString(6, evento.getFormatoNome());
         });
     }
 
     public Evento findById(Connection conn, Long id) throws DatabaseException {
         String sql = "SELECT * FROM eventos WHERE id = ? LIMIT 1;";
-        return new DB().executeQuery(conn, sql, stmt -> stmt.setLong(1, id), rs -> parse(rs));
+        return new DB().executeQuery(conn, sql, stmt -> stmt.setLong(1, id), rs -> {
+            if (rs.next()) {
+                return parse(rs);
+            }
+            return null;
+        });
     }
 
     public int delete(Connection conn, Long id) throws DatabaseException {
@@ -97,8 +102,8 @@ public class EventoDAO {
             evento.setId_organizador(rs.getLong("id_organizador"));
             evento.setTitulo(rs.getString("titulo"));
             evento.setDescricao(rs.getString("descricao"));
-            evento.setDataInicio(rs.getDate("data_inicio"));
-            evento.setDataTermino(rs.getDate("data_termino"));
+            evento.setDataInicio(rs.getDate("data_inicio").toLocalDate());
+            evento.setDataTermino(rs.getDate("data_termino").toLocalDate());
             evento.setFormato(EventoFormato.valueOf(rs.getString("formato")));
             evento.setPublicado(rs.getBoolean("is_publicado"));
             evento.setCancelado(rs.getBoolean("is_cancelado"));
