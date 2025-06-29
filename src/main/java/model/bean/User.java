@@ -3,7 +3,7 @@ package model.bean;
 import java.util.Date;
 
 public class User {
-    private Integer id;
+    private Long id;
     private String username;
     private String nome;
     private String email;
@@ -17,11 +17,11 @@ public class User {
 
     public User() {}
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

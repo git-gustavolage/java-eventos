@@ -24,10 +24,10 @@ public class UsuarioDAO {
         });
     }
 
-    public User find(Connection conn, int id) throws DatabaseException {
+    public User find(Connection conn, Long id) throws DatabaseException {
         String sql = "SELECT * FROM usuarios WHERE id = (?)";
 
-        return new DB().executeQuery(conn, sql, stmt -> stmt.setInt(1, id), rs -> {
+        return new DB().executeQuery(conn, sql, stmt -> stmt.setLong(1, id), rs -> {
             if (rs.next()) {
                 return parse(rs);
             }
@@ -62,7 +62,7 @@ public class UsuarioDAO {
     private User parse(ResultSet rs) throws DatabaseException {
         try (rs) {
             User user = new User();
-            user.setId(rs.getInt("id"));
+            user.setId(rs.getLong("id"));
             user.setNome(rs.getString("nome"));
             user.setUsername(rs.getString("username"));
             user.setEmail(rs.getString("email"));

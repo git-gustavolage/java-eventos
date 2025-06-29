@@ -8,19 +8,19 @@ import exceptions.DatabaseException;
 import model.bean.User;
 import model.dao.UsuarioDAO;
 
-public class CSFindUserByUsername {
+public class CSFindUserByID {
 
     /**
-     * Busca um usuario pelo username
-     * 
-     * @param username
+     * Busca um usuario pelo ID
+     *
+     * @param ID
      * @return o usuario encontrado ou null caso nao seja encontrado
      */
-    public static User execute(String username) {
+    public static User execute(Long ID) {
         User result;
 
         try (Connection conn = new ConnectionFactory().open()) {
-            result = new UsuarioDAO().findByUsername(conn, username);
+            result = new UsuarioDAO().find(conn, ID);
         } catch (DatabaseException | SQLException e) {
             System.err.println("Error: " + e.getMessage());
             result = null;
