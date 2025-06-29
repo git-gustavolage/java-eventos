@@ -46,13 +46,13 @@ public class DBTransaction {
                 try {
                     conn.rollback();
                 } catch (SQLException rollbackEx) {
-                    throw new DatabaseException("Erro ao executar transação", rollbackEx);
+                    throw new DatabaseException("Erro ao executar transação:\n" + e.getMessage(), rollbackEx);
                 }
             }
             if (errorHandler != null) {
                 errorHandler.accept(e);
             } else {
-                throw new DatabaseException("Erro ao executar transação", e);
+                throw new DatabaseException("Erro ao executar transação:\n" + e.getMessage(), e);
             }
         } finally {
             DBContext.clear();
@@ -60,7 +60,7 @@ public class DBTransaction {
                 try {
                     conn.close();
                 } catch (SQLException e) {
-                    throw new DatabaseException("Erro ao executar transação", e);
+                    throw new DatabaseException("Erro ao executar transação:\n" + e.getMessage(), e);
                 }
             }
         }

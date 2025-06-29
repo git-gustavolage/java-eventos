@@ -40,7 +40,7 @@ public class DB {
             setter.setValues(stmt);
             return stmt.execute();
         } catch (SQLException ex) {
-            throw new DatabaseException("Erro ao executar SQL", ex);
+            throw new DatabaseException(ex.getMessage(), ex);
         }
     }
 
@@ -63,7 +63,7 @@ public class DB {
             setter.setValues(stmt);
             return stmt.execute();
         } catch (SQLException ex) {
-            throw new DatabaseException("Erro ao executar SQL", ex);
+            throw new DatabaseException(ex.getMessage(), ex);
         }
     }
 
@@ -83,7 +83,7 @@ public class DB {
             setter.setValues(stmt);
             return stmt.executeUpdate();
         } catch (SQLException ex) {
-            throw new DatabaseException("Erro ao executar SQL", ex);
+            throw new DatabaseException(ex.getMessage(), ex);
         }
     }
 
@@ -105,9 +105,10 @@ public class DB {
             setter.setValues(stmt);
             return stmt.executeUpdate();
         } catch (SQLException ex) {
-            throw new DatabaseException("Erro ao executar SQL", ex);
+            throw new DatabaseException(ex.getMessage(), ex);
         }
     }
+
 
     /**
      * Executa uma query SQL.
@@ -128,7 +129,7 @@ public class DB {
                 return handler.handle(rs);
             }
         } catch (SQLException ex) {
-            throw new DatabaseException("Erro ao executar query", ex);
+            throw new DatabaseException(ex.getMessage(), ex);
         }
     }
 
@@ -152,7 +153,7 @@ public class DB {
                 return handler.handle(rs);
             }
         } catch (SQLException ex) {
-            throw new DatabaseException("Erro ao executar query", ex);
+            throw new DatabaseException(ex.getMessage(), ex);
         }
     }
 
