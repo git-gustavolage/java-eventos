@@ -1,6 +1,5 @@
 package controllers;
 
-import auth.Auth;
 import model.bean.User;
 
 public class AuthController {
@@ -11,14 +10,14 @@ public class AuthController {
         user.setUsername(username);
         user.setPassword(password);
 
-        Auth.login(user);
+        // Auth.login(user);
 
-        if(Auth.guest()){
-            //adicionar erros na sessão e retornar para a tela de login
-        }
+        // if(Auth.guest()){
+        //     //adicionar erros na sessão e retornar para a tela de login
+        // }
 
-        if(Auth.check()){
-            //redirecionar para a tela principal
-        }
+        // if(Auth.check()){
+        //     //redirecionar para a tela principal
+        // }
     }
 }

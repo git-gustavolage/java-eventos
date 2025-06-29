@@ -1,21 +1,19 @@
 package auth;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import exceptions.AuthenticationException;
 import model.bean.User;
-import model.dao.UserDao;
 import support.Hash;
+import usecases.CSFindUserByUsername;
 
 public class Auth {
 
     private static User authenticatedUser;
 
-    public Auth(UserDao model) {
+    private Auth() {
         Auth.authenticatedUser = null;
     }
 
-    public static User login(User user) {
+    public static User login(User user) throws AuthenticationException {
         Session.expire();
 
         if (user == null) {
@@ -27,11 +25,15 @@ public class Auth {
 
         if (!Auth.validate(username, password)) {
             Auth.logout();
-            Logger.getLogger(Auth.class.getName()).log(Level.SEVERE, "Credenciais incorretas!");
-            return null;
+            throw new AuthenticationException("Credenciais incorretas!");
         }
 
-        User result = UserDao.findByUsername(username);
+        User result = CSFindUserByUsername.execute(username);
+
+        if (result == null) {
+            Auth.logout();
+            throw new AuthenticationException("Credenciais incorretas!");
+        }
 
         result.setPassword(null);
 
@@ -63,7 +65,7 @@ public class Auth {
             return false;
         }
 
-        User user = UserDao.findByUsername(username);
+        User user = CSFindUserByUsername.execute(username);
 
         if (user == null) {
             return false;
