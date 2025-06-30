@@ -18,92 +18,82 @@ public class Tela_cadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        botao_cadastro_cdtr = new javax.swing.JButton();
-        text_senha_cdtr = new javax.swing.JPasswordField();
-        campo_email_cdtr = new javax.swing.JTextField();
-        text_conta_cdtr = new javax.swing.JLabel();
-        botao_entrar_cdtr = new javax.swing.JLabel();
-        Campo_usuario_cdtr = new javax.swing.JTextField();
-        rec_senha_cdtr = new javax.swing.JPasswordField();
+        lbl_cadastro = new javax.swing.JLabel();
+        btn_cadastrar = new javax.swing.JButton();
+        pwd_senha = new javax.swing.JPasswordField();
+        txt_email = new javax.swing.JTextField();
+        lbl_pergunta = new javax.swing.JLabel();
+        lbl_entrar = new javax.swing.JLabel();
+        txt_nomeusuario = new javax.swing.JTextField();
+        pwd_senha02 = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
-
-        jTextField1.setText("jTextField1");
-
-        jScrollPane1.setViewportView(jTextPane1);
-
-        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel3.setText("Cadastra-se");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 32)); // NOI18N
-        jLabel1.setText("CADASTRO");
-        jLabel1.setToolTipText("");
+        lbl_cadastro.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 32)); // NOI18N
+        lbl_cadastro.setText("CADASTRO");
+        lbl_cadastro.setToolTipText("");
 
-        botao_cadastro_cdtr.setBackground(new java.awt.Color(0, 212, 146));
-        botao_cadastro_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        botao_cadastro_cdtr.setForeground(new java.awt.Color(255, 255, 255));
-        botao_cadastro_cdtr.setText("Cadastrar-se");
-        botao_cadastro_cdtr.setBorderPainted(false);
-        botao_cadastro_cdtr.addActionListener(new java.awt.event.ActionListener() {
+        btn_cadastrar.setBackground(new java.awt.Color(0, 212, 146));
+        btn_cadastrar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        btn_cadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cadastrar.setText("Cadastrar-se");
+        btn_cadastrar.setBorderPainted(false);
+        btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_cadastro_cdtrActionPerformed(evt);
+                btn_cadastrarActionPerformed(evt);
             }
         });
 
-        text_senha_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        text_senha_cdtr.setForeground(new java.awt.Color(212, 212, 216));
-        text_senha_cdtr.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        text_senha_cdtr.setText("Senha");
-        text_senha_cdtr.setToolTipText("");
-        text_senha_cdtr.addActionListener(new java.awt.event.ActionListener() {
+        pwd_senha.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        pwd_senha.setForeground(new java.awt.Color(212, 212, 216));
+        pwd_senha.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pwd_senha.setText("Senha");
+        pwd_senha.setToolTipText("");
+        pwd_senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_senha_cdtrActionPerformed(evt);
+                pwd_senhaActionPerformed(evt);
             }
         });
 
-        campo_email_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        campo_email_cdtr.setForeground(new java.awt.Color(212, 212, 216));
-        campo_email_cdtr.setText("E-mail");
-        campo_email_cdtr.setToolTipText("");
-        campo_email_cdtr.addActionListener(new java.awt.event.ActionListener() {
+        txt_email.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_email.setForeground(new java.awt.Color(212, 212, 216));
+        txt_email.setText("E-mail");
+        txt_email.setToolTipText("");
+        txt_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_email_cdtrActionPerformed(evt);
+                txt_emailActionPerformed(evt);
             }
         });
 
-        text_conta_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        text_conta_cdtr.setText("Já possui uma conta?");
+        lbl_pergunta.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        lbl_pergunta.setText("Já possui uma conta?");
 
-        botao_entrar_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        botao_entrar_cdtr.setForeground(new java.awt.Color(43, 127, 255));
-        botao_entrar_cdtr.setText("Entrar");
+        lbl_entrar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        lbl_entrar.setForeground(new java.awt.Color(43, 127, 255));
+        lbl_entrar.setText("Entrar");
 
-        Campo_usuario_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        Campo_usuario_cdtr.setForeground(new java.awt.Color(212, 212, 216));
-        Campo_usuario_cdtr.setText("Nome de usuário");
-        Campo_usuario_cdtr.addActionListener(new java.awt.event.ActionListener() {
+        txt_nomeusuario.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_nomeusuario.setForeground(new java.awt.Color(212, 212, 216));
+        txt_nomeusuario.setText("Nome de usuário");
+        txt_nomeusuario.setToolTipText("");
+        txt_nomeusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_usuario_cdtrActionPerformed(evt);
+                txt_nomeusuarioActionPerformed(evt);
             }
         });
 
-        rec_senha_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        rec_senha_cdtr.setForeground(new java.awt.Color(212, 212, 216));
-        rec_senha_cdtr.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        rec_senha_cdtr.setText("Confirmação da senha");
-        rec_senha_cdtr.setToolTipText("");
-        rec_senha_cdtr.addActionListener(new java.awt.event.ActionListener() {
+        pwd_senha02.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        pwd_senha02.setForeground(new java.awt.Color(212, 212, 216));
+        pwd_senha02.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pwd_senha02.setText("Confirmação da senha");
+        pwd_senha02.setToolTipText("");
+        pwd_senha02.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rec_senha_cdtrActionPerformed(evt);
+                pwd_senha02ActionPerformed(evt);
             }
         });
 
@@ -116,45 +106,45 @@ public class Tela_cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(rec_senha_cdtr)
-                            .addComponent(text_senha_cdtr)
+                            .addComponent(pwd_senha02)
+                            .addComponent(pwd_senha)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(text_conta_cdtr)
+                                .addComponent(lbl_pergunta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botao_entrar_cdtr)
+                                .addComponent(lbl_entrar)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(Campo_usuario_cdtr, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campo_email_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_nomeusuario, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(lbl_cadastro)
                                 .addGap(96, 96, 96))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(botao_cadastro_cdtr)
+                                .addComponent(btn_cadastrar)
                                 .addGap(112, 112, 112))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel1)
+                .addComponent(lbl_cadastro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Campo_usuario_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_nomeusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(campo_email_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(text_senha_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pwd_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(rec_senha_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pwd_senha02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(text_conta_cdtr)
-                    .addComponent(botao_entrar_cdtr))
+                    .addComponent(lbl_pergunta)
+                    .addComponent(lbl_entrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botao_cadastro_cdtr)
+                .addComponent(btn_cadastrar)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -194,25 +184,25 @@ public class Tela_cadastro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campo_email_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_email_cdtrActionPerformed
+    private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campo_email_cdtrActionPerformed
+    }//GEN-LAST:event_txt_emailActionPerformed
 
-    private void botao_cadastro_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_cadastro_cdtrActionPerformed
+    private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botao_cadastro_cdtrActionPerformed
+    }//GEN-LAST:event_btn_cadastrarActionPerformed
 
-    private void text_senha_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_senha_cdtrActionPerformed
+    private void pwd_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_senhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_text_senha_cdtrActionPerformed
+    }//GEN-LAST:event_pwd_senhaActionPerformed
 
-    private void Campo_usuario_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo_usuario_cdtrActionPerformed
+    private void txt_nomeusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeusuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Campo_usuario_cdtrActionPerformed
+    }//GEN-LAST:event_txt_nomeusuarioActionPerformed
 
-    private void rec_senha_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rec_senha_cdtrActionPerformed
+    private void pwd_senha02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_senha02ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rec_senha_cdtrActionPerformed
+    }//GEN-LAST:event_pwd_senha02ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,19 +241,15 @@ public class Tela_cadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Campo_usuario_cdtr;
-    private javax.swing.JButton botao_cadastro_cdtr;
-    private javax.swing.JLabel botao_entrar_cdtr;
-    private javax.swing.JTextField campo_email_cdtr;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btn_cadastrar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JPasswordField rec_senha_cdtr;
-    private javax.swing.JLabel text_conta_cdtr;
-    private javax.swing.JPasswordField text_senha_cdtr;
+    private javax.swing.JLabel lbl_cadastro;
+    private javax.swing.JLabel lbl_entrar;
+    private javax.swing.JLabel lbl_pergunta;
+    private javax.swing.JPasswordField pwd_senha;
+    private javax.swing.JPasswordField pwd_senha02;
+    private javax.swing.JTextField txt_email;
+    private javax.swing.JTextField txt_nomeusuario;
     // End of variables declaration//GEN-END:variables
 }
