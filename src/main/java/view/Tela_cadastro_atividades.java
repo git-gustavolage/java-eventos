@@ -33,39 +33,39 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        popupMenu1 = new java.awt.PopupMenu();
+        bnt_salvar = new javax.swing.JButton();
+        lbl_ATIVIDADES = new javax.swing.JLabel();
+        txt_nomeatividades = new javax.swing.JTextField();
+        lbl_nomeatividades = new javax.swing.JLabel();
+        txt_categoria = new javax.swing.JTextField();
+        lbl_categoria = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel18 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
+        lbl_cadastroevento = new javax.swing.JLabel();
+        lbl_atividades = new javax.swing.JLabel();
+        lbl_geral = new javax.swing.JLabel();
+        lbl_organizadores = new javax.swing.JLabel();
+        lbl_inicio = new javax.swing.JLabel();
+        lbl_cadastro02 = new javax.swing.JLabel();
+        lbl_atividades02 = new javax.swing.JLabel();
+        lbl_componente1 = new javax.swing.JLabel();
+        lbl_componente02 = new javax.swing.JLabel();
+        lbl_data = new javax.swing.JLabel();
+        lbl_dataatividade = new javax.swing.JLabel();
+        txt_dataatividade = new javax.swing.JTextField();
+        lbl_quantdias = new javax.swing.JLabel();
+        txt_quantdias = new javax.swing.JTextField();
+        lbl_ambientes = new javax.swing.JLabel();
+        lbl_localatividade = new javax.swing.JLabel();
+        txt_localatividade = new javax.swing.JTextField();
+        btn_voltar = new javax.swing.JButton();
+        lbl_diahora = new javax.swing.JLabel();
+        txt_horainicio = new javax.swing.JTextField();
+        lbl_horainicio = new javax.swing.JLabel();
+        lbl_horatermino = new javax.swing.JLabel();
+        txt_horatermino = new javax.swing.JTextField();
+        lbl_dialocal = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -81,35 +81,37 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
 
         jMenuItem1.setText("jMenuItem1");
 
-        jButton1.setBackground(new java.awt.Color(0, 212, 146));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Salvar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        popupMenu1.setLabel("popupMenu1");
+
+        bnt_salvar.setBackground(new java.awt.Color(0, 212, 146));
+        bnt_salvar.setForeground(new java.awt.Color(255, 255, 255));
+        bnt_salvar.setText("Salvar");
+        bnt_salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bnt_salvarActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel1.setText("• Atividades");
+        lbl_ATIVIDADES.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lbl_ATIVIDADES.setText("• Atividades");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_nomeatividades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txt_nomeatividadesActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Nome da atividade:");
+        lbl_nomeatividades.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_nomeatividades.setText("Nome da atividade:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txt_categoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txt_categoriaActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Categoria:");
+        lbl_categoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_categoria.setText("Categoria:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,20 +126,17 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel3.setText("Cadastro de eventos");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbl_cadastroevento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lbl_cadastroevento.setText("Cadastro de eventos");
+        lbl_cadastroevento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbl_atividades.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_atividades.setText("• Atividades");
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel21.setText("• Atividades");
+        lbl_geral.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_geral.setText("◦ Geral");
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel22.setText("◦ Geral");
-
-        jLabel23.setText("◦ Organizadores");
+        lbl_organizadores.setText("◦ Organizadores");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -149,102 +148,99 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel22)))
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel19))
+                            .addComponent(lbl_organizadores)
+                            .addComponent(lbl_atividades)
+                            .addComponent(lbl_geral)))
+                    .addComponent(lbl_cadastroevento))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_cadastroevento, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel22)
+                .addComponent(lbl_geral)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel21)
+                .addComponent(lbl_atividades)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel23)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel19)
+                .addComponent(lbl_organizadores)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel7.setText("Inicio");
+        lbl_inicio.setText("Inicio");
 
-        jLabel8.setText("Cadastro");
+        lbl_cadastro02.setText("Cadastro");
 
-        jLabel9.setText("Atividades");
+        lbl_atividades02.setText("Atividades");
 
-        jLabel10.setText(">");
+        lbl_componente1.setText(">");
 
-        jLabel11.setText(">");
+        lbl_componente02.setText(">");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel12.setText("• Data");
+        lbl_data.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lbl_data.setText("• Data");
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel13.setText("Data da atividade:");
+        lbl_dataatividade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_dataatividade.setText("Data da atividade:");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txt_dataatividade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txt_dataatividadeActionPerformed(evt);
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setText("Quantidade de dias:");
+        lbl_quantdias.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_quantdias.setText("Quantidade de dias:");
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txt_quantdias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txt_quantdiasActionPerformed(evt);
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel15.setText("• Ambientes");
+        lbl_ambientes.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lbl_ambientes.setText("• Ambientes");
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel16.setText("Local da atividade:");
+        lbl_localatividade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_localatividade.setText("Local da atividade:");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txt_localatividade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txt_localatividadeActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Voltar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_voltar.setText("Voltar");
+        btn_voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_voltarActionPerformed(evt);
             }
         });
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel18.setText("Dia 01");
+        lbl_diahora.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lbl_diahora.setText("Dia 01");
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txt_horainicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txt_horainicioActionPerformed(evt);
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel17.setText("Hora de início:");
+        lbl_horainicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_horainicio.setText("Hora de início:");
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel20.setText("Hora de término:");
+        lbl_horatermino.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_horatermino.setText("Hora de término:");
 
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        txt_horatermino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                txt_horaterminoActionPerformed(evt);
             }
         });
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel25.setText("Dia 01");
+        lbl_dialocal.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lbl_dialocal.setText("Dia 01");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -259,51 +255,51 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(bnt_salvar)
                         .addGap(47, 47, 47))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                                .addComponent(lbl_inicio)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10)
+                                .addComponent(lbl_componente1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
+                                .addComponent(lbl_cadastro02)
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel11)
+                                .addComponent(lbl_componente02)
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel9))
-                            .addComponent(jLabel1)
+                                .addComponent(lbl_atividades02))
+                            .addComponent(lbl_ATIVIDADES)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel25)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12)
+                                    .addComponent(lbl_dialocal)
+                                    .addComponent(lbl_nomeatividades)
+                                    .addComponent(lbl_ambientes)
+                                    .addComponent(lbl_localatividade)
+                                    .addComponent(txt_localatividade, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_voltar)
+                                    .addComponent(lbl_categoria)
+                                    .addComponent(txt_nomeatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_data)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel17)
-                                            .addComponent(jLabel18))
+                                            .addComponent(lbl_dataatividade)
+                                            .addComponent(txt_dataatividade, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_horainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lbl_horainicio)
+                                            .addComponent(lbl_diahora))
                                         .addGap(59, 59, 59)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel20)
-                                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(txt_quantdias, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lbl_quantdias)
+                                            .addComponent(lbl_horatermino)
+                                            .addComponent(txt_horatermino, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addContainerGap(197, Short.MAX_VALUE))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel4});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lbl_categoria, lbl_nomeatividades});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,119 +315,97 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
+                            .addComponent(lbl_inicio)
+                            .addComponent(lbl_cadastro02)
+                            .addComponent(lbl_atividades02)
+                            .addComponent(lbl_componente1)
+                            .addComponent(lbl_componente02))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
+                        .addComponent(lbl_ATIVIDADES)
                         .addGap(6, 6, 6)
-                        .addComponent(jLabel2)
+                        .addComponent(lbl_nomeatividades)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_nomeatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
+                        .addComponent(lbl_categoria)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel12)
+                        .addComponent(lbl_data)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14))
+                            .addComponent(lbl_dataatividade)
+                            .addComponent(lbl_quantdias))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_dataatividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_quantdias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(17, 17, 17)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_diahora, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel17))
+                            .addComponent(lbl_horatermino)
+                            .addComponent(lbl_horainicio))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_horatermino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_horainicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel15)
+                        .addComponent(lbl_ambientes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_dialocal, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel16)
+                        .addComponent(lbl_localatividade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_localatividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(bnt_salvar)
+                    .addComponent(btn_voltar))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bnt_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_salvarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bnt_salvarActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txt_dataatividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dataatividadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txt_dataatividadeActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txt_nomeatividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeatividadesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txt_nomeatividadesActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txt_quantdiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantdiasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txt_quantdiasActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txt_localatividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_localatividadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txt_localatividadeActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_voltarActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txt_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_categoriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txt_categoriaActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void txt_horainicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_horainicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_txt_horainicioActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void txt_horaterminoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_horaterminoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_txt_horaterminoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton bnt_salvar;
+    private javax.swing.JButton btn_voltar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -441,12 +415,34 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel lbl_ATIVIDADES;
+    private javax.swing.JLabel lbl_ambientes;
+    private javax.swing.JLabel lbl_atividades;
+    private javax.swing.JLabel lbl_atividades02;
+    private javax.swing.JLabel lbl_cadastro02;
+    private javax.swing.JLabel lbl_cadastroevento;
+    private javax.swing.JLabel lbl_categoria;
+    private javax.swing.JLabel lbl_componente02;
+    private javax.swing.JLabel lbl_componente1;
+    private javax.swing.JLabel lbl_data;
+    private javax.swing.JLabel lbl_dataatividade;
+    private javax.swing.JLabel lbl_diahora;
+    private javax.swing.JLabel lbl_dialocal;
+    private javax.swing.JLabel lbl_geral;
+    private javax.swing.JLabel lbl_horainicio;
+    private javax.swing.JLabel lbl_horatermino;
+    private javax.swing.JLabel lbl_inicio;
+    private javax.swing.JLabel lbl_localatividade;
+    private javax.swing.JLabel lbl_nomeatividades;
+    private javax.swing.JLabel lbl_organizadores;
+    private javax.swing.JLabel lbl_quantdias;
+    private java.awt.PopupMenu popupMenu1;
+    private javax.swing.JTextField txt_categoria;
+    private javax.swing.JTextField txt_dataatividade;
+    private javax.swing.JTextField txt_horainicio;
+    private javax.swing.JTextField txt_horatermino;
+    private javax.swing.JTextField txt_localatividade;
+    private javax.swing.JTextField txt_nomeatividades;
+    private javax.swing.JTextField txt_quantdias;
     // End of variables declaration//GEN-END:variables
 }
