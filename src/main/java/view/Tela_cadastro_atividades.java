@@ -26,13 +26,6 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         popupMenu1 = new java.awt.PopupMenu();
         bnt_salvar = new javax.swing.JButton();
         lbl_ATIVIDADES = new javax.swing.JLabel();
@@ -67,21 +60,12 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
         txt_horatermino = new javax.swing.JTextField();
         lbl_dialocal = new javax.swing.JLabel();
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("File");
-        jMenuBar2.add(jMenu3);
-
-        jMenu4.setText("Edit");
-        jMenuBar2.add(jMenu4);
-
-        jMenuItem1.setText("jMenuItem1");
-
         popupMenu1.setLabel("popupMenu1");
+        popupMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                popupMenu1ActionPerformed(evt);
+            }
+        });
 
         bnt_salvar.setBackground(new java.awt.Color(0, 212, 146));
         bnt_salvar.setForeground(new java.awt.Color(255, 255, 255));
@@ -402,17 +386,14 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_horaterminoActionPerformed
 
+    private void popupMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popupMenu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_popupMenu1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bnt_salvar;
     private javax.swing.JButton btn_voltar;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_ATIVIDADES;
