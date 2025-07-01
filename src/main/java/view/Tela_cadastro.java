@@ -7,6 +7,8 @@ public class Tela_cadastro extends javax.swing.JFrame {
      */
     public Tela_cadastro() {
         initComponents();
+    txt_nomeusuario.setText("Nome de usuário");
+    txt_nomeusuario.setForeground(Color.GRAY);
     }
 
     /**
@@ -80,6 +82,14 @@ public class Tela_cadastro extends javax.swing.JFrame {
         txt_nomeusuario.setForeground(new java.awt.Color(212, 212, 216));
         txt_nomeusuario.setText("Nome de usuário");
         txt_nomeusuario.setToolTipText("");
+        txt_nomeusuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_nomeusuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_nomeusuarioFocusLost(evt);
+            }
+        });
         txt_nomeusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nomeusuarioActionPerformed(evt);
@@ -204,6 +214,19 @@ public class Tela_cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pwd_senha02ActionPerformed
 
+    private void txt_nomeusuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_nomeusuarioFocusGained
+        if (txt_nomeusuario.getText().equals("Nome de usuário")) {
+    txt_nomeusuario.setText("");
+    txt_nomeusuario.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_nomeusuarioFocusGained
+  }
+        
+    private void txt_nomeusuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_nomeusuarioFocusLost
+        if (txt_nomeusuario.getText().isEmpty()) {
+    txt_nomeusuario.setText("Nome de usuário");
+    txt_nomeusuario.setForeground(Color.GRAY);
+    }//GEN-LAST:event_txt_nomeusuarioFocusLost
+    }
     /**
      * @param args the command line arguments
      */
