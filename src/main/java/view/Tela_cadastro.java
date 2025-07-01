@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 public class Tela_cadastro extends javax.swing.JFrame {
 
     /**
