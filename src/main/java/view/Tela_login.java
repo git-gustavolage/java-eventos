@@ -6,6 +6,9 @@ import auth.Auth;
 import controllers.AuthController;
 import exceptions.AuthenticationException;
 import model.bean.User;
+import java.awt.Color; 
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusAdapter;
 
 public class Tela_login extends javax.swing.JFrame {
 
@@ -16,6 +19,32 @@ public class Tela_login extends javax.swing.JFrame {
      */
     public Tela_login() {
         initComponents();
+        
+        //definindo o texto fantasma inicial e a cor para o txt_nomeusuario
+        txt_nomeusuario.setText("Digite seu nome...");
+        txt_nomeusuario.setForeground(java.awt.Color.GRAY); //cor mais clara para o campo
+        
+        //Placeholder para pwd_senha
+        pwd_senhausuario.setEchoChar((char) 0);
+        pwd_senhausuario.setText("Senha");
+        pwd_senhausuario.setForeground(Color.GRAY);
+        pwd_senhausuario.addFocusListener(new java.awt.event.FocusAdapter(){
+          public void focusGained(java.awt.event.FocusEvent evt) {
+              if (String.valueOf(pwd_senhausuario.getPassword()).equals("Senha")) {
+                  pwd_senhausuario.setText("");
+                  pwd_senhausuario.setForeground(Color.BLACK);
+                  pwd_senhausuario.setEchoChar('*');
+              }
+          }
+           public void focusLost(java.awt.event.FocusEvent evt) {
+              if (String.valueOf(pwd_senhausuario.getPassword()).isEmpty()){
+                  pwd_senhausuario.setText("Senha");
+                  pwd_senhausuario.setForeground(Color.GRAY);
+                  pwd_senhausuario.setEchoChar((char) 0);
+              }
+          }
+        });
+        
         controller = new AuthController();
 
         if(Auth.check()) {
@@ -63,7 +92,6 @@ public class Tela_login extends javax.swing.JFrame {
         pwd_senhausuario.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         pwd_senhausuario.setForeground(new java.awt.Color(212, 212, 216));
         pwd_senhausuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        pwd_senhausuario.setText("Senha");
         pwd_senhausuario.setToolTipText("");
         pwd_senhausuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +101,14 @@ public class Tela_login extends javax.swing.JFrame {
 
         txt_nomeusuario.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         txt_nomeusuario.setForeground(new java.awt.Color(212, 212, 216));
-        txt_nomeusuario.setText("Nome de usuário");
+        txt_nomeusuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_nomeusuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_nomeusuarioFocusLost(evt);
+            }
+        });
         txt_nomeusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nomeusuarioActionPerformed(evt);
@@ -205,6 +240,22 @@ public class Tela_login extends javax.swing.JFrame {
     private void pwd_senhausuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_senhausuarioActionPerformed
 
     }//GEN-LAST:event_pwd_senhausuarioActionPerformed
+
+    private void txt_nomeusuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_nomeusuarioFocusGained
+        // quando o campo recebe campo
+        if (txt_nomeusuario.getText().equals("Digite seu nome...")); {
+        txt_nomeusuario.setText("");//limpa o texto fantasma
+        txt_nomeusuario.setForeground(java.awt.Color.BLACK); //Restaura a cor normal
+    }
+    }//GEN-LAST:event_txt_nomeusuarioFocusGained
+
+    private void txt_nomeusuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_nomeusuarioFocusLost
+        // quando o campo perde o foco
+        if (txt_nomeusuario.getText().isEmpty()){ //se o campo estiver vazio
+         txt_nomeusuario.setText("Digite seu nome...");//coloca o texto fantasma de volta
+        txt_nomeusuario.setForeground(java.awt.Color.GRAY); //Restaura a cor fantasma
+    }
+    }//GEN-LAST:event_txt_nomeusuarioFocusLost
 
     /**
      * @param args the command line arguments
