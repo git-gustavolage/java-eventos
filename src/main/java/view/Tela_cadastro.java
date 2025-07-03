@@ -11,7 +11,7 @@ public class Tela_cadastro extends javax.swing.JFrame {
     public Tela_cadastro() {
         initComponents();
        
-    //faz com q abra em tela cheia, yem q importar isso import javax.swing.JFrame;
+    //faz com q abra em tela cheia.
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         
      // logica para abrir a tela de cadastro
@@ -25,6 +25,17 @@ public class Tela_cadastro extends javax.swing.JFrame {
            }
         });
 
+        // logica para abrir a tela de cadastro após cadastro criado
+        btn_cadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+         @Override
+           public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dispose(); // fecha a tela de cadastro 
+                Tela_login l = new Tela_login();
+               l.setVisible(true);
+           }
+        });
+        
         txt_nomeusuario.setText("Digite seu Nome...");
         txt_nomeusuario.setForeground(Color.BLACK);
         txt_nomeusuario.addFocusListener(new java.awt.event.FocusAdapter() {
