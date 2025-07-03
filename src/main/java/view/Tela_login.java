@@ -56,6 +56,27 @@ public class Tela_login extends javax.swing.JFrame {
             }
         });
         
+        // Placeholder para txt_emailusuario
+        txt_nomeusuario.setText("Digite seu Email...");
+        txt_nomeusuario.setForeground(Color.GRAY);
+        txt_nomeusuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (txt_nomeusuario.getText().equals("Digite seu Email...")) {
+                    txt_nomeusuario.setText("");
+                    txt_nomeusuario.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (txt_nomeusuario.getText().isEmpty()) {
+                    txt_nomeusuario.setText("Digite seu Email...");
+                    txt_nomeusuario.setForeground(Color.GRAY);
+                }
+            }
+        });
+
         controller = new AuthController();
 
         if(Auth.check()) {
