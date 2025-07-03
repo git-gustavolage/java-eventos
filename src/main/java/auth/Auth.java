@@ -14,7 +14,7 @@ public class Auth {
     }
 
     public static User login(User user) throws AuthenticationException {
-        Session.expire();
+        logout();
 
         if (user == null) {
             return null;
