@@ -8,21 +8,103 @@ public class Tela_cadastro extends javax.swing.JFrame {
      */
     public Tela_cadastro() {
         initComponents();
-    txt_nomeusuario.setText("Nome de usuário");
-    txt_nomeusuario.setForeground(Color.GRAY);
     
      // logica para abrir a tela de cadastro
         lbl_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_entrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+         @Override
+           public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dispose(); // fecha a tela de cadastro 
                 Tela_login l = new Tela_login();
-                l.setVisible(true);
-            }
+               l.setVisible(true);
+           }
         });
 
+        txt_nomeusuario.setText("Digite seu Nome...");
+        txt_nomeusuario.setForeground(Color.BLACK);
+        txt_nomeusuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (txt_nomeusuario.getText().equals("Digite seu Nome...")) {
+                    txt_nomeusuario.setText("");
+                    txt_nomeusuario.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (txt_nomeusuario.getText().isEmpty()) {
+                    txt_nomeusuario.setText("Digite seu Nome...");
+                    txt_nomeusuario.setForeground(Color.GRAY);
+                }
+            }
+        });
+        
+        txt_email.setText("Digite seu Email...");
+        txt_email.setForeground(Color.GRAY);
+        txt_email.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (txt_email.getText().equals("Digite seu Email...")) {
+                    txt_email.setText("");
+                    txt_email.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (txt_email.getText().isEmpty()) {
+                    txt_email.setText("Digite seu Email...");
+                    txt_email.setForeground(Color.GRAY);
+                }
+            }
+        });
+     
+        
+        //Placeholder para pwd_senha
+        pwd_senha.setEchoChar((char) 0);
+        pwd_senha.setText("Senha");
+        pwd_senha.setForeground(Color.GRAY);
+        pwd_senha.addFocusListener(new java.awt.event.FocusAdapter(){
+          public void focusGained(java.awt.event.FocusEvent evt) {
+              if (String.valueOf(pwd_senha.getPassword()).equals("Senha")) {
+                  pwd_senha.setText("");
+                  pwd_senha.setForeground(Color.BLACK);
+                  pwd_senha.setEchoChar('*');
+              }
+          }
+           public void focusLost(java.awt.event.FocusEvent evt) {
+              if (String.valueOf(pwd_senha.getPassword()).isEmpty()){
+                  pwd_senha.setText("Senha");
+                  pwd_senha.setForeground(Color.GRAY);
+                  pwd_senha.setEchoChar((char) 0);
+              }
+          }     
+        });
+        
+        
+        //Placeholder para pwd_senha
+        pwd_senha02.setEchoChar((char) 0);
+        pwd_senha02.setText("Senha");
+        pwd_senha02.setForeground(Color.GRAY);
+        pwd_senha02.addFocusListener(new java.awt.event.FocusAdapter(){
+          public void focusGained(java.awt.event.FocusEvent evt) {
+              if (String.valueOf(pwd_senha02.getPassword()).equals("Senha")) {
+                  pwd_senha02.setText("");
+                  pwd_senha02.setForeground(Color.BLACK);
+                  pwd_senha02.setEchoChar('*');
+              }
+          }
+           public void focusLost(java.awt.event.FocusEvent evt) {
+              if (String.valueOf(pwd_senha02.getPassword()).isEmpty()){
+                  pwd_senha02.setText("Senha");
+                  pwd_senha02.setForeground(Color.GRAY);
+                  pwd_senha02.setEchoChar((char) 0);
+              }
+          }     
+        });  
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,14 +176,6 @@ public class Tela_cadastro extends javax.swing.JFrame {
         txt_nomeusuario.setForeground(new java.awt.Color(212, 212, 216));
         txt_nomeusuario.setText("Nome de usuário");
         txt_nomeusuario.setToolTipText("");
-        txt_nomeusuario.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_nomeusuarioFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_nomeusuarioFocusLost(evt);
-            }
-        });
         txt_nomeusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nomeusuarioActionPerformed(evt);
@@ -225,20 +299,7 @@ public class Tela_cadastro extends javax.swing.JFrame {
     private void pwd_senha02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_senha02ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwd_senha02ActionPerformed
-
-    private void txt_nomeusuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_nomeusuarioFocusGained
-        if (txt_nomeusuario.getText().equals("Nome de usuário")) {
-    txt_nomeusuario.setText("");
-    txt_nomeusuario.setForeground(Color.BLACK);
-    }//GEN-LAST:event_txt_nomeusuarioFocusGained
-  }
-        
-    private void txt_nomeusuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_nomeusuarioFocusLost
-        if (txt_nomeusuario.getText().isEmpty()) {
-    txt_nomeusuario.setText("Nome de usuário");
-    txt_nomeusuario.setForeground(Color.GRAY);
-    }//GEN-LAST:event_txt_nomeusuarioFocusLost
-    }
+ 
     /**
      * @param args the command line arguments
      */
