@@ -58,8 +58,12 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pwd_senhausuario" alignment="1" max="32767" attributes="0"/>
-                      <Component id="txt_nomeusuario" alignment="1" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="pwd_senhausuario" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btn_mostrarsenha" min="-2" pref="48" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="txt_nomeusuario" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -90,7 +94,10 @@
                   <EmptySpace pref="37" max="32767" attributes="0"/>
                   <Component id="txt_nomeusuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="pwd_senhausuario" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="pwd_senhausuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_mostrarsenha" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbl_notcadastro" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -168,8 +175,6 @@
             </Property>
           </AccessibilityProperties>
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_nomeusuarioFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_nomeusuarioFocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_nomeusuarioActionPerformed"/>
           </Events>
         </Component>
@@ -191,6 +196,14 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastra-se"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_mostrarsenha">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mostrar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_mostrarsenhaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
