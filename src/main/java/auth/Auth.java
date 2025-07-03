@@ -45,7 +45,7 @@ public class Auth {
 
     public static void logout() {
         Auth.authenticatedUser = null;
-        Session.set(null);
+        Session.clear();
     }
 
     public static User user() {
