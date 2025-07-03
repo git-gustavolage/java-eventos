@@ -140,9 +140,9 @@ public class Tela_cadastro extends javax.swing.JFrame {
         lbl_cadastro.setToolTipText("");
 
         btn_cadastrar.setBackground(new java.awt.Color(0, 212, 146));
-        btn_cadastrar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        btn_cadastrar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         btn_cadastrar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_cadastrar.setText("Cadastrar-se");
+        btn_cadastrar.setText("Cadastrar");
         btn_cadastrar.setBorderPainted(false);
         btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,7 +206,7 @@ public class Tela_cadastro extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
