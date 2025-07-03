@@ -20,7 +20,7 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>23</maven.compiler.release>
-        <exec.mainClass>com.mycompany.gerenciador_eventos.Gerenciador_eventos</exec.mainClass>
+        <maven.compiler.release>21</maven.compiler.release>
+        <exec.mainClass>view.Tela_cadastro</exec.mainClass>
     </properties>
 </project>
