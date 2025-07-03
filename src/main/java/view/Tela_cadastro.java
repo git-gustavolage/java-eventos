@@ -10,8 +10,19 @@ public class Tela_cadastro extends javax.swing.JFrame {
         initComponents();
     txt_nomeusuario.setText("Nome de usuário");
     txt_nomeusuario.setForeground(Color.GRAY);
-    }
+    
+     // logica para abrir a tela de cadastro
+        lbl_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_entrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dispose(); // fecha a tela de cadastro 
+                Tela_login l = new Tela_login();
+                l.setVisible(true);
+            }
+        });
 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
