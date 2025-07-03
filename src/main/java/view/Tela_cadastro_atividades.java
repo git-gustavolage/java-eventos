@@ -1,17 +1,17 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
 
 /**
  *
- * @author user
+ * @author Kassandra Oliveira
  */
-public class Tela_cadastro_atividades extends javax.swing.JPanel {
+public class Tela_cadastro_atividades extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaCadastroEvento
+     * Creates new form Tela_cadastro_atividades
      */
     public Tela_cadastro_atividades() {
         initComponents();
@@ -26,27 +26,6 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        popupMenu1 = new java.awt.PopupMenu();
-        bnt_salvar = new javax.swing.JButton();
-        lbl_ATIVIDADES = new javax.swing.JLabel();
-        txt_nomeatividades = new javax.swing.JTextField();
-        lbl_nomeatividades = new javax.swing.JLabel();
-        txt_categoria = new javax.swing.JTextField();
-        lbl_categoria = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        lbl_cadastroevento = new javax.swing.JLabel();
-        lbl_atividades = new javax.swing.JLabel();
-        lbl_geral = new javax.swing.JLabel();
-        lbl_organizadores = new javax.swing.JLabel();
-        lbl_inicio = new javax.swing.JLabel();
-        lbl_cadastro02 = new javax.swing.JLabel();
-        lbl_atividades02 = new javax.swing.JLabel();
-        lbl_componente1 = new javax.swing.JLabel();
-        lbl_componente02 = new javax.swing.JLabel();
-        lbl_data = new javax.swing.JLabel();
-        lbl_dataatividade = new javax.swing.JLabel();
-        txt_dataatividade = new javax.swing.JTextField();
         lbl_quantdias = new javax.swing.JLabel();
         txt_quantdias = new javax.swing.JTextField();
         lbl_ambientes = new javax.swing.JLabel();
@@ -59,13 +38,93 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
         lbl_horatermino = new javax.swing.JLabel();
         txt_horatermino = new javax.swing.JTextField();
         lbl_dialocal = new javax.swing.JLabel();
+        lbl_inicio = new javax.swing.JLabel();
+        lbl_cadastro02 = new javax.swing.JLabel();
+        lbl_atividades02 = new javax.swing.JLabel();
+        lbl_componente1 = new javax.swing.JLabel();
+        lbl_componente02 = new javax.swing.JLabel();
+        lbl_data = new javax.swing.JLabel();
+        bnt_salvar = new javax.swing.JButton();
+        lbl_ATIVIDADES = new javax.swing.JLabel();
+        txt_nomeatividades = new javax.swing.JTextField();
+        lbl_nomeatividades = new javax.swing.JLabel();
+        txt_categoria = new javax.swing.JTextField();
+        lbl_categoria = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_cadastroevento = new javax.swing.JLabel();
+        lbl_atividades = new javax.swing.JLabel();
+        lbl_geral = new javax.swing.JLabel();
+        lbl_organizadores = new javax.swing.JLabel();
+        lbl_dataatividade = new javax.swing.JLabel();
+        txt_dataatividade = new javax.swing.JTextField();
 
-        popupMenu1.setLabel("popupMenu1");
-        popupMenu1.addActionListener(new java.awt.event.ActionListener() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lbl_quantdias.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_quantdias.setText("Quantidade de dias:");
+
+        txt_quantdias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                popupMenu1ActionPerformed(evt);
+                txt_quantdiasActionPerformed(evt);
             }
         });
+
+        lbl_ambientes.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lbl_ambientes.setText("• Ambientes");
+
+        lbl_localatividade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_localatividade.setText("Local da atividade:");
+
+        txt_localatividade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_localatividadeActionPerformed(evt);
+            }
+        });
+
+        btn_voltar.setText("Voltar");
+        btn_voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_voltarActionPerformed(evt);
+            }
+        });
+
+        lbl_diahora.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lbl_diahora.setText("Dia 01");
+
+        txt_horainicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_horainicioActionPerformed(evt);
+            }
+        });
+
+        lbl_horainicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_horainicio.setText("Hora de início:");
+
+        lbl_horatermino.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_horatermino.setText("Hora de término:");
+
+        txt_horatermino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_horaterminoActionPerformed(evt);
+            }
+        });
+
+        lbl_dialocal.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lbl_dialocal.setText("Dia 01");
+
+        lbl_inicio.setText("Inicio");
+
+        lbl_cadastro02.setText("Cadastro");
+
+        lbl_atividades02.setText("Atividades");
+
+        lbl_componente1.setText(">");
+
+        lbl_componente02.setText(">");
+
+        lbl_data.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lbl_data.setText("• Data");
 
         bnt_salvar.setBackground(new java.awt.Color(0, 212, 146));
         bnt_salvar.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,19 +211,6 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lbl_inicio.setText("Inicio");
-
-        lbl_cadastro02.setText("Cadastro");
-
-        lbl_atividades02.setText("Atividades");
-
-        lbl_componente1.setText(">");
-
-        lbl_componente02.setText(">");
-
-        lbl_data.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        lbl_data.setText("• Data");
-
         lbl_dataatividade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_dataatividade.setText("Data da atividade:");
 
@@ -174,60 +220,8 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
             }
         });
 
-        lbl_quantdias.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_quantdias.setText("Quantidade de dias:");
-
-        txt_quantdias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_quantdiasActionPerformed(evt);
-            }
-        });
-
-        lbl_ambientes.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        lbl_ambientes.setText("• Ambientes");
-
-        lbl_localatividade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_localatividade.setText("Local da atividade:");
-
-        txt_localatividade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_localatividadeActionPerformed(evt);
-            }
-        });
-
-        btn_voltar.setText("Voltar");
-        btn_voltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_voltarActionPerformed(evt);
-            }
-        });
-
-        lbl_diahora.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        lbl_diahora.setText("Dia 01");
-
-        txt_horainicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_horainicioActionPerformed(evt);
-            }
-        });
-
-        lbl_horainicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_horainicio.setText("Hora de início:");
-
-        lbl_horatermino.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_horatermino.setText("Hora de término:");
-
-        txt_horatermino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_horaterminoActionPerformed(evt);
-            }
-        });
-
-        lbl_dialocal.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        lbl_dialocal.setText("Dia 01");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -280,11 +274,8 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
                                             .addComponent(lbl_quantdias)
                                             .addComponent(lbl_horatermino)
                                             .addComponent(txt_horatermino, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addContainerGap(197, Short.MAX_VALUE))))
+                        .addContainerGap(310, Short.MAX_VALUE))))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lbl_categoria, lbl_nomeatividades});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -342,25 +333,15 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
                         .addComponent(lbl_localatividade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_localatividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bnt_salvar)
                     .addComponent(btn_voltar))
                 .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bnt_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_salvarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bnt_salvarActionPerformed
-
-    private void txt_dataatividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dataatividadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_dataatividadeActionPerformed
-
-    private void txt_nomeatividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeatividadesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nomeatividadesActionPerformed
 
     private void txt_quantdiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantdiasActionPerformed
         // TODO add your handling code here:
@@ -374,10 +355,6 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_voltarActionPerformed
 
-    private void txt_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_categoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_categoriaActionPerformed
-
     private void txt_horainicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_horainicioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_horainicioActionPerformed
@@ -386,10 +363,56 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_horaterminoActionPerformed
 
-    private void popupMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popupMenu1ActionPerformed
+    private void bnt_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_salvarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_popupMenu1ActionPerformed
+    }//GEN-LAST:event_bnt_salvarActionPerformed
 
+    private void txt_nomeatividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeatividadesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nomeatividadesActionPerformed
+
+    private void txt_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_categoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_categoriaActionPerformed
+
+    private void txt_dataatividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dataatividadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_dataatividadeActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Tela_cadastro_atividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Tela_cadastro_atividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Tela_cadastro_atividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Tela_cadastro_atividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Tela_cadastro_atividades().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bnt_salvar;
@@ -417,7 +440,6 @@ public class Tela_cadastro_atividades extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_nomeatividades;
     private javax.swing.JLabel lbl_organizadores;
     private javax.swing.JLabel lbl_quantdias;
-    private java.awt.PopupMenu popupMenu1;
     private javax.swing.JTextField txt_categoria;
     private javax.swing.JTextField txt_dataatividade;
     private javax.swing.JTextField txt_horainicio;
