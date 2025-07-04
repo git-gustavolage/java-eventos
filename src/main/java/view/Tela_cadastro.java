@@ -2,12 +2,15 @@ package view;
 
 import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Tela_cadastro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela_login
-     */
+    public boolean isEmailValido(String email) {
+    String regex = "^[\\w\\.-]+@[\\w\\.-]+\\.[a-zA-Z]{2,}$";
+    return email.matches(regex);
+}
+
     public Tela_cadastro() {
         initComponents();
        
@@ -69,10 +72,14 @@ public class Tela_cadastro extends javax.swing.JFrame {
 
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
-                if (txt_email.getText().isEmpty()) {
-                    txt_email.setText("Digite seu Email...");
-                    txt_email.setForeground(Color.GRAY);
-                }
+                String email = txt_email.getText().trim();
+             if (email.isEmpty()) {
+            txt_email.setText("Digite seu Email...");
+            txt_email.setForeground(Color.GRAY);
+        }   else if (!isEmailValido(email)) {
+            JOptionPane.showMessageDialog(null, "Email inválido. Por favor, digite um email válido.");
+            txt_email.requestFocus();
+        }   
             }
         });
      
