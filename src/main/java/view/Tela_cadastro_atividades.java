@@ -124,9 +124,50 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
         }
     }
 
+    
+
+private void atualizarLocaisAtividade() {
+    String qtdDiasTexto = txt_quantdias.getText().trim();
+
+    try {
+        int qtdDias = Integer.parseInt(qtdDiasTexto);
+        if (qtdDias <= 0) {
+            JOptionPane.showMessageDialog(this, "Informe um número maior que zero.");
+            return;
+        }
+
+        jPanel3.removeAll();  // limpa componentes existentes
+
+        for (int i = 1; i <= qtdDias; i++) {   // inicia no dia 1
+            JPanel painelDia = new JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+            JLabel lblDia = new JLabel("Dia " + i + ": ");
+            lblDia.setPreferredSize(new java.awt.Dimension(60, 25));
+
+            JLabel lblLocal = new JLabel("Local da atividade:");
+            JTextField txtLocal = new JTextField();
+            txtLocal.setColumns(15);
+            txtLocal.setName("txtLocalDia" + i);
+
+            painelDia.add(lblDia);
+            painelDia.add(lblLocal);
+            painelDia.add(txtLocal);
+
+            jPanel3.add(painelDia);
+        }
+
+        jPanel3.revalidate();
+        jPanel3.repaint();
+
+    } catch (NumberFormatException e) {
+        
+    }
+}
+    
     public Tela_cadastro_atividades() {
         initComponents();
         
+             jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
              jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
 
         // logica para abrir a tela de cadastro
@@ -159,10 +200,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
         lbl_quantdias = new javax.swing.JLabel();
         txt_quantdias = new javax.swing.JTextField();
         lbl_ambientes = new javax.swing.JLabel();
-        lbl_localatividade = new javax.swing.JLabel();
-        txt_localatividade = new javax.swing.JTextField();
         btn_voltar = new javax.swing.JButton();
-        lbl_dialocal = new javax.swing.JLabel();
         lbl_inicio = new javax.swing.JLabel();
         lbl_cadastro02 = new javax.swing.JLabel();
         lbl_atividades02 = new javax.swing.JLabel();
@@ -184,6 +222,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
         lbl_dataatividade = new javax.swing.JLabel();
         txt_dataatividade = new javax.swing.JTextField();
         btn_confirmadata = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,24 +238,12 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
         lbl_ambientes.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lbl_ambientes.setText("• Ambientes");
 
-        lbl_localatividade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_localatividade.setText("Local da atividade:");
-
-        txt_localatividade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_localatividadeActionPerformed(evt);
-            }
-        });
-
         btn_voltar.setText("Voltar");
         btn_voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_voltarActionPerformed(evt);
             }
         });
-
-        lbl_dialocal.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        lbl_dialocal.setText("Dia 01");
 
         lbl_inicio.setText("Inicio");
 
@@ -332,6 +359,17 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -361,9 +399,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbl_nomeatividades)
-                                    .addComponent(txt_localatividade, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btn_voltar)
                                     .addComponent(lbl_categoria)
                                     .addComponent(txt_nomeatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -382,11 +418,11 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
                                                 .addComponent(btn_confirmadata))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(14, 14, 14)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbl_dialocal)
-                                            .addComponent(lbl_ambientes)
-                                            .addComponent(lbl_localatividade))))))
-                        .addContainerGap(209, Short.MAX_VALUE))))
+                                        .addComponent(lbl_ambientes))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addContainerGap(203, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,11 +460,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
                 .addGap(69, 69, 69)
                 .addComponent(lbl_ambientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_dialocal, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_localatividade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_localatividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bnt_salvar)
@@ -446,10 +478,6 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
     private void txt_quantdiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantdiasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_quantdiasActionPerformed
-
-    private void txt_localatividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_localatividadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_localatividadeActionPerformed
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
         // TODO add your handling code here:
@@ -474,6 +502,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
     private void btn_confirmadataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmadataActionPerformed
     mostrarDataFinal();
     atualizarDiasEHorarios();
+    atualizarLocaisAtividade();
     }//GEN-LAST:event_btn_confirmadataActionPerformed
 
     /**
@@ -517,6 +546,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
     private javax.swing.JButton btn_voltar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbl_ATIVIDADES;
     private javax.swing.JLabel lbl_ambientes;
     private javax.swing.JLabel lbl_atividades;
@@ -528,16 +558,13 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_componente1;
     private javax.swing.JLabel lbl_data;
     private javax.swing.JLabel lbl_dataatividade;
-    private javax.swing.JLabel lbl_dialocal;
     private javax.swing.JLabel lbl_geral;
     private javax.swing.JLabel lbl_inicio;
-    private javax.swing.JLabel lbl_localatividade;
     private javax.swing.JLabel lbl_nomeatividades;
     private javax.swing.JLabel lbl_organizadores;
     private javax.swing.JLabel lbl_quantdias;
     private javax.swing.JTextField txt_categoria;
     private javax.swing.JTextField txt_dataatividade;
-    private javax.swing.JTextField txt_localatividade;
     private javax.swing.JTextField txt_nomeatividades;
     private javax.swing.JTextField txt_quantdias;
     // End of variables declaration//GEN-END:variables
