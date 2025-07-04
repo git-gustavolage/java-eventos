@@ -4,15 +4,61 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 /**
  *
  * @author Kassandra Oliveira
  */
 public class Tela_cadastro_atividades extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela_cadastro_atividades
-     */
+    private void mostrarDataFinal() {
+    String dataTexto = txt_dataatividade.getText().trim();
+    String qtdDiasTexto = txt_quantdias.getText().trim();
+
+    if (!isDataValida(dataTexto)) {
+        JOptionPane.showMessageDialog(this, "Data inválida! Use o formato dd/MM/yyyy.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    try {
+        int qtdDias = Integer.parseInt(qtdDiasTexto);
+        if (qtdDias <= 0) {
+            JOptionPane.showMessageDialog(this, "A quantidade de dias deve ser maior que zero.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        java.util.Date dataInicio = sdf.parse(dataTexto);
+
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        cal.setTime(dataInicio);
+        cal.add(java.util.Calendar.DAY_OF_MONTH, qtdDias - 1); // -1 porque o dia inicial já conta
+
+        String dataFinal = sdf.format(cal.getTime());
+
+        JOptionPane.showMessageDialog(this, "Data final: " + dataFinal, "Data Calculada", JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Digite um número válido de dias.", "Erro", JOptionPane.ERROR_MESSAGE);
+    } catch (java.text.ParseException e) {
+        JOptionPane.showMessageDialog(this, "Erro ao processar a data.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    }
+    
+    private boolean isDataValida(String dataStr) {
+        if (dataStr == null || dataStr.isEmpty()) return false;
+
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false); // não permite datas inválidas como 32/01/2023
+
+        try {
+            sdf.parse(dataStr);
+            return true;
+        } catch (java.text.ParseException e) {
+            return false;
+        }
+    }
+
     public Tela_cadastro_atividades() {
         initComponents();
         // logica para abrir a tela de cadastro
@@ -74,6 +120,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
         lbl_organizadores = new javax.swing.JLabel();
         lbl_dataatividade = new javax.swing.JLabel();
         txt_dataatividade = new javax.swing.JTextField();
+        btn_confirmadata = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -236,6 +283,13 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
             }
         });
 
+        btn_confirmadata.setText("Confirmar");
+        btn_confirmadata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_confirmadataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -286,11 +340,14 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
                                             .addComponent(lbl_diahora))
                                         .addGap(59, 59, 59)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_quantdias, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lbl_quantdias)
                                             .addComponent(lbl_horatermino)
-                                            .addComponent(txt_horatermino, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addContainerGap(310, Short.MAX_VALUE))))
+                                            .addComponent(txt_horatermino, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txt_quantdias, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btn_confirmadata)))))))
+                        .addContainerGap(209, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,7 +375,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
                         .addComponent(lbl_categoria)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_data)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -327,8 +384,9 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_dataatividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_quantdias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
+                            .addComponent(txt_quantdias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_confirmadata))
+                        .addGap(16, 16, 16)
                         .addComponent(lbl_diahora, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,13 +404,13 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
                         .addComponent(lbl_localatividade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_localatividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bnt_salvar)
                     .addComponent(btn_voltar))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 54, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
@@ -396,6 +454,10 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_dataatividadeActionPerformed
 
+    private void btn_confirmadataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmadataActionPerformed
+    mostrarDataFinal();
+    }//GEN-LAST:event_btn_confirmadataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -433,6 +495,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bnt_salvar;
+    private javax.swing.JButton btn_confirmadata;
     private javax.swing.JButton btn_voltar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
