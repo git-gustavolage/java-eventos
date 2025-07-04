@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -125,6 +126,31 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
     }
 
     
+    private boolean validarHoras() {
+    Component[] componentes = jPanel1.getComponents();
+
+    for (Component comp : componentes) {
+        if (comp instanceof JPanel) {
+            JPanel painelDia = (JPanel) comp;
+
+            for (Component c : painelDia.getComponents()) {
+                if (c instanceof JTextField) {
+                    JTextField txtHora = (JTextField) c;
+                    String hora = txtHora.getText().trim();
+
+                    if (!hora.isEmpty() && !isHoraValida(hora)) {
+                        JOptionPane.showMessageDialog(this,
+                            "Hora inválida no campo: " + txtHora.getName() + "\nUse o formato HH:mm.",
+                            "Erro", JOptionPane.ERROR_MESSAGE);
+                        txtHora.requestFocus();
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+    return true;
+}
 
 private void atualizarLocaisAtividade() {
     String qtdDiasTexto = txt_quantdias.getText().trim();
@@ -486,7 +512,65 @@ private void atualizarLocaisAtividade() {
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void bnt_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_salvarActionPerformed
-        // TODO add your handling code here:
+      String nome = txt_nomeatividades.getText().trim();
+    String categoria = txt_categoria.getText().trim();
+    String dataTexto = txt_dataatividade.getText().trim();
+    String qtdDiasTexto = txt_quantdias.getText().trim();
+
+    if (nome.isEmpty() || categoria.isEmpty() || dataTexto.isEmpty() || qtdDiasTexto.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios!", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (!isDataValida(dataTexto)) {
+        JOptionPane.showMessageDialog(this, "Data inválida! Use o formato dd/MM/yyyy.", "Erro", JOptionPane.ERROR_MESSAGE);
+        txt_dataatividade.requestFocus();
+        return;
+    }
+
+    if (!validarHoras()) {
+        return; // já mostra a mensagem no próprio método
+    }
+
+    // Coletar os locais de atividade
+    Component[] componentes = jPanel3.getComponents();
+    StringBuilder locais = new StringBuilder();
+
+    for (Component comp : componentes) {
+        if (comp instanceof JPanel) {
+            JPanel painelDia = (JPanel) comp;
+
+            for (Component c : painelDia.getComponents()) {
+                if (c instanceof JTextField) {
+                    JTextField txtLocal = (JTextField) c;
+                    String local = txtLocal.getText().trim();
+
+                    if (local.isEmpty()) {
+                        JOptionPane.showMessageDialog(this,
+                            "Preencha todos os campos de local da atividade.",
+                            "Erro", JOptionPane.ERROR_MESSAGE);
+                        txtLocal.requestFocus();
+                        return;
+                    }
+
+                    locais.append(txtLocal.getName()).append(": ").append(local).append("\n");
+                }
+            }
+        }
+    }
+    
+    
+
+    // Aqui você poderia salvar no banco ou em uma lista, mas vamos apenas mostrar a confirmação por enquanto
+    JOptionPane.showMessageDialog(this,
+        "Atividade salva com sucesso!\n\n"
+        + "Nome: " + nome + "\n"
+        + "Categoria: " + categoria + "\n"
+        + "Data de início: " + dataTexto + "\n"
+        + "Locais:\n" + locais.toString(),
+        "Sucesso", JOptionPane.INFORMATION_MESSAGE
+    );
+
     }//GEN-LAST:event_bnt_salvarActionPerformed
 
     private void txt_nomeatividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeatividadesActionPerformed
