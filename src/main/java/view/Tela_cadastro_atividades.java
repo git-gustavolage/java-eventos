@@ -480,7 +480,9 @@ private void atualizarLocaisAtividade() {
     }//GEN-LAST:event_txt_quantdiasActionPerformed
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-        // TODO add your handling code here:
+        dispose(); // fecha a tela de login 
+                Tela_cadastro_eventos_geral cadastro = new Tela_cadastro_eventos_geral();
+                cadastro.setVisible(true);
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void bnt_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_salvarActionPerformed
