@@ -275,6 +275,7 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         });
 
         btn_salvar.setBackground(new java.awt.Color(0, 212, 146));
+        btn_salvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_salvar.setForeground(new java.awt.Color(255, 255, 255));
         btn_salvar.setText("Salvar");
         btn_salvar.addActionListener(new java.awt.event.ActionListener() {
@@ -314,18 +315,17 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cmb_formato, 0, 230, Short.MAX_VALUE)
-                                    .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lbl_estado)
-                                        .addComponent(lbl_categoria)
-                                        .addComponent(lbl_descricao)
-                                        .addComponent(lbl_nome)
-                                        .addComponent(lbl_formato)
-                                        .addComponent(lbl_datainicio)
-                                        .addComponent(txt_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                                        .addComponent(txt_categoria)
-                                        .addComponent(txt_datainicio)
-                                        .addComponent(txt_nome)
-                                        .addComponent(cmb_estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(lbl_estado)
+                                    .addComponent(lbl_categoria)
+                                    .addComponent(lbl_descricao)
+                                    .addComponent(lbl_nome)
+                                    .addComponent(lbl_formato)
+                                    .addComponent(lbl_datainicio)
+                                    .addComponent(txt_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                                    .addComponent(txt_categoria)
+                                    .addComponent(txt_datainicio)
+                                    .addComponent(txt_nome)
+                                    .addComponent(cmb_estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(49, 49, 49)
                                 .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbl_datafim)
