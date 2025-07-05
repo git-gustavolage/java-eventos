@@ -9,6 +9,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JFrame;
 
 /**
  *
@@ -34,8 +35,30 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
     public Tela_cadastro_eventos_geral() {
         initComponents();
         
+        lbl_menuatividades.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_menuatividades.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dispose(); // fecha a tela de login 
+                Tela_cadastro_atividades cadastro = new Tela_cadastro_atividades();
+                cadastro.setVisible(true);
+            }
+        });
         
+                lbl_menuorganizadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_menuorganizadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dispose(); // fecha a tela de login 
+                Tela_cadastro_organizador og = new Tela_cadastro_organizador();
+                og.setVisible(true);
+            }
+        });
         
+
+
+        //faz com q abra em tela cheia
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         String texto = "<html><font color = 'GRAY'>Preencha os formulários<br>com as informações<br>do seu evento.</html>";
         lbl_menudescricao.setText(texto);
@@ -492,9 +515,6 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Datas inválidas! Use o formato dd/MM/yyyy.", "Erro", JOptionPane.ERROR_MESSAGE);
         return;
     }
-
-
-
 
     // Mensagem de confirmação com resumo dos dados
     JOptionPane.showMessageDialog(this,
