@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JFrame;
 /**
  *
  * @author Kassandra Oliveira
@@ -195,6 +196,9 @@ private void atualizarLocaisAtividade() {
     
     public Tela_cadastro_atividades() {
         initComponents();
+        
+        //faz com q abra em tela cheia
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         String texto = "<html><font color = 'GRAY'>Preencha os formulários<br>com as informações<br>da sua atividade.</html>";
         lbl_menudescricao.setText(texto);
@@ -443,6 +447,8 @@ private void atualizarLocaisAtividade() {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -455,6 +461,8 @@ private void atualizarLocaisAtividade() {
         );
 
         jScrollPane1.setViewportView(jPanel1);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
