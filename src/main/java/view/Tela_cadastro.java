@@ -325,23 +325,33 @@ public class Tela_cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_emailActionPerformed
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
-     String nome = txt_nomeusuario.getText().trim();
-     String email = txt_email.getText().trim();
-     String senha = pwd_senha.getText().trim();
-     String senha2 = pwd_senha02.getText().trim();
-     
-     
-     
-     
-     
+    
 
+String nome = txt_nomeusuario.getText().trim();    // nome de usuário
+String email = txt_email.getText().trim();         // email
+String senha = new String(pwd_senha.getPassword()).trim();      // senha
+String senha2 = new String(pwd_senha02.getPassword()).trim();   // confirmação de senha
 
+// Verificação de campos obrigatórios
+if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || senha2.isEmpty()) {
+      JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios!", "Erro", JOptionPane.ERROR_MESSAGE);
+return;
+}
 
+// Verificação se as senhas coincidem
+if (!senha.equals(senha2)) {
+    JOptionPane.showMessageDialog(this, "As senhas não coincidem!", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+}
 
-
-
-
-
+// Cadastro bem-sucedido
+JOptionPane.showMessageDialog(this, "Seu cadastro foi realizado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+   dispose(); // Fecha a tela de cadastro
+    Tela_login login = new Tela_login();
+    login.setVisible(true);
+    return; 
+   
+        
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void pwd_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_senhaActionPerformed
