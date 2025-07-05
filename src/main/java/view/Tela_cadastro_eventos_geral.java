@@ -5,17 +5,38 @@
  */
 package view;
 
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Kassandra Oliveira
  */
 public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela_cadastro_eventos_geral
-     */
+  private boolean isDataValida(String dataStr) {
+        if (dataStr == null || dataStr.isEmpty()) return false;
+
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false); // não permite datas inválidas como 32/01/2023
+
+        try {
+            sdf.parse(dataStr);
+            return true;
+        } catch (java.text.ParseException e) {
+            return false;
+        }
+    }
+
+
     public Tela_cadastro_eventos_geral() {
         initComponents();
+        
+        
+        
+        
         String texto = "<html><font color = 'GRAY'>Preencha os formulários<br>com as informações<br>do seu evento.</html>";
         lbl_menudescricao.setText(texto);
         
@@ -52,7 +73,6 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_descricao = new javax.swing.JLabel();
         txt_descricao = new javax.swing.JTextField();
         lbl_formato = new javax.swing.JLabel();
-        txt_formato = new javax.swing.JTextField();
         lbl_categoria = new javax.swing.JLabel();
         txt_categoria = new javax.swing.JTextField();
         lbl_data = new javax.swing.JLabel();
@@ -66,8 +86,9 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         txt_local = new javax.swing.JTextField();
         btn_salvar = new javax.swing.JButton();
         lbl_cidade = new javax.swing.JLabel();
-        txt_estado = new javax.swing.JTextField();
         txt_cidade = new javax.swing.JTextField();
+        cmb_estado = new javax.swing.JComboBox<>();
+        cmb_formato = new javax.swing.JComboBox<>();
         pnl_descrição = new javax.swing.JPanel();
         lbl_titulosistema = new javax.swing.JLabel();
         lbl_links = new javax.swing.JLabel();
@@ -185,12 +206,6 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_formato.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_formato.setText("Formato do evento:");
 
-        txt_formato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_formatoActionPerformed(evt);
-            }
-        });
-
         lbl_categoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_categoria.setText("Categoria do evento:");
 
@@ -248,11 +263,9 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_cidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_cidade.setText("Cidade:");
 
-        txt_estado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_estadoActionPerformed(evt);
-            }
-        });
+        cmb_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+
+        cmb_formato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Online", "Presencial", "Hibrido" }));
 
         javax.swing.GroupLayout pnl_eventosLayout = new javax.swing.GroupLayout(pnl_eventos);
         pnl_eventos.setLayout(pnl_eventosLayout);
@@ -277,18 +290,19 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
                             .addGroup(pnl_eventosLayout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lbl_estado)
-                                    .addComponent(lbl_categoria)
-                                    .addComponent(lbl_descricao)
-                                    .addComponent(lbl_nome)
-                                    .addComponent(lbl_formato)
-                                    .addComponent(lbl_datainicio)
-                                    .addComponent(txt_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                                    .addComponent(txt_formato)
-                                    .addComponent(txt_categoria)
-                                    .addComponent(txt_datainicio)
-                                    .addComponent(txt_nome)
-                                    .addComponent(txt_estado))
+                                    .addComponent(cmb_formato, 0, 230, Short.MAX_VALUE)
+                                    .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lbl_estado)
+                                        .addComponent(lbl_categoria)
+                                        .addComponent(lbl_descricao)
+                                        .addComponent(lbl_nome)
+                                        .addComponent(lbl_formato)
+                                        .addComponent(lbl_datainicio)
+                                        .addComponent(txt_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                                        .addComponent(txt_categoria)
+                                        .addComponent(txt_datainicio)
+                                        .addComponent(txt_nome)
+                                        .addComponent(cmb_estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGap(49, 49, 49)
                                 .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbl_datafim)
@@ -331,9 +345,9 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
                 .addComponent(txt_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_formato)
-                .addGap(12, 12, 12)
-                .addComponent(txt_formato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmb_formato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(lbl_categoria)
                 .addGap(9, 9, 9)
                 .addComponent(txt_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -356,10 +370,10 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
                     .addComponent(lbl_local))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_local, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_salvar))
+                    .addComponent(btn_salvar)
+                    .addComponent(cmb_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -456,7 +470,50 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-        // TODO add your handling code here:
+    String nome = txt_nome.getText().trim();         // Nome do evento
+    String descricao = txt_descricao.getText().trim();    // Descrição do evento
+    String categoria = txt_categoria.getText().trim();    // Categoria
+    String dataInicio = txt_datainicio.getText().trim();   // Data de início
+    String dataFim = txt_datafim.getText().trim();      // Data de fim
+    String cidade = txt_cidade.getText().trim();       // Cidade
+    String campus = txt_local.getText().trim();       // Campus
+    String estado = cmb_estado.getSelectedItem().toString(); // Estado
+    String formato = cmb_formato.getSelectedItem().toString(); // Formato
+
+    // Verificação de campos obrigatórios
+    if (nome.isEmpty() || descricao.isEmpty() || categoria.isEmpty() ||
+        dataInicio.isEmpty() || dataFim.isEmpty() || cidade.isEmpty() || campus.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios!", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validação de datas
+    if (!isDataValida(dataInicio) || !isDataValida(dataFim)) {
+        JOptionPane.showMessageDialog(this, "Datas inválidas! Use o formato dd/MM/yyyy.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+
+
+
+    // Mensagem de confirmação com resumo dos dados
+    JOptionPane.showMessageDialog(this,
+        "Evento salvo com sucesso!\n\n"
+        + "Nome: " + nome + "\n"
+        + "Descrição: " + descricao + "\n"
+        + "Categoria: " + categoria + "\n"
+        + "Formato: " + formato + "\n"
+        + "Data de início: " + dataInicio + "\n"
+        + "Data de fim: " + dataFim + "\n"
+        + "Local: " + campus + " - " + cidade + ", " + estado + "\n",
+        "Sucesso", JOptionPane.INFORMATION_MESSAGE
+
+
+    );
+    
+        dispose(); // fecha a tela de login 
+        Tela_cadastro_organizador cadastro = new Tela_cadastro_organizador();
+        cadastro.setVisible(true);
     }//GEN-LAST:event_btn_salvarActionPerformed
 
     private void txt_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeActionPerformed
@@ -471,10 +528,6 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_datafimActionPerformed
 
-    private void txt_formatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_formatoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_formatoActionPerformed
-
     private void txt_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_categoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_categoriaActionPerformed
@@ -486,10 +539,6 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
     private void txt_descricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_descricaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_descricaoActionPerformed
-
-    private void txt_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_estadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_estadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -528,6 +577,8 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_salvar;
+    private javax.swing.JComboBox<String> cmb_estado;
+    private javax.swing.JComboBox<String> cmb_formato;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel lbl_cadastrogeral;
@@ -566,8 +617,6 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
     private javax.swing.JTextField txt_datafim;
     private javax.swing.JTextField txt_datainicio;
     private javax.swing.JTextField txt_descricao;
-    private javax.swing.JTextField txt_estado;
-    private javax.swing.JTextField txt_formato;
     private javax.swing.JTextField txt_local;
     private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
