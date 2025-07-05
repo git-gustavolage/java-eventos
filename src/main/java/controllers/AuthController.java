@@ -7,14 +7,14 @@ import usecases.CSCadastrarUsuario;
 
 public class AuthController {
 
-    public User login(String username, String password) throws AuthenticationException {
+    public User login(String email, String password) throws AuthenticationException {
         if(Auth.check()) {
             return Auth.user();
         }
 
         User user = new User();
         
-        user.setUsername(username);
+        user.setEmail(email);
         user.setPassword(password);
 
         return Auth.login(user);
@@ -24,7 +24,7 @@ public class AuthController {
         boolean sucess = new CSCadastrarUsuario().execute(user);
 
         if (sucess) {
-            return this.login(user.getUsername(), user.getPassword());
+            return this.login(user.getEmail(), user.getPassword());
         }
 
         return null;

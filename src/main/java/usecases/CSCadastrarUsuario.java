@@ -18,8 +18,8 @@ public class CSCadastrarUsuario {
     }
 
     /**
-     * Cadastra um usuario no banco de dados. Campos obrigatorios: username,
-     * nome, email, password
+     * Cadastra um usuario no banco de dados. 
+     * Campos obrigatorios: nome, email, password
      *
      * @param user
      * @return (true) se o cadastro foi realizado com sucesso ou (false) caso
@@ -28,10 +28,6 @@ public class CSCadastrarUsuario {
      * cadastro
      */
     public boolean execute(User user) throws AuthenticationException {
-
-        if (user.getUsername() == null || user.getUsername().isEmpty()) {
-            throw new AuthenticationException("Informe o username!");
-        }
 
         if (user.getNome() == null || user.getNome().isEmpty()) {
             throw new AuthenticationException("Informe o nome!");
@@ -45,7 +41,7 @@ public class CSCadastrarUsuario {
             throw new AuthenticationException("Informe a senha!");
         }
 
-        if (user.getPassword().length() < 8) {
+        if (user.getPassword() == null || user.getPassword().length() < 8) {
             throw new AuthenticationException("A senha deve ter no mínimo 8 caracteres!");
         }
 
