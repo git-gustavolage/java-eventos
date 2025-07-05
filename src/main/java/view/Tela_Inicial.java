@@ -37,6 +37,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btn_listarEventos = new javax.swing.JButton();
         bnt_cronograma = new javax.swing.JButton();
+        btn_cadastrarEventos = new javax.swing.JButton();
+        btn_listarParticipante = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -131,15 +133,33 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
         bnt_cronograma.setText("Cronograma");
 
+        btn_cadastrarEventos.setText("Cadastrar Eventos");
+        btn_cadastrarEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cadastrarEventosActionPerformed(evt);
+            }
+        });
+
+        btn_listarParticipante.setText("Lista de Participantes");
+        btn_listarParticipante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_listarParticipanteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_listarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_listarParticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_listarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(230, 230, 230)
-                .addComponent(bnt_cronograma, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bnt_cronograma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cadastrarEventos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -148,11 +168,15 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(131, 131, 131)
+                .addGap(109, 109, 109)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_listarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bnt_cronograma, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(212, Short.MAX_VALUE))
+                    .addComponent(bnt_cronograma, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_listarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(75, 75, 75)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_cadastrarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_listarParticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {bnt_cronograma, btn_listarEventos});
@@ -190,6 +214,14 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private void btn_listarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarEventosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_listarEventosActionPerformed
+
+    private void btn_cadastrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarEventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cadastrarEventosActionPerformed
+
+    private void btn_listarParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarParticipanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_listarParticipanteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,7 +261,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bnt_cronograma;
+    private javax.swing.JButton btn_cadastrarEventos;
     private javax.swing.JButton btn_listarEventos;
+    private javax.swing.JButton btn_listarParticipante;
     private javax.swing.JButton btn_menu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;

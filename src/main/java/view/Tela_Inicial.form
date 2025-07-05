@@ -179,11 +179,17 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btn_listarEventos" linkSize="1" min="-2" pref="170" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btn_listarParticipante" min="-2" pref="170" max="-2" attributes="0"/>
+                      <Component id="btn_listarEventos" linkSize="1" min="-2" pref="170" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
-                  <Component id="bnt_cronograma" linkSize="1" min="-2" pref="170" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="bnt_cronograma" linkSize="1" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
+                      <Component id="btn_cadastrarEventos" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -191,12 +197,17 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_listarEventos" linkSize="2" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                       <Component id="bnt_cronograma" linkSize="2" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btn_listarEventos" linkSize="2" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="212" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btn_cadastrarEventos" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btn_listarParticipante" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="99" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -214,6 +225,22 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cronograma"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_cadastrarEventos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cadastrar Eventos"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cadastrarEventosActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_listarParticipante">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Lista de Participantes"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_listarParticipanteActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
