@@ -728,7 +728,7 @@ private void atualizarLocaisAtividade() {
         + "Nome: " + nome + "\n"
         + "Categoria: " + categoria + "\n"
         + "Data de início: " + dataTexto + "\n"
-        + "Locais:\n" + locais.toString(),
+        + "Locais:\n" + locais.toString().replace("txtLocal",""),
         "Sucesso", JOptionPane.INFORMATION_MESSAGE
     );
 
