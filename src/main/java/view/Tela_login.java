@@ -187,19 +187,19 @@ public class Tela_login extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_nomeusuarioActionPerformed
 
     private void btn__entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn__entrarActionPerformed
-        String username = txt_nomeusuario.getText();
+        String email = txt_nomeusuario.getText();
         String password = "";
         for (char c : pwd_senhausuario.getPassword()) {
             password += c;
         }
 
-        if (username.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             return;
         }
 
         try {
-            User user = this.controller.login(username, password);
+            User user = this.controller.login(email, password);
             if (user != null) {
                 this.dispose();
 

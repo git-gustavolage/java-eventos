@@ -1,61 +1,59 @@
 package view;
 
 import java.awt.Color;
+
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import controllers.AuthController;
+import exceptions.AuthenticationException;
+import model.bean.User;
 
 public class Tela_cadastro extends javax.swing.JFrame {
+
+    private final AuthController controller;
 
     /**
      * Creates new form Tela_login
      */
     public Tela_cadastro() {
         initComponents();
-       
-    //faz com q abra em tela cheia.
+        controller = new AuthController();
+
+        //faz com q abra em tela cheia.
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
-     // logica para abrir a tela de cadastro
+
+        // logica para abrir a tela de login
         lbl_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_entrar.addMouseListener(new java.awt.event.MouseAdapter() {
-         @Override
-           public void mouseClicked(java.awt.event.MouseEvent evt) {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dispose(); // fecha a tela de cadastro 
                 Tela_login l = new Tela_login();
-               l.setVisible(true);
-           }
+                l.setVisible(true);
+            }
         });
 
-        // logica para abrir a tela de cadastro após cadastro criado
-        btn_cadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
-         @Override
-           public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dispose(); // fecha a tela de cadastro 
-                Tela_login l = new Tela_login();
-               l.setVisible(true);
-           }
-        });
-        
-        txt_nomeusuario.setText("Digite seu Nome...");
-        txt_nomeusuario.setForeground(Color.BLACK);
-        txt_nomeusuario.addFocusListener(new java.awt.event.FocusAdapter() {
+        txt_nome.setText("Digite seu Nome...");
+        txt_nome.setForeground(Color.BLACK);
+        txt_nome.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent evt) {
-                if (txt_nomeusuario.getText().equals("Digite seu Nome...")) {
-                    txt_nomeusuario.setText("");
-                    txt_nomeusuario.setForeground(Color.BLACK);
+                if (txt_nome.getText().equals("Digite seu Nome...")) {
+                    txt_nome.setText("");
+                    txt_nome.setForeground(Color.BLACK);
                 }
             }
 
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
-                if (txt_nomeusuario.getText().isEmpty()) {
-                    txt_nomeusuario.setText("Digite seu Nome...");
-                    txt_nomeusuario.setForeground(Color.GRAY);
+                if (txt_nome.getText().isEmpty()) {
+                    txt_nome.setText("Digite seu Nome...");
+                    txt_nome.setForeground(Color.GRAY);
                 }
             }
         });
-        
+
         txt_email.setText("Digite seu Email...");
         txt_email.setForeground(Color.GRAY);
         txt_email.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -75,50 +73,50 @@ public class Tela_cadastro extends javax.swing.JFrame {
                 }
             }
         });
-     
-        
+
         //Placeholder para pwd_senha
         pwd_senha.setEchoChar((char) 0);
         pwd_senha.setText("Senha");
         pwd_senha.setForeground(Color.GRAY);
-        pwd_senha.addFocusListener(new java.awt.event.FocusAdapter(){
-          public void focusGained(java.awt.event.FocusEvent evt) {
-              if (String.valueOf(pwd_senha.getPassword()).equals("Senha")) {
-                  pwd_senha.setText("");
-                  pwd_senha.setForeground(Color.BLACK);
-                  pwd_senha.setEchoChar('*');
-              }
-          }
-           public void focusLost(java.awt.event.FocusEvent evt) {
-              if (String.valueOf(pwd_senha.getPassword()).isEmpty()){
-                  pwd_senha.setText("Senha");
-                  pwd_senha.setForeground(Color.GRAY);
-                  pwd_senha.setEchoChar((char) 0);
-              }
-          }     
+        pwd_senha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha.getPassword()).equals("Senha")) {
+                    pwd_senha.setText("");
+                    pwd_senha.setForeground(Color.BLACK);
+                    pwd_senha.setEchoChar('*');
+                }
+            }
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha.getPassword()).isEmpty()) {
+                    pwd_senha.setText("Senha");
+                    pwd_senha.setForeground(Color.GRAY);
+                    pwd_senha.setEchoChar((char) 0);
+                }
+            }
         });
-        
-        
+
         //Placeholder para pwd_senha
         pwd_senha02.setEchoChar((char) 0);
         pwd_senha02.setText("Senha");
         pwd_senha02.setForeground(Color.GRAY);
-        pwd_senha02.addFocusListener(new java.awt.event.FocusAdapter(){
-          public void focusGained(java.awt.event.FocusEvent evt) {
-              if (String.valueOf(pwd_senha02.getPassword()).equals("Senha")) {
-                  pwd_senha02.setText("");
-                  pwd_senha02.setForeground(Color.BLACK);
-                  pwd_senha02.setEchoChar('*');
-              }
-          }
-           public void focusLost(java.awt.event.FocusEvent evt) {
-              if (String.valueOf(pwd_senha02.getPassword()).isEmpty()){
-                  pwd_senha02.setText("Senha");
-                  pwd_senha02.setForeground(Color.GRAY);
-                  pwd_senha02.setEchoChar((char) 0);
-              }
-          }     
-        });  
+        pwd_senha02.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha02.getPassword()).equals("Senha")) {
+                    pwd_senha02.setText("");
+                    pwd_senha02.setForeground(Color.BLACK);
+                    pwd_senha02.setEchoChar('*');
+                }
+            }
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha02.getPassword()).isEmpty()) {
+                    pwd_senha02.setText("Senha");
+                    pwd_senha02.setForeground(Color.GRAY);
+                    pwd_senha02.setEchoChar((char) 0);
+                }
+            }
+        });
     }
 
     /**
@@ -137,7 +135,7 @@ public class Tela_cadastro extends javax.swing.JFrame {
         txt_email = new javax.swing.JTextField();
         lbl_pergunta = new javax.swing.JLabel();
         lbl_entrar = new javax.swing.JLabel();
-        txt_nomeusuario = new javax.swing.JTextField();
+        txt_nome = new javax.swing.JTextField();
         pwd_senha02 = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
 
@@ -189,13 +187,13 @@ public class Tela_cadastro extends javax.swing.JFrame {
         lbl_entrar.setForeground(new java.awt.Color(43, 127, 255));
         lbl_entrar.setText("Entrar");
 
-        txt_nomeusuario.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        txt_nomeusuario.setForeground(new java.awt.Color(212, 212, 216));
-        txt_nomeusuario.setText("Nome de usuário");
-        txt_nomeusuario.setToolTipText("");
-        txt_nomeusuario.addActionListener(new java.awt.event.ActionListener() {
+        txt_nome.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_nome.setForeground(new java.awt.Color(212, 212, 216));
+        txt_nome.setText("Nome completo");
+        txt_nome.setToolTipText("");
+        txt_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nomeusuarioActionPerformed(evt);
+                txt_nomeActionPerformed(evt);
             }
         });
 
@@ -229,7 +227,7 @@ public class Tela_cadastro extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_email)
                             .addComponent(pwd_senha02, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_nomeusuario)
+                            .addComponent(txt_nome)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(lbl_pergunta)
@@ -245,7 +243,7 @@ public class Tela_cadastro extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(lbl_cadastro)
                 .addGap(18, 18, 18)
-                .addComponent(txt_nomeusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -302,21 +300,49 @@ public class Tela_cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_emailActionPerformed
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
-        // TODO add your handling code here:
+        String nome = txt_nome.getText();
+        String email = txt_email.getText();
+        String senha = String.valueOf(pwd_senha.getPassword());
+        String senha02 = String.valueOf(pwd_senha02.getPassword());
+
+        if (!senha.equals(senha02)) {
+            JOptionPane.showMessageDialog(null, "Senhas não conferem!");
+        }
+
+        User user = new User();
+        user.setNome(nome);
+        user.setEmail(email);
+        user.setPassword(senha);
+
+        try {
+            user = controller.store(user);
+
+            if(user == null ){
+                throw new AuthenticationException("Erro ao cadastrar!");
+            }
+            
+            this.dispose();
+
+            //TODO: renderizar a tela inicial
+
+        } catch (AuthenticationException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void pwd_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_senhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwd_senhaActionPerformed
 
-    private void txt_nomeusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeusuarioActionPerformed
+    private void txt_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nomeusuarioActionPerformed
+    }//GEN-LAST:event_txt_nomeActionPerformed
 
     private void pwd_senha02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_senha02ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwd_senha02ActionPerformed
- 
+
     /**
      * @param args the command line arguments
      */
@@ -363,6 +389,6 @@ public class Tela_cadastro extends javax.swing.JFrame {
     private javax.swing.JPasswordField pwd_senha;
     private javax.swing.JPasswordField pwd_senha02;
     private javax.swing.JTextField txt_email;
-    private javax.swing.JTextField txt_nomeusuario;
+    private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
 }
