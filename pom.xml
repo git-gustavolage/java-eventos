@@ -21,6 +21,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
-        <exec.mainClass>view.Tela_cadastro</exec.mainClass>
+        <exec.mainClass>view.Tela_login</exec.mainClass>
     </properties>
 </project>
