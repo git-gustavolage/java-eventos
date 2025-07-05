@@ -1,57 +1,60 @@
 package model.dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import database.DB;
+import exceptions.DatabaseException;
 import model.bean.Ambiente;
 
-public class AmbienteDao {
+public class AmbienteDAO {
 
-    private static Ambiente parse(ResultSet result) throws SQLException {
-        Ambiente ambiente = new Ambiente();
-        ambiente.setId(result.getInt("id"));
-        ambiente.setNome(result.getString("nome"));
-        ambiente.setDescricao(result.getString("descricao"));
-        return ambiente;
+    private Ambiente parse(ResultSet result) throws DatabaseException {
+        try {
+            Ambiente ambiente = new Ambiente();
+            ambiente.setId(result.getLong("id"));
+            ambiente.setNome(result.getString("nome"));
+            ambiente.setDescricao(result.getString("descricao"));
+            return ambiente;
+        } catch (SQLException e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
-    public static Ambiente findById(int id) {
-        String sql = "SELECT * FROM ambientes WHERE id = ? LIMIT 1;";
-        return Dao.executeQueryForSingleResult(sql,
-                stmt -> stmt.setInt(1, id),
-                AmbienteDao::parse,
-                "Erro ao buscar ambiente!",
-                AmbienteDao.class);
-    }
-
-    public static boolean create(Ambiente ambiente) {
+    public int create(Connection conn, Ambiente ambiente) throws DatabaseException {
         String sql = "INSERT INTO ambientes (nome, descricao) VALUES (?, ?)";
-        return Dao.execute(sql,
-                stmt -> {
-                    stmt.setString(1, ambiente.getNome());
-                    stmt.setString(2, ambiente.getDescricao());
-                },
-                "Erro ao criar ambiente!",
-                AmbienteDao.class);
+        return new DB().executeUpdate(conn, sql, stmt -> {
+            stmt.setString(1, ambiente.getNome());
+            stmt.setString(2, ambiente.getDescricao());
+        });
     }
 
-    public static boolean update(Ambiente ambiente) {
-        String sql = "UPDATE ambientes SET nome = ?, descricao = ? WHERE id = ?";
-        return Dao.execute(sql,
-                stmt -> {
-                    stmt.setString(1, ambiente.getNome());
-                    stmt.setString(2, ambiente.getDescricao());
-                    stmt.setInt(3, ambiente.getId());
-                },
-                "Erro ao atualizar ambiente!",
-                AmbienteDao.class);
+    public Ambiente find(Connection conn, Long id) throws DatabaseException {
+        String sql = "SELECT * FROM ambientes WHERE id = (?)";
+        return new DB().executeQuery(conn, sql, stmt -> stmt.setLong(1, id), rs -> {
+            if (rs.next()) {
+                return parse(rs);
+            }
+            return null;
+        });
     }
 
-    public static boolean destroy(Ambiente ambiente) {
-        String sql = "DELETE FROM ambientes WHERE id = ?";
-        return Dao.execute(sql,
-                stmt -> stmt.setInt(1, ambiente.getId()),
-                "Erro ao deletar ambiente!",
-                AmbienteDao.class);
+    public List<Ambiente> all(Connection conn) throws DatabaseException {
+        String sql = "SELECT * FROM ambientes";
+        return new DB().executeQuery(conn, sql, stmt -> {}, rs -> {
+            List<Ambiente> ambientes = new ArrayList<>();
+            while (rs.next()) {
+                ambientes.add(parse(rs));
+            }
+            return ambientes;
+        });
+    }
+
+    public int delete(Connection conn, Long id) throws DatabaseException {
+        String sql = "DELETE FROM ambientes WHERE id = (?)";
+        return new DB().executeUpdate(conn, sql, stmt -> stmt.setLong(1, id));
     }
 }

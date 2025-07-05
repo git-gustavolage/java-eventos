@@ -1,24 +1,36 @@
 package controllers;
 
 import auth.Auth;
+import exceptions.AuthenticationException;
 import model.bean.User;
+import usecases.CSCadastrarUsuario;
 
 public class AuthController {
 
-    public void login(String username, String password) {
+    public User login(String email, String password) throws AuthenticationException {
+        if(Auth.check()) {
+            return Auth.user();
+        }
+
         User user = new User();
         
-        user.setUsername(username);
+        user.setEmail(email);
         user.setPassword(password);
 
-        Auth.login(user);
+        return Auth.login(user);
+    }
 
-        if(Auth.guest()){
-            //adicionar erros na sessão e retornar para a tela de login
+    public User store(User user) throws AuthenticationException {
+        boolean sucess = new CSCadastrarUsuario().execute(user);
+
+        if (sucess) {
+            return this.login(user.getEmail(), user.getPassword());
         }
 
-        if(Auth.check()){
-            //redirecionar para a tela principal
-        }
+        return null;
+    }
+
+    public void logout() {
+        Auth.logout();
     }
 }

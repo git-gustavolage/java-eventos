@@ -3,8 +3,7 @@ package model.bean;
 import java.util.Date;
 
 public class User {
-    private Integer id;
-    private String username;
+    private Long id;
     private String nome;
     private String email;
     private String password;
@@ -12,25 +11,17 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", username=" + username + ", nome=" + nome + ", email=" + email + ", password=" + password + ", data_nascimento=" + data_nascimento + '}';
+        return "User{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", password=" + password + ", data_nascimento=" + data_nascimento + '}';
     }
 
     public User() {}
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String user) {
-        this.username = user;
     }
 
     public String getNome() {

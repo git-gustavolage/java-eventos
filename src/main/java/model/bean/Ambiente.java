@@ -1,14 +1,14 @@
 package model.bean;
 
 public class Ambiente {
-    private Integer id;
+    private Long id;
     private String nome;
     private String descricao;
 
     public Ambiente() {
     }
 
-    public Ambiente(Integer id, String nome, String descricao) {
+    public Ambiente(Long id, String nome, String descricao) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -19,11 +19,11 @@ public class Ambiente {
         return "Ambiente{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + '}';
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     } 
 

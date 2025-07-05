@@ -1,37 +1,39 @@
 package auth;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import exceptions.AuthenticationException;
 import model.bean.User;
-import model.dao.UserDao;
 import support.Hash;
+import usecases.CSFindUserByEmail;
 
 public class Auth {
 
     private static User authenticatedUser;
 
-    public Auth(UserDao model) {
+    private Auth() {
         Auth.authenticatedUser = null;
     }
 
-    public static User login(User user) {
-        Session.expire();
+    public static User login(User user) throws AuthenticationException {
+        logout();
 
         if (user == null) {
             return null;
         }
 
-        String username = user.getUsername();
+        String email = user.getEmail();
         String password = user.getPassword();
 
-        if (!Auth.validate(username, password)) {
+        if (!Auth.validate(email, password)) {
             Auth.logout();
-            Logger.getLogger(Auth.class.getName()).log(Level.SEVERE, "Credenciais incorretas!");
-            return null;
+            throw new AuthenticationException("Credenciais incorretas!");
         }
 
-        User result = UserDao.findByUsername(username);
+        User result = CSFindUserByEmail.execute(email);
+
+        if (result == null) {
+            Auth.logout();
+            throw new AuthenticationException("Credenciais incorretas!");
+        }
 
         result.setPassword(null);
 
@@ -43,7 +45,7 @@ public class Auth {
 
     public static void logout() {
         Auth.authenticatedUser = null;
-        Session.set(null);
+        Session.clear();
     }
 
     public static User user() {
@@ -58,12 +60,12 @@ public class Auth {
         return authenticatedUser == null;
     }
 
-    public static boolean validate(String username, String password) {
-        if (username == null || username.length() == 0) {
+    public static boolean validate(String email, String password) {
+        if (email == null || email.length() == 0) {
             return false;
         }
 
-        User user = UserDao.findByUsername(username);
+        User user = CSFindUserByEmail.execute(email);
 
         if (user == null) {
             return false;
