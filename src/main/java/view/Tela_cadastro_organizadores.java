@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JFrame;
 
 /**
  *
@@ -29,6 +30,8 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
      */
     public Tela_cadastro_organizadores() {
         initComponents();
+        //faz com q abra em tela cheia
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
           String texto = "<html><font color = 'GRAY'>Preencha os formulários<br>com as informações<br>do organizador responsável.</html>";
         lbl_menudescricao.setText(texto);
