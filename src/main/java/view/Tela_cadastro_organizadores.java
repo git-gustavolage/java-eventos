@@ -49,45 +49,45 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
         pnl_resultado.removeAll(); // limpa antes de adicionar
 
         if (check_CordenadorTecnico.isSelected()) {
-            pnl_resultado.add(new JLabel("Cordenador Tecnico - Nome:"));
+            pnl_resultado.add(new JLabel("Responsável - Coordenador Tecnico"));
             pnl_resultado.add(new JTextField(20));
         }
 
         if (check_TecnicoSegurança.isSelected()) {
-            pnl_resultado.add(new JLabel("Tecnico de Segurança - Nome:"));
+            pnl_resultado.add(new JLabel("Responsável - Tecnico de Segurança"));
             pnl_resultado.add(new JTextField(20));
         }
 
         if (check_SuporteTI.isSelected()) {
-            pnl_resultado.add(new JLabel("Suporte de TI - Nome:"));
+            pnl_resultado.add(new JLabel("Responsável - Suporte de TI"));
             pnl_resultado.add(new JTextField(20));
         }
 
         if (check_TecnicoTI.isSelected()) {
-            pnl_resultado.add(new JLabel("Tecnico de TI - Nome:"));
+            pnl_resultado.add(new JLabel("Responsável - Tecnico de TI"));
             pnl_resultado.add(new JTextField(20));
         }
 
         if (check_TecnicoIluminacao.isSelected()) {
-            pnl_resultado.add(new JLabel("Técnico de Iluminação - Nome:"));
+            pnl_resultado.add(new JLabel("Responsável - Técnico de Iluminação"));
             pnl_resultado.add(new JTextField(20));
         }
 
         if (check_TecnicoSom.isSelected()) {
-            pnl_resultado.add(new JLabel("Técnico de Som - Nome:"));
+            pnl_resultado.add(new JLabel("Responsável - Técnico de Som"));
             pnl_resultado.add(new JTextField(20));
         }
         if (check_TecnicoVideo.isSelected()) {
-            pnl_resultado.add(new JLabel("Técnico de Video - Nome:"));
+            pnl_resultado.add(new JLabel("Responsável - Técnico de Video"));
             pnl_resultado.add(new JTextField(20));
         }
 
         if (check_EletricistaEventos.isSelected()) {
-            pnl_resultado.add(new JLabel("Eletricista de Eventos - Nome:"));
+            pnl_resultado.add(new JLabel("Responsável - Eletricista de Eventos"));
             pnl_resultado.add(new JTextField(20));
         }
         if (check_MontadorPalco.isSelected()) {
-            pnl_resultado.add(new JLabel("Montador de Palco - Nome:"));
+            pnl_resultado.add(new JLabel("Responsável - Montador de Palco"));
             pnl_resultado.add(new JTextField(20));
         }
 
@@ -569,7 +569,7 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
             return;
         }
 
-JOptionPane.showMessageDialog(this, "Informações Salvas!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+JOptionPane.showMessageDialog(this, "Cadastro Realizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             
     }//GEN-LAST:event_bnt_salvarActionPerformed
 
