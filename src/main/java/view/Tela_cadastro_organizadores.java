@@ -4,6 +4,19 @@
  */
 package view;
 
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Kassandra Oliveira
@@ -21,6 +34,70 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
         
         String texto2 = "<html><font color = 'WHITE'>Este sistema tem como objetivo gerenciar os eventos organizados<br>pelo Instituto Federal de Educação, Ciência e Tecnologia de<br>Rondônia - Campus Calama (IFRO), oferecendo ferramentas para<br>cadastro, divulgação, inscrições, controle de participante e<br>emissão de certificados</html>";
         lbl_descricaosistema.setText(texto2);
+        
+        
+ // Altera o texto do checkbox já existente
+pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
+
+// Lógica do botão confirmar
+    btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        pnl_resultado.removeAll(); // limpa antes de adicionar
+
+        if (check_CordenadorTecnico.isSelected()) {
+            pnl_resultado.add(new JLabel("Cordenador Tecnico - Nome:"));
+            pnl_resultado.add(new JTextField(20));
+        }
+
+        if (check_TecnicoSegurança.isSelected()) {
+            pnl_resultado.add(new JLabel("Tecnico de Segurança - Nome:"));
+            pnl_resultado.add(new JTextField(20));
+        }
+
+        if (check_SuporteTI.isSelected()) {
+            pnl_resultado.add(new JLabel("Suporte de TI - Nome:"));
+            pnl_resultado.add(new JTextField(20));
+        }
+
+        if (check_TecnicoTI.isSelected()) {
+            pnl_resultado.add(new JLabel("Tecnico de TI - Nome:"));
+            pnl_resultado.add(new JTextField(20));
+        }
+
+        if (check_TecnicoIluminacao.isSelected()) {
+            pnl_resultado.add(new JLabel("Técnico de Iluminação - Nome:"));
+            pnl_resultado.add(new JTextField(20));
+        }
+
+        if (check_TecnicoSom.isSelected()) {
+            pnl_resultado.add(new JLabel("Técnico de Som - Nome:"));
+            pnl_resultado.add(new JTextField(20));
+        }
+        if (check_TecnicoVideo.isSelected()) {
+            pnl_resultado.add(new JLabel("Técnico de Video - Nome:"));
+            pnl_resultado.add(new JTextField(20));
+        }
+
+        if (check_EletricistaEventos.isSelected()) {
+            pnl_resultado.add(new JLabel("Eletricista de Eventos - Nome:"));
+            pnl_resultado.add(new JTextField(20));
+        }
+        if (check_MontadorPalco.isSelected()) {
+            pnl_resultado.add(new JLabel("Montador de Palco - Nome:"));
+            pnl_resultado.add(new JTextField(20));
+        }
+
+
+        pnl_resultado.revalidate();
+        pnl_resultado.repaint();
+    }
+});
+        
+        
+        
+        
+        
+        
     }
 
 
@@ -33,6 +110,7 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        check_seguranca7 = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         lbl_cadastroevento = new javax.swing.JLabel();
         lbl_atividades = new javax.swing.JLabel();
@@ -53,12 +131,20 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
         txt_fiscal = new javax.swing.JTextField();
         lbl_fiscal = new javax.swing.JLabel();
         lbl_apoio = new javax.swing.JLabel();
-        txt_apoio = new javax.swing.JTextField();
-        lbl_auxiliar = new javax.swing.JLabel();
         btn_voltar = new javax.swing.JButton();
         bnt_salvar = new javax.swing.JButton();
-        txt_auxiliar = new javax.swing.JTextField();
-        lbl_dia = new javax.swing.JLabel();
+        btn_confirmar = new javax.swing.JButton();
+        scroll_pane_resultado = new javax.swing.JScrollPane();
+        pnl_resultado = new javax.swing.JPanel();
+        check_CordenadorTecnico = new javax.swing.JCheckBox();
+        check_TecnicoIluminacao = new javax.swing.JCheckBox();
+        check_TecnicoTI = new javax.swing.JCheckBox();
+        check_TecnicoSom = new javax.swing.JCheckBox();
+        check_TecnicoSegurança = new javax.swing.JCheckBox();
+        check_SuporteTI = new javax.swing.JCheckBox();
+        check_TecnicoVideo = new javax.swing.JCheckBox();
+        check_EletricistaEventos = new javax.swing.JCheckBox();
+        check_MontadorPalco = new javax.swing.JCheckBox();
         pnl_descricao = new javax.swing.JPanel();
         lbl_linkevento = new javax.swing.JLabel();
         lbl_linkatividades = new javax.swing.JLabel();
@@ -66,6 +152,8 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
         lbl_descricaosistema = new javax.swing.JLabel();
         lbl_titulosistema = new javax.swing.JLabel();
         lbl_links = new javax.swing.JLabel();
+
+        check_seguranca7.setText("Segurança");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,7 +202,7 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
                 .addComponent(lbl_atividades)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_organizadores)
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnl_topo.setBackground(new java.awt.Color(255, 255, 255));
@@ -175,15 +263,6 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
         lbl_apoio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_apoio.setText("Apoio Técnico:");
 
-        txt_apoio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_apoioActionPerformed(evt);
-            }
-        });
-
-        lbl_auxiliar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_auxiliar.setText("Auxiliares:");
-
         btn_voltar.setText("Voltar");
         btn_voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,14 +279,52 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
             }
         });
 
-        txt_auxiliar.addActionListener(new java.awt.event.ActionListener() {
+        btn_confirmar.setText("Confirmar");
+        btn_confirmar.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_auxiliarActionPerformed(evt);
+                btn_confirmarActionPerformed(evt);
             }
         });
 
-        lbl_dia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbl_dia.setText("Dia 01:");
+        pnl_resultado.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_resultado.setMinimumSize(new java.awt.Dimension(320, 140));
+
+        javax.swing.GroupLayout pnl_resultadoLayout = new javax.swing.GroupLayout(pnl_resultado);
+        pnl_resultado.setLayout(pnl_resultadoLayout);
+        pnl_resultadoLayout.setHorizontalGroup(
+            pnl_resultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 385, Short.MAX_VALUE)
+        );
+        pnl_resultadoLayout.setVerticalGroup(
+            pnl_resultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 142, Short.MAX_VALUE)
+        );
+
+        scroll_pane_resultado.setViewportView(pnl_resultado);
+
+        check_CordenadorTecnico.setText("Coordenador Tecnico");
+
+        check_TecnicoIluminacao.setText("Tecnico de Iluminacao");
+
+        check_TecnicoTI.setText("Tecnico de TI");
+
+        check_TecnicoSom.setText("Tecnico de Som");
+
+        check_TecnicoSegurança.setText("Tecnico de Segurança");
+
+        check_SuporteTI.setText("Suporte de TI");
+        check_SuporteTI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                check_SuporteTIActionPerformed(evt);
+            }
+        });
+
+        check_TecnicoVideo.setText("Tecnico de Video");
+
+        check_EletricistaEventos.setText("Eletricista de Eventos");
+
+        check_MontadorPalco.setText("Montador de Palco");
 
         javax.swing.GroupLayout pnl_cadastroatividadesLayout = new javax.swing.GroupLayout(pnl_cadastroatividades);
         pnl_cadastroatividades.setLayout(pnl_cadastroatividadesLayout);
@@ -220,35 +337,49 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
                 .addComponent(bnt_salvar)
                 .addGap(31, 31, 31))
             .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
-                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_auxiliar, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_apoio, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_fiscal, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
-                            .addGap(48, 48, 48)
-                            .addComponent(lbl_ORGANIZADORES))
-                        .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(lbl_inicio)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbl_componente1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbl_cadastro02)
-                            .addGap(6, 6, 6)
-                            .addComponent(lbl_componente02)
-                            .addGap(6, 6, 6)
-                            .addComponent(lbl_organizadores02))
-                        .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
-                            .addGap(58, 58, 58)
-                            .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbl_nome)
-                                .addComponent(lbl_fiscal)
-                                .addComponent(lbl_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_apoio)
-                                .addComponent(lbl_auxiliar)
-                                .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(lbl_inicio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_componente1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_cadastro02)
+                        .addGap(6, 6, 6)
+                        .addComponent(lbl_componente02)
+                        .addGap(6, 6, 6)
+                        .addComponent(lbl_organizadores02))
+                    .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(check_TecnicoTI)
+                                    .addComponent(check_TecnicoVideo))
+                                .addGap(41, 41, 41)
+                                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(check_EletricistaEventos)
+                                    .addComponent(check_TecnicoIluminacao)))
+                            .addComponent(lbl_nome)
+                            .addComponent(lbl_ORGANIZADORES)
+                            .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_fiscal)
+                            .addComponent(lbl_apoio)
+                            .addComponent(txt_fiscal, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                                .addComponent(check_CordenadorTecnico)
+                                .addGap(18, 18, 18)
+                                .addComponent(check_TecnicoSegurança)
+                                .addGap(22, 22, 22)
+                                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(check_SuporteTI)
+                                    .addComponent(check_MontadorPalco)
+                                    .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                                        .addComponent(check_TecnicoSom)
+                                        .addGap(69, 69, 69)
+                                        .addComponent(btn_confirmar))))
+                            .addComponent(scroll_pane_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
         pnl_cadastroatividadesLayout.setVerticalGroup(
             pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,29 +393,39 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
                     .addComponent(lbl_componente02))
                 .addGap(18, 18, 18)
                 .addComponent(lbl_ORGANIZADORES)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_dia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_nome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_fiscal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_fiscal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lbl_apoio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_apoio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(check_CordenadorTecnico)
+                    .addComponent(check_TecnicoSegurança)
+                    .addComponent(check_SuporteTI))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_auxiliar)
+                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(check_TecnicoIluminacao)
+                    .addComponent(check_TecnicoSom)
+                    .addComponent(check_TecnicoTI)
+                    .addComponent(btn_confirmar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_auxiliar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(check_TecnicoVideo)
+                    .addComponent(check_EletricistaEventos)
+                    .addComponent(check_MontadorPalco))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(scroll_pane_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_voltar)
                     .addComponent(bnt_salvar))
-                .addGap(17, 17, 17))
+                .addGap(14, 14, 14))
         );
 
         pnl_descricao.setBackground(new java.awt.Color(51, 51, 51));
@@ -388,10 +529,6 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_fiscalActionPerformed
 
-    private void txt_apoioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apoioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_apoioActionPerformed
-
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
   
     }//GEN-LAST:event_btn_voltarActionPerformed
@@ -400,9 +537,13 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
 
     }//GEN-LAST:event_bnt_salvarActionPerformed
 
-    private void txt_auxiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_auxiliarActionPerformed
+    private void check_SuporteTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_SuporteTIActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_auxiliarActionPerformed
+    }//GEN-LAST:event_check_SuporteTIActionPerformed
+
+    private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_confirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,18 +582,27 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bnt_salvar;
+    private javax.swing.JButton btn_confirmar;
     private javax.swing.JButton btn_voltar;
+    private javax.swing.JCheckBox check_CordenadorTecnico;
+    private javax.swing.JCheckBox check_EletricistaEventos;
+    private javax.swing.JCheckBox check_MontadorPalco;
+    private javax.swing.JCheckBox check_SuporteTI;
+    private javax.swing.JCheckBox check_TecnicoIluminacao;
+    private javax.swing.JCheckBox check_TecnicoSegurança;
+    private javax.swing.JCheckBox check_TecnicoSom;
+    private javax.swing.JCheckBox check_TecnicoTI;
+    private javax.swing.JCheckBox check_TecnicoVideo;
+    private javax.swing.JCheckBox check_seguranca7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_ORGANIZADORES;
     private javax.swing.JLabel lbl_apoio;
     private javax.swing.JLabel lbl_atividades;
-    private javax.swing.JLabel lbl_auxiliar;
     private javax.swing.JLabel lbl_cadastro02;
     private javax.swing.JLabel lbl_cadastroevento;
     private javax.swing.JLabel lbl_componente02;
     private javax.swing.JLabel lbl_componente1;
     private javax.swing.JLabel lbl_descricaosistema;
-    private javax.swing.JLabel lbl_dia;
     private javax.swing.JLabel lbl_fiscal;
     private javax.swing.JLabel lbl_geral;
     private javax.swing.JLabel lbl_inicio;
@@ -468,9 +618,9 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_topoevento;
     private javax.swing.JPanel pnl_cadastroatividades;
     private javax.swing.JPanel pnl_descricao;
+    private javax.swing.JPanel pnl_resultado;
     private javax.swing.JPanel pnl_topo;
-    private javax.swing.JTextField txt_apoio;
-    private javax.swing.JTextField txt_auxiliar;
+    private javax.swing.JScrollPane scroll_pane_resultado;
     private javax.swing.JTextField txt_fiscal;
     private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
