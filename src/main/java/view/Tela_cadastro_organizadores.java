@@ -96,8 +96,27 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
         
         
         
+       // logica para abrir a tela de cadastro
+        lbl_atividades.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_atividades.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dispose(); // fecha a tela de login 
+                Tela_cadastro_atividades cadastro = new Tela_cadastro_atividades();
+                cadastro.setVisible(true);
+            }
+        }); 
         
-        
+               // logica para abrir a tela de cadastro
+        lbl_geral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_geral.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dispose(); // fecha a tela de login 
+                Tela_cadastro_eventos_geral cadastro2 = new Tela_cadastro_eventos_geral();
+                cadastro2.setVisible(true);
+            }
+        }); 
         
     }
 
@@ -547,7 +566,8 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
             return;
         }
 
-
+JOptionPane.showMessageDialog(this, "Informações Salvas!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            
     }//GEN-LAST:event_bnt_salvarActionPerformed
 
     private void check_SuporteTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_SuporteTIActionPerformed
