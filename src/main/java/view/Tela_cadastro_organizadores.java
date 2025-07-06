@@ -13,6 +13,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -530,10 +531,22 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
     }//GEN-LAST:event_txt_fiscalActionPerformed
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-  
+          dispose(); // fecha a tela de login
+        Tela_cadastro_atividades cadastro = new Tela_cadastro_atividades();
+        cadastro.setVisible(true);
+        
+        
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void bnt_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_salvarActionPerformed
+        String nome = txt_nome.getText().trim();
+        
+
+        if (nome.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
 
     }//GEN-LAST:event_bnt_salvarActionPerformed
 
