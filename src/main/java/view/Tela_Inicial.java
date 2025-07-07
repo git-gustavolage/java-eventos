@@ -134,6 +134,11 @@ public class Tela_Inicial extends javax.swing.JFrame {
         bnt_cronograma.setText("Cronograma");
 
         btn_cadastrarEventos.setText("Cadastrar Eventos");
+        btn_cadastrarEventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cadastrarEventosMouseClicked(evt);
+            }
+        });
         btn_cadastrarEventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cadastrarEventosActionPerformed(evt);
@@ -222,6 +227,12 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private void btn_listarParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarParticipanteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_listarParticipanteActionPerformed
+
+    private void btn_cadastrarEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cadastrarEventosMouseClicked
+                // TODO add your handling code here:
+                new TelaCadastroEventoGeral().setVisible(true);  // Abre a Tela2
+            dispose(); // Fecha a Tela1 (opcional)
+    }//GEN-LAST:event_btn_cadastrarEventosMouseClicked
 
     /**
      * @param args the command line arguments
