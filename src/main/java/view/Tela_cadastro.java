@@ -1,64 +1,61 @@
 package view;
 
 import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import controllers.AuthController;
+import exceptions.AuthenticationException;
+import model.bean.User;
+
 public class Tela_cadastro extends javax.swing.JFrame {
 
+    private final AuthController controller;
+
     public boolean isEmailValido(String email) {
-    String regex = "^[\\w\\.-]+@[\\w\\.-]+\\.[a-zA-Z]{2,}$";
-    return email.matches(regex);
-}
+        String regex = "^[\\w\\.-]+@[\\w\\.-]+\\.[a-zA-Z]{2,}$";
+        return email.matches(regex);
+    }
 
     public Tela_cadastro() {
         initComponents();
-       
-    //faz com q abra em tela cheia.
+        controller = new AuthController();
+
+        //faz com q abra em tela cheia.
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
-     // logica para abrir a tela de cadastro
+
+        // logica para abrir a tela de login
         lbl_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_entrar.addMouseListener(new java.awt.event.MouseAdapter() {
-         @Override
-           public void mouseClicked(java.awt.event.MouseEvent evt) {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dispose(); // fecha a tela de cadastro 
                 Tela_login l = new Tela_login();
-               l.setVisible(true);
-           }
+                l.setVisible(true);
+            }
         });
 
-        // logica para abrir a tela de cadastro após cadastro criado
-        btn_cadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
-         @Override
-           public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dispose(); // fecha a tela de cadastro 
-                Tela_login l = new Tela_login();
-               l.setVisible(true);
-           }
-        });
-        
-        txt_nomeusuario.setText("Digite seu Nome...");
-        txt_nomeusuario.setForeground(Color.BLACK);
-        txt_nomeusuario.addFocusListener(new java.awt.event.FocusAdapter() {
+        txt_nome.setText("Digite seu Nome...");
+        txt_nome.setForeground(Color.BLACK);
+        txt_nome.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent evt) {
-                if (txt_nomeusuario.getText().equals("Digite seu Nome...")) {
-                    txt_nomeusuario.setText("");
-                    txt_nomeusuario.setForeground(Color.BLACK);
+                if (txt_nome.getText().equals("Digite seu Nome...")) {
+                    txt_nome.setText("");
+                    txt_nome.setForeground(Color.BLACK);
                 }
             }
 
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
-                if (txt_nomeusuario.getText().isEmpty()) {
-                    txt_nomeusuario.setText("Digite seu Nome...");
-                    txt_nomeusuario.setForeground(Color.GRAY);
+                if (txt_nome.getText().isEmpty()) {
+                    txt_nome.setText("Digite seu Nome...");
+                    txt_nome.setForeground(Color.GRAY);
                 }
             }
         });
-        
+
         txt_email.setText("Digite seu Email...");
         txt_email.setForeground(Color.GRAY);
         txt_email.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -73,59 +70,59 @@ public class Tela_cadastro extends javax.swing.JFrame {
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
                 String email = txt_email.getText().trim();
-             if (email.isEmpty()) {
-            txt_email.setText("Digite seu Email...");
-            txt_email.setForeground(Color.GRAY);
-        }   else if (!isEmailValido(email)) {
-            JOptionPane.showMessageDialog(null, "Email inválido. Por favor, digite um email válido.");
-            txt_email.requestFocus();
-        }   
+                if (email.isEmpty()) {
+                    txt_email.setText("Digite seu Email...");
+                    txt_email.setForeground(Color.GRAY);
+                } else if (!isEmailValido(email)) {
+                    JOptionPane.showMessageDialog(null, "Email inválido. Por favor, digite um email válido.");
+                    txt_email.requestFocus();
+                }
             }
         });
-     
-        
+
         //Placeholder para pwd_senha
         pwd_senha.setEchoChar((char) 0);
         pwd_senha.setText("Senha");
         pwd_senha.setForeground(Color.GRAY);
-        pwd_senha.addFocusListener(new java.awt.event.FocusAdapter(){
-          public void focusGained(java.awt.event.FocusEvent evt) {
-              if (String.valueOf(pwd_senha.getPassword()).equals("Senha")) {
-                  pwd_senha.setText("");
-                  pwd_senha.setForeground(Color.BLACK);
-                  pwd_senha.setEchoChar('*');
-              }
-          }
-           public void focusLost(java.awt.event.FocusEvent evt) {
-              if (String.valueOf(pwd_senha.getPassword()).isEmpty()){
-                  pwd_senha.setText("Senha");
-                  pwd_senha.setForeground(Color.GRAY);
-                  pwd_senha.setEchoChar((char) 0);
-              }
-          }     
+        pwd_senha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha.getPassword()).equals("Senha")) {
+                    pwd_senha.setText("");
+                    pwd_senha.setForeground(Color.BLACK);
+                    pwd_senha.setEchoChar('*');
+                }
+            }
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha.getPassword()).isEmpty()) {
+                    pwd_senha.setText("Senha");
+                    pwd_senha.setForeground(Color.GRAY);
+                    pwd_senha.setEchoChar((char) 0);
+                }
+            }
         });
-        
-        
+
         //Placeholder para pwd_senha
         pwd_senha02.setEchoChar((char) 0);
         pwd_senha02.setText("Senha");
         pwd_senha02.setForeground(Color.GRAY);
-        pwd_senha02.addFocusListener(new java.awt.event.FocusAdapter(){
-          public void focusGained(java.awt.event.FocusEvent evt) {
-              if (String.valueOf(pwd_senha02.getPassword()).equals("Senha")) {
-                  pwd_senha02.setText("");
-                  pwd_senha02.setForeground(Color.BLACK);
-                  pwd_senha02.setEchoChar('*');
-              }
-          }
-           public void focusLost(java.awt.event.FocusEvent evt) {
-              if (String.valueOf(pwd_senha02.getPassword()).isEmpty()){
-                  pwd_senha02.setText("Senha");
-                  pwd_senha02.setForeground(Color.GRAY);
-                  pwd_senha02.setEchoChar((char) 0);
-              }
-          }     
-        });  
+        pwd_senha02.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha02.getPassword()).equals("Senha")) {
+                    pwd_senha02.setText("");
+                    pwd_senha02.setForeground(Color.BLACK);
+                    pwd_senha02.setEchoChar('*');
+                }
+            }
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha02.getPassword()).isEmpty()) {
+                    pwd_senha02.setText("Senha");
+                    pwd_senha02.setForeground(Color.GRAY);
+                    pwd_senha02.setEchoChar((char) 0);
+                }
+            }
+        });
     }
 
     /**
@@ -146,7 +143,7 @@ public class Tela_cadastro extends javax.swing.JFrame {
         txt_email = new javax.swing.JTextField();
         lbl_pergunta = new javax.swing.JLabel();
         lbl_entrar = new javax.swing.JLabel();
-        txt_nomeusuario = new javax.swing.JTextField();
+        txt_nome = new javax.swing.JTextField();
         pwd_senha02 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -157,12 +154,12 @@ public class Tela_cadastro extends javax.swing.JFrame {
         javax.swing.GroupLayout pnl_barraazulLayout = new javax.swing.GroupLayout(pnl_barraazul);
         pnl_barraazul.setLayout(pnl_barraazulLayout);
         pnl_barraazulLayout.setHorizontalGroup(
-            pnl_barraazulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
+                pnl_barraazulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 190, Short.MAX_VALUE)
         );
         pnl_barraazulLayout.setVerticalGroup(
-            pnl_barraazulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+                pnl_barraazulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 640, Short.MAX_VALUE)
         );
 
         pnl_fundo.setBackground(new java.awt.Color(255, 255, 255));
@@ -213,13 +210,13 @@ public class Tela_cadastro extends javax.swing.JFrame {
         lbl_entrar.setForeground(new java.awt.Color(43, 127, 255));
         lbl_entrar.setText("Entrar");
 
-        txt_nomeusuario.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        txt_nomeusuario.setForeground(new java.awt.Color(212, 212, 216));
-        txt_nomeusuario.setText("Nome de usuário");
-        txt_nomeusuario.setToolTipText("");
-        txt_nomeusuario.addActionListener(new java.awt.event.ActionListener() {
+        txt_nome.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_nome.setForeground(new java.awt.Color(212, 212, 216));
+        txt_nome.setText("Nome completo");
+        txt_nome.setToolTipText("");
+        txt_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nomeusuarioActionPerformed(evt);
+                txt_nomeActionPerformed(evt);
             }
         });
 
@@ -237,84 +234,84 @@ public class Tela_cadastro extends javax.swing.JFrame {
         javax.swing.GroupLayout pnl_cadastroLayout = new javax.swing.GroupLayout(pnl_cadastro);
         pnl_cadastro.setLayout(pnl_cadastroLayout);
         pnl_cadastroLayout.setHorizontalGroup(
-            pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_cadastroLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnl_cadastroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_cadastroLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lbl_cadastro)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnl_cadastroLayout.createSequentialGroup()
-                        .addGroup(pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_email)
-                            .addComponent(pwd_senha02, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_nomeusuario)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_cadastroLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lbl_pergunta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_entrar)
-                                .addGap(228, 228, 228))
-                            .addComponent(pwd_senha))
-                        .addContainerGap())))
+                pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_cadastroLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(pnl_cadastroLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_cadastroLayout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(lbl_cadastro)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(pnl_cadastroLayout.createSequentialGroup()
+                                                .addGroup(pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(txt_email)
+                                                        .addComponent(pwd_senha02, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(txt_nome)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_cadastroLayout.createSequentialGroup()
+                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                .addComponent(lbl_pergunta)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(lbl_entrar)
+                                                                .addGap(228, 228, 228))
+                                                        .addComponent(pwd_senha))
+                                                .addContainerGap())))
         );
         pnl_cadastroLayout.setVerticalGroup(
-            pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_cadastroLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_cadastro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_nomeusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pwd_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pwd_senha02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addGroup(pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_pergunta)
-                    .addComponent(lbl_entrar))
-                .addGap(23, 23, 23)
-                .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_cadastroLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl_cadastro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pwd_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pwd_senha02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addGroup(pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lbl_pergunta)
+                                        .addComponent(lbl_entrar))
+                                .addGap(23, 23, 23)
+                                .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout pnl_fundoLayout = new javax.swing.GroupLayout(pnl_fundo);
         pnl_fundo.setLayout(pnl_fundoLayout);
         pnl_fundoLayout.setHorizontalGroup(
-            pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_fundoLayout.createSequentialGroup()
-                .addContainerGap(130, Short.MAX_VALUE)
-                .addComponent(pnl_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
+                pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_fundoLayout.createSequentialGroup()
+                                .addContainerGap(130, Short.MAX_VALUE)
+                                .addComponent(pnl_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(164, Short.MAX_VALUE))
         );
         pnl_fundoLayout.setVerticalGroup(
-            pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_fundoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnl_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_fundoLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pnl_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(pnl_barraazul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_fundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(pnl_barraazul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pnl_fundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnl_barraazul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnl_fundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(pnl_barraazul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnl_fundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -325,47 +322,56 @@ public class Tela_cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_emailActionPerformed
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
-    
 
-String nome = txt_nomeusuario.getText().trim();    // nome de usuário
-String email = txt_email.getText().trim();         // email
-String senha = new String(pwd_senha.getPassword()).trim();      // senha
-String senha2 = new String(pwd_senha02.getPassword()).trim();   // confirmação de senha
+        String nome = txt_nome.getText().trim();
+        String email = txt_email.getText().trim();
+        String senha = new String(pwd_senha.getPassword()).trim();
+        String senha2 = new String(pwd_senha02.getPassword()).trim();
 
-// Verificação de campos obrigatórios
-if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || senha2.isEmpty()) {
-      JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios!", "Erro", JOptionPane.ERROR_MESSAGE);
-return;
-}
+        if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || senha2.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-// Verificação se as senhas coincidem
-if (!senha.equals(senha2)) {
-    JOptionPane.showMessageDialog(this, "As senhas não coincidem!", "Erro", JOptionPane.ERROR_MESSAGE);
-        return;
-}
+        if (!senha.equals(senha2)) {
+            JOptionPane.showMessageDialog(this, "As senhas não coincidem!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-// Cadastro bem-sucedido
-JOptionPane.showMessageDialog(this, "Seu cadastro foi realizado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
-   dispose(); // Fecha a tela de cadastro
-    Tela_login login = new Tela_login();
-    login.setVisible(true);
-    return; 
-   
-        
+        User user = new User();
+        user.setNome(nome);
+        user.setEmail(email);
+        user.setPassword(senha);
+
+        try {
+            user = controller.store(user);
+
+            if (user == null) {
+                throw new AuthenticationException("Erro ao cadastrar!");
+            }
+
+            JOptionPane.showMessageDialog(this, "Seu cadastro foi realizado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+
+            this.dispose();
+            Tela_login login = new Tela_login();
+            login.setVisible(true);
+        } catch (AuthenticationException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void pwd_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_senhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwd_senhaActionPerformed
 
-    private void txt_nomeusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeusuarioActionPerformed
+    private void txt_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nomeusuarioActionPerformed
+    }//GEN-LAST:event_txt_nomeActionPerformed
 
     private void pwd_senha02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_senha02ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwd_senha02ActionPerformed
- 
+
     /**
      * @param args the command line arguments
      */
@@ -413,6 +419,6 @@ JOptionPane.showMessageDialog(this, "Seu cadastro foi realizado com sucesso!", "
     private javax.swing.JPasswordField pwd_senha;
     private javax.swing.JPasswordField pwd_senha02;
     private javax.swing.JTextField txt_email;
-    private javax.swing.JTextField txt_nomeusuario;
+    private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
 }
