@@ -14,13 +14,12 @@ import support.Hash;
 public class UsuarioDAO {
 
     public int create(Connection conn, User user) throws DatabaseException {
-        String sql = "INSERT INTO usuarios (nome, username, email, password) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios (nome, email, password) VALUES (?, ?, ?)";
 
         return new DB().executeUpdate(conn, sql, stmt -> {
             stmt.setString(1, user.getNome());
-            stmt.setString(2, user.getUsername());
-            stmt.setString(3, user.getEmail());
-            stmt.setString(4, Hash.hash(user.getPassword()));
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, Hash.hash(user.getPassword()));
         });
     }
 
@@ -35,10 +34,10 @@ public class UsuarioDAO {
         });
     }
 
-    public User findByUsername(Connection conn, String username) throws DatabaseException {
-        String sql = "SELECT * FROM usuarios WHERE username = (?)";
+    public User findByEmail(Connection conn, String email) throws DatabaseException {
+        String sql = "SELECT * FROM usuarios WHERE email = (?)";
 
-        return new DB().executeQuery(conn, sql, stmt -> stmt.setString(1, username), rs -> {
+        return new DB().executeQuery(conn, sql, stmt -> stmt.setString(1, email), rs -> {
             if (rs.next()) {
                 return parse(rs);
             }
@@ -64,9 +63,9 @@ public class UsuarioDAO {
             User user = new User();
             user.setId(rs.getLong("id"));
             user.setNome(rs.getString("nome"));
-            user.setUsername(rs.getString("username"));
             user.setEmail(rs.getString("email"));
             user.setPassword(rs.getString("password"));
+            user.setData_nascimento(rs.getDate("data_nascimento"));
             return user;
         } catch (SQLException e) {
             throw new DatabaseException(e.getMessage());
