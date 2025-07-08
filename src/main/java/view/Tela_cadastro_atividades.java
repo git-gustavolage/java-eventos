@@ -47,6 +47,8 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
         lbl_atividades02 = new javax.swing.JLabel();
         lbl_componente1 = new javax.swing.JLabel();
         lbl_componente02 = new javax.swing.JLabel();
+        txt_categoria = new javax.swing.JTextField();
+        lbl_categoria = new javax.swing.JLabel();
         lbl_data = new javax.swing.JLabel();
         bnt_salvar = new javax.swing.JButton();
         lbl_ATIVIDADES = new javax.swing.JLabel();
@@ -129,12 +131,12 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
             }
         });
 
-        lbl_diahora.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        lbl_diahora.setText("Dia 01");
-
-        txt_horainicio.addActionListener(new java.awt.event.ActionListener() {
+        bnt_salvar.setBackground(new java.awt.Color(0, 212, 146));
+        bnt_salvar.setForeground(new java.awt.Color(255, 255, 255));
+        bnt_salvar.setText("Salvar");
+        bnt_salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_horainicioActionPerformed(evt);
+                bnt_salvarActionPerformed(evt);
             }
         });
 
@@ -155,12 +157,108 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
 
         txt_horatermino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_horaterminoActionPerformed(evt);
+                txt_quantdiasActionPerformed(evt);
             }
         });
 
-        lbl_dialocal.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        lbl_dialocal.setText("Dia 01");
+        javax.swing.GroupLayout pnl_cadastroatividadesLayout = new javax.swing.GroupLayout(pnl_cadastroatividades);
+        pnl_cadastroatividades.setLayout(pnl_cadastroatividadesLayout);
+        pnl_cadastroatividadesLayout.setHorizontalGroup(
+            pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btn_voltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bnt_salvar)
+                .addGap(27, 27, 27))
+            .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(lbl_inicio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_componente1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_cadastro02)
+                        .addGap(6, 6, 6)
+                        .addComponent(lbl_componente02)
+                        .addGap(6, 6, 6)
+                        .addComponent(lbl_atividades02))
+                    .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_ATIVIDADES)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_ambientes)
+                            .addComponent(lbl_data)
+                            .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txt_categoria, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_nomeatividades, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbl_nomeatividades)
+                                    .addComponent(lbl_categoria)
+                                    .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                                        .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_dataatividade, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lbl_dataatividade))
+                                        .addGap(166, 166, 166)
+                                        .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lbl_quantdias)
+                                            .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                                                .addComponent(txt_quantdias, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(38, 38, 38)
+                                                .addComponent(btn_confirmadata))))
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_cadastroatividadesLayout.setVerticalGroup(
+            pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_inicio)
+                    .addComponent(lbl_cadastro02)
+                    .addComponent(lbl_atividades02)
+                    .addComponent(lbl_componente1)
+                    .addComponent(lbl_componente02))
+                .addGap(18, 18, 18)
+                .addComponent(lbl_ATIVIDADES)
+                .addGap(6, 6, 6)
+                .addComponent(lbl_nomeatividades)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_nomeatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_categoria)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lbl_data)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                        .addComponent(lbl_dataatividade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_dataatividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnl_cadastroatividadesLayout.createSequentialGroup()
+                        .addComponent(lbl_quantdias)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_confirmadata)
+                            .addComponent(txt_quantdias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_ambientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_voltar)
+                    .addComponent(bnt_salvar))
+                .addContainerGap())
+        );
 
         lbl_inicio.setText("Inicio");
 
@@ -226,10 +324,6 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -288,13 +382,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(416, 416, 416))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_inicio)
-                            .addComponent(lbl_cadastro02)
-                            .addComponent(lbl_atividades02)
-                            .addComponent(lbl_componente1)
-                            .addComponent(lbl_componente02))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_ATIVIDADES)
                         .addGap(6, 6, 6)
@@ -353,7 +441,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
 
     private void txt_horainicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_horainicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_horainicioActionPerformed
+    }//GEN-LAST:event_txt_dataatividadeActionPerformed
 
     private void txt_dataatividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dataatividadeActionPerformed
         // TODO add your handling code here:
@@ -361,7 +449,7 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
 
     private void txt_horaterminoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_horaterminoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_horaterminoActionPerformed
+    }//GEN-LAST:event_txt_quantdiasActionPerformed
 
     private void bnt_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_salvarActionPerformed
         // TODO add your handling code here:
@@ -416,9 +504,11 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bnt_salvar;
+    private javax.swing.JButton btn_confirmadata;
     private javax.swing.JButton btn_voltar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbl_ATIVIDADES;
     private javax.swing.JLabel lbl_ambientes;
     private javax.swing.JLabel lbl_atividades;
@@ -430,21 +520,19 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_componente1;
     private javax.swing.JLabel lbl_data;
     private javax.swing.JLabel lbl_dataatividade;
-    private javax.swing.JLabel lbl_diahora;
-    private javax.swing.JLabel lbl_dialocal;
+    private javax.swing.JLabel lbl_descricaosistema;
     private javax.swing.JLabel lbl_geral;
-    private javax.swing.JLabel lbl_horainicio;
-    private javax.swing.JLabel lbl_horatermino;
     private javax.swing.JLabel lbl_inicio;
-    private javax.swing.JLabel lbl_localatividade;
+    private javax.swing.JLabel lbl_linkatividades;
+    private javax.swing.JLabel lbl_linkcronograma;
+    private javax.swing.JLabel lbl_linkevento;
+    private javax.swing.JLabel lbl_links;
+    private javax.swing.JLabel lbl_menudescricao;
     private javax.swing.JLabel lbl_nomeatividades;
     private javax.swing.JLabel lbl_organizadores;
     private javax.swing.JLabel lbl_quantdias;
     private javax.swing.JTextField txt_categoria;
     private javax.swing.JTextField txt_dataatividade;
-    private javax.swing.JTextField txt_horainicio;
-    private javax.swing.JTextField txt_horatermino;
-    private javax.swing.JTextField txt_localatividade;
     private javax.swing.JTextField txt_nomeatividades;
     private javax.swing.JTextField txt_quantdias;
     // End of variables declaration//GEN-END:variables

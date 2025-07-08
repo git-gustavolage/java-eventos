@@ -3,7 +3,7 @@ package auth;
 import exceptions.AuthenticationException;
 import model.bean.User;
 import support.Hash;
-import usecases.CSFindUserByUsername;
+import usecases.CSFindUserByEmail;
 
 public class Auth {
 
@@ -14,21 +14,21 @@ public class Auth {
     }
 
     public static User login(User user) throws AuthenticationException {
-        Session.expire();
+        logout();
 
         if (user == null) {
             return null;
         }
 
-        String username = user.getUsername();
+        String email = user.getEmail();
         String password = user.getPassword();
 
-        if (!Auth.validate(username, password)) {
+        if (!Auth.validate(email, password)) {
             Auth.logout();
             throw new AuthenticationException("Credenciais incorretas!");
         }
 
-        User result = CSFindUserByUsername.execute(username);
+        User result = CSFindUserByEmail.execute(email);
 
         if (result == null) {
             Auth.logout();
@@ -45,7 +45,7 @@ public class Auth {
 
     public static void logout() {
         Auth.authenticatedUser = null;
-        Session.set(null);
+        Session.clear();
     }
 
     public static User user() {
@@ -60,12 +60,12 @@ public class Auth {
         return authenticatedUser == null;
     }
 
-    public static boolean validate(String username, String password) {
-        if (username == null || username.length() == 0) {
+    public static boolean validate(String email, String password) {
+        if (email == null || email.length() == 0) {
             return false;
         }
 
-        User user = CSFindUserByUsername.execute(username);
+        User user = CSFindUserByEmail.execute(email);
 
         if (user == null) {
             return false;
