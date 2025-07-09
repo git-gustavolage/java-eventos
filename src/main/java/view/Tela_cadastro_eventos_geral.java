@@ -5,14 +5,11 @@ import java.time.LocalDate;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import auth.Auth;
-import controllers.AuthController;
 import controllers.EventoController;
 import exceptions.AuthenticationException;
 import exceptions.DomainException;
 import exceptions.InvalidInputException;
 import model.bean.Evento;
-import model.bean.User;
 import model.vo.EventoFormato;
 
 public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
@@ -225,19 +222,15 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_nome.setText("Nome do evento:");
 
-        txt_nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nomeActionPerformed(evt);
-            }
+        txt_nome.addActionListener((java.awt.event.ActionEvent evt) -> {
+            txt_nomeActionPerformed(evt);
         });
 
         lbl_descricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_descricao.setText("Descrição do evento:");
 
-        txt_descricao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_descricaoActionPerformed(evt);
-            }
+        txt_descricao.addActionListener((java.awt.event.ActionEvent evt) -> {
+            txt_descricaoActionPerformed(evt);
         });
 
         lbl_formato.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -246,10 +239,8 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_categoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_categoria.setText("Categoria do evento:");
 
-        txt_categoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_categoriaActionPerformed(evt);
-            }
+        txt_categoria.addActionListener((java.awt.event.ActionEvent evt) -> {
+            txt_categoriaActionPerformed(evt);
         });
 
         lbl_data.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -258,10 +249,8 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_datainicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_datainicio.setText("Inicio do evento:");
 
-        txt_datainicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_datainicioActionPerformed(evt);
-            }
+        txt_datainicio.addActionListener((java.awt.event.ActionEvent evt) -> {
+            txt_datainicioActionPerformed(evt);
         });
 
         lbl_localizacao.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -273,29 +262,23 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_datafim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_datafim.setText("Fim do evento:");
 
-        txt_datafim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_datafimActionPerformed(evt);
-            }
+        txt_datafim.addActionListener((java.awt.event.ActionEvent evt) -> {
+            txt_datafimActionPerformed(evt);
         });
 
         lbl_local.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_local.setText("Local:");
 
-        txt_local.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_localActionPerformed(evt);
-            }
+        txt_local.addActionListener((java.awt.event.ActionEvent evt) -> {
+            txt_localActionPerformed(evt);
         });
 
         btn_salvar.setBackground(new java.awt.Color(0, 212, 146));
         btn_salvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_salvar.setForeground(new java.awt.Color(255, 255, 255));
         btn_salvar.setText("Salvar");
-        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_salvarActionPerformed(evt);
-            }
+        btn_salvar.addActionListener((java.awt.event.ActionEvent evt) -> {
+            btn_salvarActionPerformed(evt);
         });
 
         lbl_cidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -518,7 +501,7 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         // String cidade = txt_cidade.getText().trim();
         // String campus = txt_local.getText().trim();
         // String estado = cmb_estado.getSelectedItem().toString();
-        
+
         try {
             EventoFormato.valueOf(formato);
         } catch (IllegalArgumentException e) {
