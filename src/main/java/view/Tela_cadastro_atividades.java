@@ -129,7 +129,6 @@ public class Tela_cadastro_atividades extends javax.swing.JFrame {
         }
     }
 
-    
     private boolean validarHoras() {
     Component[] componentes = jPanel1.getComponents();
 
@@ -224,10 +223,6 @@ private void atualizarLocaisAtividade() {
     jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
 
-        
-        
-        
-        
         // logica para abrir a tela de cadastro
         lbl_organizadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_organizadores.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -681,7 +676,7 @@ private void atualizarLocaisAtividade() {
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void bnt_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_salvarActionPerformed
-      String nome = txt_nomeatividades.getText().trim();
+    String nome = txt_nomeatividades.getText().trim();
     String categoria = txt_categoria.getText().trim();
     String dataTexto = txt_dataatividade.getText().trim();
     String qtdDiasTexto = txt_quantdias.getText().trim();
