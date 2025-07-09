@@ -1,20 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
-import java.awt.Component;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JFrame;
+import java.time.LocalDate;
 
-/**
- *
- * @author Kassandra Oliveira
- */
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import auth.Auth;
+import controllers.AuthController;
+import controllers.EventoController;
+import exceptions.AuthenticationException;
+import exceptions.DomainException;
+import exceptions.InvalidInputException;
+import model.bean.Evento;
+import model.bean.User;
+import model.vo.EventoFormato;
+
 public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
+
+    private final EventoController controller = new EventoController();
 
     private boolean isDataValida(String dataStr) {
         if (dataStr == null || dataStr.isEmpty()) {
@@ -29,6 +32,19 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
             return true;
         } catch (java.text.ParseException e) {
             return false;
+        }
+    }
+
+    private LocalDate parseData(String dataStr) {
+        try {
+            return LocalDate.parse(dataStr);
+        } catch (Exception e) {
+            try {
+                String[] dataTratada = dataStr.split("/");
+                return LocalDate.of(Integer.parseInt(dataTratada[2]), Integer.parseInt(dataTratada[1]), Integer.parseInt(dataTratada[0]));
+            } catch (Exception ex) {
+                return null;
+            }
         }
     }
 
@@ -491,45 +507,66 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-        String nome = txt_nome.getText().trim();         // Nome do evento
-        String descricao = txt_descricao.getText().trim();    // Descrição do evento
-        String categoria = txt_categoria.getText().trim();    // Categoria
-        String dataInicio = txt_datainicio.getText().trim();   // Data de início
-        String dataFim = txt_datafim.getText().trim();      // Data de fim
-        String cidade = txt_cidade.getText().trim();       // Cidade
-        String campus = txt_local.getText().trim();       // Campus
-        String estado = cmb_estado.getSelectedItem().toString(); // Estado
-        String formato = cmb_formato.getSelectedItem().toString(); // Formato
+        String nome = txt_nome.getText().trim();
+        String descricao = txt_descricao.getText().trim();
+        String dataInicio = txt_datainicio.getText().trim();
+        String dataFim = txt_datafim.getText().trim();
+        String formato = cmb_formato.getSelectedItem().toString().toUpperCase();
 
-        // Verificação de campos obrigatórios
-        if (nome.isEmpty() || descricao.isEmpty() || categoria.isEmpty()
-                || dataInicio.isEmpty() || dataFim.isEmpty() || cidade.isEmpty() || campus.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios!", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
+        //TODO: adicionar posteriormente
+        // String categoria = txt_categoria.getText().trim();
+        // String cidade = txt_cidade.getText().trim();
+        // String campus = txt_local.getText().trim();
+        // String estado = cmb_estado.getSelectedItem().toString();
+        
+        try {
+            EventoFormato.valueOf(formato);
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, "Formato inválido!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
-        // Validação de datas
         if (!isDataValida(dataInicio) || !isDataValida(dataFim)) {
-            JOptionPane.showMessageDialog(this, "Datas inválidas! Use o formato dd/MM/yyyy.", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Datas inválidas! Use o formato dd/mm/aaaa.", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Mensagem de confirmação com resumo dos dados
-        JOptionPane.showMessageDialog(this,
-                "Evento salvo com sucesso!\n\n"
-                + "Nome: " + nome + "\n"
-                + "Descrição: " + descricao + "\n"
-                + "Categoria: " + categoria + "\n"
-                + "Formato: " + formato + "\n"
-                + "Data de início: " + dataInicio + "\n"
-                + "Data de fim: " + dataFim + "\n"
-                + "Local: " + campus + " - " + cidade + ", " + estado + "\n",
-                "Sucesso", JOptionPane.INFORMATION_MESSAGE
-        );
+        if (parseData(dataFim) == null || parseData(dataInicio) == null) {
+            JOptionPane.showMessageDialog(this, "Datas inválidas! Use o formato dd/mm/aaaa.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-        dispose(); // fecha a tela de login 
-        Tela_cadastro_organizadores cadastro = new Tela_cadastro_organizadores();
-        cadastro.setVisible(true);
+        try {
+            Evento evento = new Evento();
+            evento.setTitulo(nome);
+            evento.setDescricao(descricao);
+            evento.setFormato(EventoFormato.valueOf(formato));
+            evento.setDataInicio(parseData(dataFim));
+            evento.setDataTermino(parseData(dataFim));
+
+            controller.store(evento);
+
+            JOptionPane.showMessageDialog(this,
+                    "Evento salvo com sucesso!\n\n"
+                    + "Nome: " + nome + "\n"
+                    + "Descrição: " + descricao + "\n"
+                    // + "Categoria: " + categoria + "\n"
+                    + "Formato: " + formato + "\n"
+                    + "Data de início: " + dataInicio + "\n"
+                    + "Data de fim: " + dataFim + "\n",
+                    // + "Local: " + campus + " - " + cidade + ", " + estado + "\n",
+                    "Sucesso", JOptionPane.INFORMATION_MESSAGE
+            );
+
+            this.dispose();
+
+            Tela_cadastro_atividades next = new Tela_cadastro_atividades();
+            next.setVisible(true);
+
+        } catch (InvalidInputException e) {
+            JOptionPane.showMessageDialog(this, "Entrada inválida: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (DomainException | AuthenticationException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar o evento: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_salvarActionPerformed
 
     private void txt_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeActionPerformed
