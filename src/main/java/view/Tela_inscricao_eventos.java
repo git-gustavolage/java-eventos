@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 /**
  *
@@ -16,6 +19,18 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
      */
     public Tela_inscricao_eventos() {
         initComponents();
+        
+        String url = "jdbc:mysql://localhost:3306/system_event";
+        String usuario = "root";
+        String senha = "12345";
+
+        try {
+            Connection conexao = DriverManager.getConnection(url, usuario, senha);
+            System.out.println("Conexão bem-sucedida!");
+            conexao.close();
+        } catch (SQLException e) {
+            System.out.println("Erro na conexão: " + e.getMessage());
+        }
         
          //faz com q abra em tela cheia
         setExtendedState(JFrame.MAXIMIZED_BOTH);
