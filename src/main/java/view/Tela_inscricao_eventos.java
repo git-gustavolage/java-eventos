@@ -95,8 +95,11 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
         lbl_inscricaoevento = new javax.swing.JLabel();
         lbl_componente02 = new javax.swing.JLabel();
         lbl_eventos = new javax.swing.JLabel();
+        lbl_descricao = new javax.swing.JLabel();
+        lbl_descricaoevento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
         pnl_topo.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -183,12 +186,16 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbl_datainicio.setText("DATA INICIO");
+        lbl_datainicio.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_datainicio.setText("data inicio");
 
-        lbl_titulo.setText("TITULO");
+        lbl_titulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_titulo.setText("Titulo Evento");
 
+        lbl_datafinal.setForeground(new java.awt.Color(102, 102, 102));
         lbl_datafinal.setText("data final");
 
+        lbl_tipo.setForeground(new java.awt.Color(102, 102, 102));
         lbl_tipo.setText("tipo");
 
         pnl_menupesquisa.setBackground(new java.awt.Color(255, 255, 255));
@@ -234,21 +241,29 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        lbl_descricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_descricao.setText("descrição");
+
+        lbl_descricaoevento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_descricaoevento.setText("Descrição do Evento");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_menupesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lbl_datainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lbl_datafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(770, Short.MAX_VALUE))
-            .addComponent(pnl_menupesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_descricaoevento))
+                .addContainerGap(697, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +277,11 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                     .addComponent(lbl_datafinal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_tipo)
-                .addContainerGap(524, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lbl_descricaoevento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(404, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -331,6 +350,8 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_componente1;
     private javax.swing.JLabel lbl_datafinal;
     private javax.swing.JLabel lbl_datainicio;
+    private javax.swing.JLabel lbl_descricao;
+    private javax.swing.JLabel lbl_descricaoevento;
     private javax.swing.JLabel lbl_descricaosistema;
     private javax.swing.JLabel lbl_eventos;
     private javax.swing.JLabel lbl_inicio;
