@@ -15,6 +15,9 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
      */
     public Tela_inscricao_eventos() {
         initComponents();
+        
+        String texto = "<html><font color = 'WHITE'>Este sistema tem como objetivo gerenciar os eventos organizados<br>pelo Instituto Federal de Educação, Ciência e Tecnologia de<br>Rondônia - Campus Calama (IFRO), oferecendo ferramentas para<br>cadastro, divulgação, inscrições, controle de participante e<br>emissão de certificados</html>";
+        lbl_descricaosistema.setText(texto);
     }
 
     /**
