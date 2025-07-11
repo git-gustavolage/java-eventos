@@ -7,6 +7,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.sql.Connection;
@@ -30,13 +31,13 @@ import javax.swing.JScrollPane;
  * @author Kassandra Oliveira
  */
 public class Tela_inscrição_atividades extends javax.swing.JFrame {
-
+    
     private void carregarAtividadesDoEvento(long idEvento) {
-       String url = "jdbc:mysql://localhost:3306/system_event";
-      String usuario = "root";
-      String senha = "12345";
+    String url = "jdbc:mysql://localhost:3306/system_event";
+    String usuario = "root";
+    String senha = "12345";
 
-      String sql = "SELECT a.data, a.titulo, a.hora_inicio, a.hora_termino, amb.nome AS local " +
+    String sql = "SELECT a.data, a.titulo, a.hora_inicio, a.hora_termino, amb.nome AS local " +
                  "FROM atividades a " +
                  "JOIN ambientes amb ON a.id_ambiente = amb.id " +
                  "WHERE a.id_evento = ? " +
@@ -53,7 +54,6 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
 
         LocalDate dataAtual = null;
         int contadorDias = 1;
-
         JPanel painelDia = null;
 
         while (rs.next()) {
@@ -63,33 +63,34 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
             String horaTermino = rs.getString("hora_termino");
             String local = rs.getString("local");
 
-            
             if (!data.equals(dataAtual)) {
                 dataAtual = data;
 
-                // Cria o cabeçalho do dia
+                // Painel do título do dia (alinhado à esquerda)
+                JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+                headerPanel.setBackground(Color.WHITE);
+
                 JLabel lblDia = new JLabel("Dia " + contadorDias + " - " + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 lblDia.setFont(new Font("SansSerif", Font.BOLD, 16));
                 lblDia.setForeground(new Color(33, 64, 128));
-                lblDia.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
+                headerPanel.add(lblDia);
 
-                // Cria o painel de atividades daquele dia
+                // Painel de atividades
                 painelDia = new JPanel();
                 painelDia.setLayout(new BoxLayout(painelDia, BoxLayout.Y_AXIS));
                 painelDia.setBackground(Color.WHITE);
                 painelDia.setBorder(BorderFactory.createCompoundBorder(
-                    BorderFactory.createLineBorder(new Color(200, 200, 200)),
-                    BorderFactory.createEmptyBorder(10, 15, 10, 15)
+                        BorderFactory.createLineBorder(new Color(200, 200, 200)),
+                        BorderFactory.createEmptyBorder(10, 15, 10, 15)
                 ));
 
-                
-                pnl_atividades.add(lblDia);
+                pnl_atividades.add(headerPanel);
                 pnl_atividades.add(painelDia);
 
                 contadorDias++;
             }
 
-           
+            // Painel da atividade
             JPanel atividadePanel = new JPanel(new BorderLayout());
             atividadePanel.setBackground(new Color(245, 245, 245));
             atividadePanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
@@ -293,7 +294,7 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         pnl_atividades.setLayout(pnl_atividadesLayout);
         pnl_atividadesLayout.setHorizontalGroup(
             pnl_atividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGap(0, 593, Short.MAX_VALUE)
         );
         pnl_atividadesLayout.setVerticalGroup(
             pnl_atividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
