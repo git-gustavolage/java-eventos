@@ -20,6 +20,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -371,11 +372,15 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         pnl_descricaoLayout.setHorizontalGroup(
             pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_descricaoLayout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
-                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_descricaoLayout.createSequentialGroup()
+                        .addContainerGap(238, Short.MAX_VALUE)
+                        .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE))
+                    .addGroup(pnl_descricaoLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(lbl_titulosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_linkcronograma)
                     .addComponent(lbl_linkevento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -388,8 +393,8 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
             pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_descricaoLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_links)
                     .addComponent(lbl_titulosistema))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -403,7 +408,7 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
                     .addGroup(pnl_descricaoLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pnl_topo.setBackground(new java.awt.Color(255, 255, 255));
@@ -464,7 +469,45 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_deficienciaActionPerformed
 
     private void btn_inscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inscreverActionPerformed
-        // TODO add your handling code here:
+       
+    String nomeEvento = lbl_titulo.getText();
+    String deficiencia = txt_deficiencia.getText();
+    boolean possuiDeficiencia = chk_deficiencia.isSelected();
+
+    // Verifica se o nome do evento está preenchido
+    if (nomeEvento != null && !nomeEvento.isEmpty()) {
+
+    // Se a checkbox está marcada, o campo deve estar preenchido
+    if (possuiDeficiencia && (deficiencia == null || deficiencia.trim().isEmpty())) {
+        JOptionPane.showMessageDialog(null,
+            "Por favor, informe qual é a deficiência.",
+            "Campo Obrigatório",
+            JOptionPane.WARNING_MESSAGE);
+        return; // para aqui, não continua com a inscrição
+    }
+
+    // Monta a mensagem com ou sem a deficiência
+    String mensagem;
+    if (possuiDeficiencia) {
+        mensagem = String.format(
+            "Você se inscreveu no evento: %s\nDeficiência informada: %s",
+            nomeEvento, deficiencia
+        );
+    } else {
+        mensagem = String.format(
+            "Você se inscreveu no evento: %s",
+            nomeEvento
+        );
+    }
+
+    JOptionPane.showMessageDialog(null, mensagem, "Inscrição Realizada", JOptionPane.INFORMATION_MESSAGE);
+
+    } else {
+    JOptionPane.showMessageDialog(null,
+        "Nenhum evento selecionado!",
+        "Erro",
+        JOptionPane.ERROR_MESSAGE);
+    }   
     }//GEN-LAST:event_btn_inscreverActionPerformed
 
     /**
