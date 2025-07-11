@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -177,10 +178,8 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         lbl_links = new javax.swing.JLabel();
         lbl_linkevento = new javax.swing.JLabel();
         lbl_linkatividades = new javax.swing.JLabel();
-        pnl_topo = new javax.swing.JPanel();
-        lbl_topoevento = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btn_inscricao = new javax.swing.JButton();
+        btn_inscrever = new javax.swing.JButton();
         pnl_menudescricao = new javax.swing.JPanel();
         lbl_informainicio = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -190,6 +189,12 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         lbl_titulo = new javax.swing.JLabel();
         scr_atividades = new javax.swing.JScrollPane();
         pnl_atividades = new javax.swing.JPanel();
+        chk_deficiencia = new javax.swing.JCheckBox();
+        txt_deficiencia = new javax.swing.JTextField();
+        lbl_possuideficiencia = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        pnl_topo = new javax.swing.JPanel();
+        lbl_topoevento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -216,75 +221,20 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         lbl_linkatividades.setForeground(new java.awt.Color(255, 255, 255));
         lbl_linkatividades.setText("• Atividades");
 
-        javax.swing.GroupLayout pnl_descricaoLayout = new javax.swing.GroupLayout(pnl_descricao);
-        pnl_descricao.setLayout(pnl_descricaoLayout);
-        pnl_descricaoLayout.setHorizontalGroup(
-            pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_descricaoLayout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
-                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
-                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_linkcronograma)
-                    .addComponent(lbl_linkevento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_links)
-                    .addComponent(lbl_linkatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(275, Short.MAX_VALUE))
-        );
-        pnl_descricaoLayout.setVerticalGroup(
-            pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_descricaoLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_links)
-                    .addComponent(lbl_titulosistema))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_descricaoLayout.createSequentialGroup()
-                        .addComponent(lbl_linkevento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_linkatividades)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_linkcronograma))
-                    .addGroup(pnl_descricaoLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-
-        pnl_topo.setBackground(new java.awt.Color(255, 255, 255));
-
-        lbl_topoevento.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_topoevento.setText("EVENTOS");
-
-        javax.swing.GroupLayout pnl_topoLayout = new javax.swing.GroupLayout(pnl_topo);
-        pnl_topo.setLayout(pnl_topoLayout);
-        pnl_topoLayout.setHorizontalGroup(
-            pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_topoLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(lbl_topoevento)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnl_topoLayout.setVerticalGroup(
-            pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_topoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_topoevento)
-                .addContainerGap())
-        );
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btn_inscricao.setBackground(new java.awt.Color(0, 212, 146));
-        btn_inscricao.setForeground(new java.awt.Color(255, 255, 255));
-        btn_inscricao.setText("Realizar Inscrição");
-        btn_inscricao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_inscrever.setBackground(new java.awt.Color(0, 212, 146));
+        btn_inscrever.setForeground(new java.awt.Color(255, 255, 255));
+        btn_inscrever.setText("Realizar Inscrição");
+        btn_inscrever.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_inscrever.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_inscreverActionPerformed(evt);
+            }
+        });
 
         pnl_menudescricao.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_menudescricao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnl_menudescricao.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         lbl_informainicio.setText("Inicio");
 
@@ -329,20 +279,49 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         lbl_titulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_titulo.setText("titulo");
 
+        scr_atividades.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scr_atividades.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         pnl_atividades.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout pnl_atividadesLayout = new javax.swing.GroupLayout(pnl_atividades);
         pnl_atividades.setLayout(pnl_atividadesLayout);
         pnl_atividadesLayout.setHorizontalGroup(
             pnl_atividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+            .addGap(0, 658, Short.MAX_VALUE)
         );
         pnl_atividadesLayout.setVerticalGroup(
             pnl_atividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 125, Short.MAX_VALUE)
         );
 
         scr_atividades.setViewportView(pnl_atividades);
+
+        chk_deficiencia.setBackground(new java.awt.Color(255, 255, 255));
+        chk_deficiencia.setText("Sim");
+        chk_deficiencia.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chk_deficienciaItemStateChanged(evt);
+            }
+        });
+        chk_deficiencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chk_deficienciaActionPerformed(evt);
+            }
+        });
+
+        txt_deficiencia.setEnabled(false);
+        txt_deficiencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_deficienciaActionPerformed(evt);
+            }
+        });
+
+        lbl_possuideficiencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_possuideficiencia.setText("Possuo alguma deficiência e necessito de atendimento especial?");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Especifique qual:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -351,26 +330,102 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
             .addComponent(pnl_menudescricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_inscricao, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_inscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbl_possuideficiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chk_deficiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_deficiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(pnl_menudescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(lbl_titulo)
-                .addGap(33, 33, 33)
-                .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
-                .addComponent(btn_inscricao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_possuideficiencia)
+                    .addComponent(chk_deficiencia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_deficiencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addComponent(btn_inscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
+        );
+
+        javax.swing.GroupLayout pnl_descricaoLayout = new javax.swing.GroupLayout(pnl_descricao);
+        pnl_descricao.setLayout(pnl_descricaoLayout);
+        pnl_descricaoLayout.setHorizontalGroup(
+            pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_descricaoLayout.createSequentialGroup()
+                .addContainerGap(238, Short.MAX_VALUE)
+                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_linkcronograma)
+                    .addComponent(lbl_linkevento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_links)
+                    .addComponent(lbl_linkatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(275, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnl_descricaoLayout.setVerticalGroup(
+            pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_descricaoLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_links)
+                    .addComponent(lbl_titulosistema))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_descricaoLayout.createSequentialGroup()
+                        .addComponent(lbl_linkevento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_linkatividades)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_linkcronograma))
+                    .addGroup(pnl_descricaoLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        pnl_topo.setBackground(new java.awt.Color(255, 255, 255));
+
+        lbl_topoevento.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lbl_topoevento.setText("EVENTOS");
+
+        javax.swing.GroupLayout pnl_topoLayout = new javax.swing.GroupLayout(pnl_topo);
+        pnl_topo.setLayout(pnl_topoLayout);
+        pnl_topoLayout.setHorizontalGroup(
+            pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_topoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lbl_topoevento)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_topoLayout.setVerticalGroup(
+            pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_topoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_topoevento)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -379,20 +434,38 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnl_topo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(pnl_topo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnl_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void chk_deficienciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chk_deficienciaItemStateChanged
+      boolean ativado = (evt.getStateChange() == ItemEvent.SELECTED);
+    txt_deficiencia.setEnabled(ativado);
+
+    if (!ativado) {
+        txt_deficiencia.setText(""); 
+    }
+    }//GEN-LAST:event_chk_deficienciaItemStateChanged
+
+    private void chk_deficienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chk_deficienciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chk_deficienciaActionPerformed
+
+    private void txt_deficienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_deficienciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_deficienciaActionPerformed
+
+    private void btn_inscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inscreverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_inscreverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,7 +503,9 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_inscricao;
+    private javax.swing.JButton btn_inscrever;
+    private javax.swing.JCheckBox chk_deficiencia;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JPanel jPanel1;
@@ -442,6 +517,7 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_linkcronograma;
     private javax.swing.JLabel lbl_linkevento;
     private javax.swing.JLabel lbl_links;
+    private javax.swing.JLabel lbl_possuideficiencia;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_titulosistema;
     private javax.swing.JLabel lbl_topoevento;
@@ -450,5 +526,6 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_menudescricao;
     private javax.swing.JPanel pnl_topo;
     private javax.swing.JScrollPane scr_atividades;
+    private javax.swing.JTextField txt_deficiencia;
     // End of variables declaration//GEN-END:variables
 }
