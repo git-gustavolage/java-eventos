@@ -22,6 +22,10 @@ import javax.swing.JPanel;
  * @author Kassandra Oliveira
  */
 public class Tela_inscricao_eventos extends javax.swing.JFrame {
+    
+        private int contadorEstudante = 0;
+        private int contadorServidor = 0;
+        private int contadorPe = 0;
 
      private void carregarAtividadesDoEvento(long idEvento) {
     String url = "jdbc:mysql://localhost:3306/system_event";
@@ -67,7 +71,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
         e.printStackTrace();
     }
 }
-    
+     
     public Tela_inscricao_eventos() {
         initComponents();
         
@@ -157,6 +161,15 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
         lbl_descricaoevento = new javax.swing.JLabel();
         scr_atividades = new javax.swing.JScrollPane();
         pnl_atividades = new javax.swing.JPanel();
+        btn_menosestudante = new javax.swing.JButton();
+        btn_maisestudante = new javax.swing.JButton();
+        lbl_estudante = new javax.swing.JLabel();
+        btn_maisservidor = new javax.swing.JButton();
+        btn_menosservidor = new javax.swing.JButton();
+        lbl_servidor = new javax.swing.JLabel();
+        btn_maispe = new javax.swing.JButton();
+        btn_menospe = new javax.swing.JButton();
+        lbl_pe = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -213,7 +226,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
             .addGroup(pnl_descricaoLayout.createSequentialGroup()
                 .addGap(388, 388, 388)
                 .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 416, Short.MAX_VALUE)
                     .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(119, 119, 119)
                 .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,6 +256,8 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                         .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -320,24 +335,98 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
 
         scr_atividades.setViewportView(pnl_atividades);
 
+        btn_menosestudante.setText("-");
+        btn_menosestudante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menosestudanteActionPerformed(evt);
+            }
+        });
+
+        btn_maisestudante.setText("+");
+        btn_maisestudante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_maisestudanteActionPerformed(evt);
+            }
+        });
+
+        lbl_estudante.setText("0");
+        lbl_estudante.setToolTipText("");
+
+        btn_maisservidor.setText("+");
+        btn_maisservidor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_maisservidorActionPerformed(evt);
+            }
+        });
+
+        btn_menosservidor.setText("-");
+        btn_menosservidor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menosservidorActionPerformed(evt);
+            }
+        });
+
+        lbl_servidor.setText("0");
+
+        btn_maispe.setText("+");
+        btn_maispe.setToolTipText("");
+        btn_maispe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_maispeActionPerformed(evt);
+            }
+        });
+
+        btn_menospe.setText("-");
+        btn_menospe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menospeActionPerformed(evt);
+            }
+        });
+
+        lbl_pe.setText("0");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_menupesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbl_datainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbl_datafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbl_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_descricaoevento)
-                    .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(572, Short.MAX_VALUE))
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbl_datainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbl_datafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_descricaoevento)
+                            .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(574, 574, 574)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_maisestudante)
+                                .addGap(35, 35, 35)
+                                .addComponent(lbl_estudante, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_menosestudante))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_maisservidor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl_servidor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_menosservidor)
+                                .addGap(24, 24, 24))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_maispe)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_pe, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_menospe)))))
+                .addGap(443, 443, 443))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,8 +445,23 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_maisestudante)
+                    .addComponent(lbl_estudante)
+                    .addComponent(btn_menosestudante))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_menosservidor)
+                    .addComponent(lbl_servidor)
+                    .addComponent(btn_maisservidor))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_maispe)
+                    .addComponent(lbl_pe)
+                    .addComponent(btn_menospe))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -383,6 +487,43 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_maisestudanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_maisestudanteActionPerformed
+      contadorEstudante++;
+      lbl_estudante.setText(String.valueOf(contadorEstudante));
+    }//GEN-LAST:event_btn_maisestudanteActionPerformed
+
+    private void btn_menosestudanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menosestudanteActionPerformed
+        if (contadorEstudante > 0) {
+            contadorEstudante--;
+            lbl_estudante.setText(String.valueOf(contadorEstudante));
+}
+    }//GEN-LAST:event_btn_menosestudanteActionPerformed
+
+    private void btn_maisservidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_maisservidorActionPerformed
+        contadorServidor++;
+        lbl_servidor.setText(String.valueOf(contadorServidor));
+    }//GEN-LAST:event_btn_maisservidorActionPerformed
+
+    private void btn_menosservidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menosservidorActionPerformed
+        if (contadorServidor  > 0) {
+            contadorServidor--;
+            lbl_servidor.setText(String.valueOf(contadorServidor));
+}
+    }//GEN-LAST:event_btn_menosservidorActionPerformed
+
+    private void btn_maispeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_maispeActionPerformed
+        contadorPe++;
+        lbl_pe.setText(String.valueOf(contadorPe));
+
+    }//GEN-LAST:event_btn_maispeActionPerformed
+
+    private void btn_menospeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menospeActionPerformed
+       if (contadorPe  > 0) {
+            contadorPe--;
+            lbl_pe.setText(String.valueOf(contadorPe));
+}
+    }//GEN-LAST:event_btn_menospeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,6 +561,12 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_maisestudante;
+    private javax.swing.JButton btn_maispe;
+    private javax.swing.JButton btn_maisservidor;
+    private javax.swing.JButton btn_menosestudante;
+    private javax.swing.JButton btn_menospe;
+    private javax.swing.JButton btn_menosservidor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_componente02;
@@ -429,6 +576,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_descricao;
     private javax.swing.JLabel lbl_descricaoevento;
     private javax.swing.JLabel lbl_descricaosistema;
+    private javax.swing.JLabel lbl_estudante;
     private javax.swing.JLabel lbl_eventos;
     private javax.swing.JLabel lbl_inicio;
     private javax.swing.JLabel lbl_inscricaoevento;
@@ -436,6 +584,8 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_linkcronograma;
     private javax.swing.JLabel lbl_linkevento;
     private javax.swing.JLabel lbl_links;
+    private javax.swing.JLabel lbl_pe;
+    private javax.swing.JLabel lbl_servidor;
     private javax.swing.JLabel lbl_tipo;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_titulosistema;
