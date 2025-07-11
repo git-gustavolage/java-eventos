@@ -78,7 +78,7 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
 
                 JLabel lblDia = new JLabel("Dia " + contadorDias + " - " + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 lblDia.setFont(new Font("SansSerif", Font.BOLD, 16));
-                lblDia.setForeground(new Color(33, 64, 128));
+                lblDia.setForeground(Color.BLACK);
                 headerPanel.add(lblDia);
 
                 // Painel das atividades daquele dia
