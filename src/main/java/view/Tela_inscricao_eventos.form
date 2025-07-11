@@ -223,18 +223,20 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lbl_datainicio" min="-2" pref="85" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="lbl_datafinal" min="-2" pref="85" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="lbl_titulo" alignment="0" min="-2" pref="360" max="-2" attributes="0"/>
                               <Component id="lbl_AtvEventos" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_descricao" alignment="0" min="-2" pref="550" max="-2" attributes="0"/>
-                              <Component id="lbl_descricaoevento" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="scr_atividades" alignment="0" min="-2" pref="564" max="-2" attributes="0"/>
                               <Component id="lbl_Categoria" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_tipo" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                              <Component id="lbl_descricaoevento" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="lbl_descricao" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lbl_datainicio" min="-2" pref="85" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lbl_datafinal" min="-2" pref="85" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
