@@ -4,6 +4,12 @@
  */
 package view;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Kassandra Oliveira
@@ -15,6 +21,39 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
      */
     public Tela_inscrição_atividades() {
         initComponents();
+        
+        String url = "jdbc:mysql://localhost:3306/system_event";
+        String usuario = "root";
+        String senha = "12345";
+
+        try {
+            Connection conexao = DriverManager.getConnection(url, usuario, senha);
+            System.out.println("Conexão bem-sucedida!");
+            conexao.close();
+        } catch (SQLException e) {
+            System.out.println("Erro na conexão: " + e.getMessage());
+        }
+        
+        
+         String sql = "SELECT titulo FROM eventos WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(url, usuario, senha);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            //aqui quando o gustavo juntar tudo tem q fazer de forma mulodar pra escolher qual evento é qual, por enquanto vamos passar o id de forma manual
+            //stmt.setLong(1, idEvento);// define o ID do evento
+            stmt.setLong(1, 1); 
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                lbl_titulo.setText(rs.getString("titulo"));
+            } else {
+                System.out.println("Evento não encontrado.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
           String texto = "<html><font color = 'WHITE'>Este sistema tem como objetivo gerenciar os eventos organizados<br>pelo Instituto Federal de Educação, Ciência e Tecnologia de<br>Rondônia - Campus Calama (IFRO), oferecendo ferramentas para<br>cadastro, divulgação, inscrições, controle de participante e<br>emissão de certificados</html>";
         lbl_descricaosistema.setText(texto);
@@ -31,6 +70,17 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         lbl_links = new javax.swing.JLabel();
         lbl_linkevento = new javax.swing.JLabel();
         lbl_linkatividades = new javax.swing.JLabel();
+        pnl_topo = new javax.swing.JPanel();
+        lbl_topoevento = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btn_inscricao = new javax.swing.JButton();
+        pnl_menudescricao = new javax.swing.JPanel();
+        lbl_informainicio = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        lbl_informainscricao = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lbl_informaatividades = new javax.swing.JLabel();
+        lbl_titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,16 +145,121 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
+        pnl_topo.setBackground(new java.awt.Color(255, 255, 255));
+
+        lbl_topoevento.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lbl_topoevento.setText("EVENTOS");
+
+        javax.swing.GroupLayout pnl_topoLayout = new javax.swing.GroupLayout(pnl_topo);
+        pnl_topo.setLayout(pnl_topoLayout);
+        pnl_topoLayout.setHorizontalGroup(
+            pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_topoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lbl_topoevento)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_topoLayout.setVerticalGroup(
+            pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_topoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_topoevento)
+                .addContainerGap())
+        );
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        btn_inscricao.setBackground(new java.awt.Color(0, 212, 146));
+        btn_inscricao.setForeground(new java.awt.Color(255, 255, 255));
+        btn_inscricao.setText("Realizar Inscrição");
+        btn_inscricao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        pnl_menudescricao.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_menudescricao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lbl_informainicio.setText("Inicio");
+
+        jLabel10.setText(">");
+
+        lbl_informainscricao.setText("Inscrição");
+
+        jLabel11.setText(">");
+
+        lbl_informaatividades.setText("Atividades");
+
+        javax.swing.GroupLayout pnl_menudescricaoLayout = new javax.swing.GroupLayout(pnl_menudescricao);
+        pnl_menudescricao.setLayout(pnl_menudescricaoLayout);
+        pnl_menudescricaoLayout.setHorizontalGroup(
+            pnl_menudescricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_menudescricaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_informainicio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_informainscricao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_informaatividades)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_menudescricaoLayout.setVerticalGroup(
+            pnl_menudescricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_menudescricaoLayout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addGroup(pnl_menudescricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_informainicio)
+                    .addComponent(jLabel10)
+                    .addComponent(lbl_informainscricao)
+                    .addComponent(jLabel11)
+                    .addComponent(lbl_informaatividades))
+                .addContainerGap())
+        );
+
+        lbl_titulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_titulo.setText("titulo");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_menudescricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_inscricao, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(pnl_menudescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_titulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
+                .addComponent(btn_inscricao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnl_topo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 535, Short.MAX_VALUE)
+                .addComponent(pnl_topo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -147,12 +302,23 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_inscricao;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_descricaosistema;
+    private javax.swing.JLabel lbl_informaatividades;
+    private javax.swing.JLabel lbl_informainicio;
+    private javax.swing.JLabel lbl_informainscricao;
     private javax.swing.JLabel lbl_linkatividades;
     private javax.swing.JLabel lbl_linkcronograma;
     private javax.swing.JLabel lbl_linkevento;
     private javax.swing.JLabel lbl_links;
+    private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_titulosistema;
+    private javax.swing.JLabel lbl_topoevento;
     private javax.swing.JPanel pnl_descricao;
+    private javax.swing.JPanel pnl_menudescricao;
+    private javax.swing.JPanel pnl_topo;
     // End of variables declaration//GEN-END:variables
 }
