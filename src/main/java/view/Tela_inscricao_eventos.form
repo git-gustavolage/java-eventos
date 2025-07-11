@@ -132,7 +132,7 @@
                           <Component id="lbl_descricaosistema" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="118" max="32767" attributes="0"/>
+                  <EmptySpace pref="130" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -334,7 +334,7 @@
                       <Component id="btn_maispe" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_inscrever" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="13" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

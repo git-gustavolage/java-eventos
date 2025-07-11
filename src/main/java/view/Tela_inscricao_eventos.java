@@ -262,7 +262,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                     .addGroup(pnl_descricaoLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -535,7 +535,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                     .addComponent(lbl_pe)
                     .addComponent(btn_maispe)
                     .addComponent(btn_inscrever))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
