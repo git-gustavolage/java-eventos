@@ -6,6 +6,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -19,6 +20,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -167,7 +170,7 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
             System.out.println("Conexão bem-sucedida!");
             conexao.close();
         } catch (SQLException e) {
-            System.out.println("Erro na conexão: " + e.getMessage());
+            System.out.println("Erro na conexao: " + e.getMessage());
         }
         
         
@@ -504,37 +507,60 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
     // Verifica se o nome do evento está preenchido
     if (nomeEvento != null && !nomeEvento.isEmpty()) {
 
-    // Se a checkbox está marcada, o campo deve estar preenchido
-    if (possuiDeficiencia && (deficiencia == null || deficiencia.trim().isEmpty())) {
-        JOptionPane.showMessageDialog(null,
-            "Por favor, informe qual é a deficiência.",
-            "Campo Obrigatório",
-            JOptionPane.WARNING_MESSAGE);
-        return; // para aqui, não continua com a inscrição
+        if (possuiDeficiencia && (deficiencia == null || deficiencia.trim().isEmpty())) {
+            JOptionPane.showMessageDialog(null,
+                "Por favor, informe qual é a deficiência.",
+                "Campo Obrigatório",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Coletar atividades selecionadas
+        List<String> atividadesSelecionadas = new ArrayList<>();
+
+     for (Component comp : pnl_atividades.getComponents()) {
+        // Verifica se é um painel do dia
+        if (comp instanceof JPanel diaPanel) {
+            for (Component atividadeComp : diaPanel.getComponents()) {
+                if (atividadeComp instanceof JPanel atividadePanel) {
+                    Boolean selecionado = (Boolean) atividadePanel.getClientProperty("selecionado");
+                    if (Boolean.TRUE.equals(selecionado)) {
+                        // Pega o título da atividade (assumindo que está em BorderLayout.WEST)
+                        Component west = ((BorderLayout) atividadePanel.getLayout()).getLayoutComponent(BorderLayout.WEST);
+                        if (west instanceof JLabel lblTitulo) {
+                            atividadesSelecionadas.add(lblTitulo.getText());
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    // Monta a mensagem com ou sem a deficiência
-    String mensagem;
+    // Montar a mensagem
+    StringBuilder mensagem = new StringBuilder();
+    mensagem.append("Você se inscreveu no evento: ").append(nomeEvento);
+
     if (possuiDeficiencia) {
-        mensagem = String.format(
-            "Você se inscreveu no evento: %s\nDeficiência informada: %s",
-            nomeEvento, deficiencia
-        );
-    } else {
-        mensagem = String.format(
-            "Você se inscreveu no evento: %s",
-            nomeEvento
-        );
+        mensagem.append("\nDeficiência informada: ").append(deficiencia);
     }
 
-    JOptionPane.showMessageDialog(null, mensagem, "Inscrição Realizada", JOptionPane.INFORMATION_MESSAGE);
+    if (!atividadesSelecionadas.isEmpty()) {
+        mensagem.append("\n\nAtividades selecionadas:");
+        for (String atividade : atividadesSelecionadas) {
+            mensagem.append("\n• ").append(atividade);
+        }
+    } else {
+        mensagem.append("\n\nNenhuma atividade foi selecionada.");
+    }
+
+    JOptionPane.showMessageDialog(null, mensagem.toString(), "Inscrição Realizada", JOptionPane.INFORMATION_MESSAGE);
 
     } else {
     JOptionPane.showMessageDialog(null,
         "Nenhum evento selecionado!",
         "Erro",
         JOptionPane.ERROR_MESSAGE);
-    }   
+    }
     }//GEN-LAST:event_btn_inscreverActionPerformed
 
     /**
