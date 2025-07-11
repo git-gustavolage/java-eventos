@@ -146,33 +146,38 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
         lbl_descricaosistema = new javax.swing.JLabel();
         lbl_titulosistema = new javax.swing.JLabel();
         lbl_links = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        btn_inscrever = new javax.swing.JButton();
+        btn_menosservidor = new javax.swing.JButton();
+        lbl_descricao = new javax.swing.JLabel();
+        lbl_servidor = new javax.swing.JLabel();
         lbl_datainicio = new javax.swing.JLabel();
+        lbl_descricaoevento = new javax.swing.JLabel();
+        btn_maispe = new javax.swing.JButton();
         lbl_titulo = new javax.swing.JLabel();
+        scr_atividades = new javax.swing.JScrollPane();
+        pnl_atividades = new javax.swing.JPanel();
         lbl_datafinal = new javax.swing.JLabel();
         lbl_tipo = new javax.swing.JLabel();
+        btn_menosestudante = new javax.swing.JButton();
+        btn_menospe = new javax.swing.JButton();
+        lbl_pe = new javax.swing.JLabel();
+        lbl_Categoria = new javax.swing.JLabel();
+        lbl_ESTUDANTE = new javax.swing.JLabel();
+        btn_maisestudante = new javax.swing.JButton();
+        lbl_SERVIDOR = new javax.swing.JLabel();
+        lbl_estudante = new javax.swing.JLabel();
+        lbl_PE = new javax.swing.JLabel();
+        btn_maisservidor = new javax.swing.JButton();
+        lbl_AtvEventos = new javax.swing.JLabel();
         pnl_menupesquisa = new javax.swing.JPanel();
         lbl_inicio = new javax.swing.JLabel();
         lbl_componente1 = new javax.swing.JLabel();
         lbl_inscricaoevento = new javax.swing.JLabel();
         lbl_componente02 = new javax.swing.JLabel();
         lbl_eventos = new javax.swing.JLabel();
-        lbl_descricao = new javax.swing.JLabel();
-        lbl_descricaoevento = new javax.swing.JLabel();
-        scr_atividades = new javax.swing.JScrollPane();
-        pnl_atividades = new javax.swing.JPanel();
-        btn_menosestudante = new javax.swing.JButton();
-        btn_maisestudante = new javax.swing.JButton();
-        lbl_estudante = new javax.swing.JLabel();
-        btn_maisservidor = new javax.swing.JButton();
-        btn_menosservidor = new javax.swing.JButton();
-        lbl_servidor = new javax.swing.JLabel();
-        btn_maispe = new javax.swing.JButton();
-        btn_menospe = new javax.swing.JButton();
-        lbl_pe = new javax.swing.JLabel();
-        btn_inscrever = new javax.swing.JButton();
-        lbl_Categoria = new javax.swing.JLabel();
+        lbl_organizador = new javax.swing.JLabel();
+        lbl_LCE = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -257,24 +262,123 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                     .addGroup(pnl_descricaoLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        btn_inscrever.setBackground(new java.awt.Color(0, 212, 146));
+        btn_inscrever.setForeground(new java.awt.Color(255, 255, 255));
+        btn_inscrever.setText("Realizar inscrição");
+        btn_inscrever.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_inscrever.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_inscreverActionPerformed(evt);
+            }
+        });
+
+        btn_menosservidor.setText("-");
+        btn_menosservidor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menosservidorActionPerformed(evt);
+            }
+        });
+
+        lbl_descricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_descricao.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_descricao.setText("descrição");
+        lbl_descricao.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        lbl_servidor.setText("0");
 
         lbl_datainicio.setForeground(new java.awt.Color(102, 102, 102));
         lbl_datainicio.setText("data inicio");
 
+        lbl_descricaoevento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_descricaoevento.setText("Descrição do Evento");
+
+        btn_maispe.setText("+");
+        btn_maispe.setToolTipText("");
+        btn_maispe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_maispeActionPerformed(evt);
+            }
+        });
+
         lbl_titulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_titulo.setText("Titulo Evento");
+
+        scr_atividades.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        pnl_atividades.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_atividades.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        javax.swing.GroupLayout pnl_atividadesLayout = new javax.swing.GroupLayout(pnl_atividades);
+        pnl_atividades.setLayout(pnl_atividadesLayout);
+        pnl_atividadesLayout.setHorizontalGroup(
+            pnl_atividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 552, Short.MAX_VALUE)
+        );
+        pnl_atividadesLayout.setVerticalGroup(
+            pnl_atividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        scr_atividades.setViewportView(pnl_atividades);
 
         lbl_datafinal.setForeground(new java.awt.Color(102, 102, 102));
         lbl_datafinal.setText("data final");
 
         lbl_tipo.setForeground(new java.awt.Color(102, 102, 102));
         lbl_tipo.setText("tipo");
+
+        btn_menosestudante.setText("-");
+        btn_menosestudante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menosestudanteActionPerformed(evt);
+            }
+        });
+
+        btn_menospe.setText("-");
+        btn_menospe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menospeActionPerformed(evt);
+            }
+        });
+
+        lbl_pe.setText("0");
+
+        lbl_Categoria.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_Categoria.setText("Categoria de inscrição");
+
+        lbl_ESTUDANTE.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_ESTUDANTE.setText("Estudante");
+
+        btn_maisestudante.setText("+");
+        btn_maisestudante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_maisestudanteActionPerformed(evt);
+            }
+        });
+
+        lbl_SERVIDOR.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_SERVIDOR.setText("Servidor");
+
+        lbl_estudante.setText("0");
+        lbl_estudante.setToolTipText("");
+
+        lbl_PE.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_PE.setText("Pessoa Externa");
+
+        btn_maisservidor.setText("+");
+        btn_maisservidor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_maisservidorActionPerformed(evt);
+            }
+        });
+
+        lbl_AtvEventos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_AtvEventos.setText("Atividades  do Evento");
 
         pnl_menupesquisa.setBackground(new java.awt.Color(255, 255, 255));
         pnl_menupesquisa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -319,141 +423,84 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lbl_descricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_descricao.setText("descrição");
+        lbl_organizador.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_organizador.setText("Organizador responsável");
 
-        lbl_descricaoevento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbl_descricaoevento.setText("Descrição do Evento");
+        lbl_LCE.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_LCE.setText("Local - Cidade - Estado");
 
-        javax.swing.GroupLayout pnl_atividadesLayout = new javax.swing.GroupLayout(pnl_atividades);
-        pnl_atividades.setLayout(pnl_atividadesLayout);
-        pnl_atividadesLayout.setHorizontalGroup(
-            pnl_atividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 538, Short.MAX_VALUE)
-        );
-        pnl_atividadesLayout.setVerticalGroup(
-            pnl_atividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        scr_atividades.setViewportView(pnl_atividades);
-
-        btn_menosestudante.setText("-");
-        btn_menosestudante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_menosestudanteActionPerformed(evt);
-            }
-        });
-
-        btn_maisestudante.setText("+");
-        btn_maisestudante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_maisestudanteActionPerformed(evt);
-            }
-        });
-
-        lbl_estudante.setText("0");
-        lbl_estudante.setToolTipText("");
-
-        btn_maisservidor.setText("+");
-        btn_maisservidor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_maisservidorActionPerformed(evt);
-            }
-        });
-
-        btn_menosservidor.setText("-");
-        btn_menosservidor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_menosservidorActionPerformed(evt);
-            }
-        });
-
-        lbl_servidor.setText("0");
-
-        btn_maispe.setText("+");
-        btn_maispe.setToolTipText("");
-        btn_maispe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_maispeActionPerformed(evt);
-            }
-        });
-
-        btn_menospe.setText("-");
-        btn_menospe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_menospeActionPerformed(evt);
-            }
-        });
-
-        lbl_pe.setText("0");
-
-        btn_inscrever.setText("Realizar inscrição");
-        btn_inscrever.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_inscreverActionPerformed(evt);
-            }
-        });
-
-        lbl_Categoria.setText("Categoria de inscrição");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_menupesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_LCE, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_organizador, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_SERVIDOR)
+                                    .addComponent(lbl_PE))
+                                .addGap(241, 241, 241))
+                            .addComponent(lbl_ESTUDANTE, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(126, 126, 126)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(btn_menosservidor)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(lbl_servidor)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btn_maisservidor))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(btn_menospe)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(lbl_pe)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btn_maispe)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btn_menosestudante)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbl_estudante)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_maisestudante)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 368, Short.MAX_VALUE)
+                        .addComponent(btn_inscrever)
+                        .addGap(75, 75, 75))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(lbl_datainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lbl_datafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbl_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_AtvEventos)
+                            .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_descricaoevento)
-                            .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addComponent(lbl_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(250, 250, 250)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btn_maisestudante)
-                                .addGap(35, 35, 35)
-                                .addComponent(lbl_estudante, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_menosestudante))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btn_maisservidor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbl_servidor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_menosservidor)
-                                .addGap(24, 24, 24))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btn_maispe)
-                                .addGap(18, 18, 18)
-                                .addComponent(lbl_pe, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_menospe)))))
-                .addGap(443, 443, 443))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_inscrever)
-                .addGap(133, 133, 133))
+                            .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_Categoria)
+                            .addComponent(lbl_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(pnl_menupesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lbl_titulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_organizador)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_LCE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_datainicio)
                     .addComponent(lbl_datafinal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -461,31 +508,35 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lbl_descricaoevento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_AtvEventos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_maisestudante)
-                    .addComponent(lbl_estudante)
-                    .addComponent(btn_menosestudante))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_menosservidor)
-                    .addComponent(lbl_servidor)
-                    .addComponent(btn_maisservidor)
-                    .addComponent(lbl_Categoria))
+                .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_Categoria)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_maispe)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_maisestudante)
+                        .addComponent(btn_menosestudante)
+                        .addComponent(lbl_estudante, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_ESTUDANTE, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_menosservidor)
+                    .addComponent(btn_maisservidor)
+                    .addComponent(lbl_servidor, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_SERVIDOR))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_PE)
+                    .addComponent(btn_menospe)
                     .addComponent(lbl_pe)
-                    .addComponent(btn_menospe))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(btn_inscrever)
-                .addGap(131, 131, 131))
+                    .addComponent(btn_maispe)
+                    .addComponent(btn_inscrever))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
-
-        jScrollPane1.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -493,17 +544,17 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnl_topo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnl_topo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnl_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -613,9 +664,13 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
     private javax.swing.JButton btn_menosestudante;
     private javax.swing.JButton btn_menospe;
     private javax.swing.JButton btn_menosservidor;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbl_AtvEventos;
     private javax.swing.JLabel lbl_Categoria;
+    private javax.swing.JLabel lbl_ESTUDANTE;
+    private javax.swing.JLabel lbl_LCE;
+    private javax.swing.JLabel lbl_PE;
+    private javax.swing.JLabel lbl_SERVIDOR;
     private javax.swing.JLabel lbl_componente02;
     private javax.swing.JLabel lbl_componente1;
     private javax.swing.JLabel lbl_datafinal;
@@ -631,6 +686,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_linkcronograma;
     private javax.swing.JLabel lbl_linkevento;
     private javax.swing.JLabel lbl_links;
+    private javax.swing.JLabel lbl_organizador;
     private javax.swing.JLabel lbl_pe;
     private javax.swing.JLabel lbl_servidor;
     private javax.swing.JLabel lbl_tipo;
