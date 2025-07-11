@@ -16,6 +16,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /**
  *
@@ -170,6 +171,8 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
         btn_maispe = new javax.swing.JButton();
         btn_menospe = new javax.swing.JButton();
         lbl_pe = new javax.swing.JLabel();
+        btn_inscrever = new javax.swing.JButton();
+        lbl_Categoria = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -385,6 +388,15 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
 
         lbl_pe.setText("0");
 
+        btn_inscrever.setText("Realizar inscrição");
+        btn_inscrever.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_inscreverActionPerformed(evt);
+            }
+        });
+
+        lbl_Categoria.setText("Categoria de inscrição");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -405,7 +417,9 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                             .addComponent(lbl_descricaoevento)
                             .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(574, 574, 574)
+                        .addGap(332, 332, 332)
+                        .addComponent(lbl_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(250, 250, 250)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btn_maisestudante)
@@ -427,6 +441,10 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btn_menospe)))))
                 .addGap(443, 443, 443))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_inscrever)
+                .addGap(133, 133, 133))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,13 +473,16 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_menosservidor)
                     .addComponent(lbl_servidor)
-                    .addComponent(btn_maisservidor))
+                    .addComponent(btn_maisservidor)
+                    .addComponent(lbl_Categoria))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_maispe)
                     .addComponent(lbl_pe)
                     .addComponent(btn_menospe))
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(btn_inscrever)
+                .addGap(131, 131, 131))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -525,6 +546,30 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
 }
     }//GEN-LAST:event_btn_menospeActionPerformed
 
+    private void btn_inscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inscreverActionPerformed
+        String nomeEvento = lbl_titulo.getText();
+        String qtdEstudante = lbl_estudante.getText();
+        String qtdServidor = lbl_servidor.getText();
+        String qtdPE = lbl_pe.getText();
+
+        // Verifica se o nome do evento está preenchido
+        if (nomeEvento != null && !nomeEvento.isEmpty()) {
+            String mensagem = String.format(
+                "Você se inscreveu no evento: %s\n\nIngressos selecionados:\n- Estudante: %s\n- Servidor: %s\n- Público Externo: %s",
+                nomeEvento, qtdEstudante, qtdServidor, qtdPE
+            );
+
+            JOptionPane.showMessageDialog(null, mensagem, "Inscrição Realizada", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null,
+                "Nenhum evento selecionado!",
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
+        }
+    
+
+    }//GEN-LAST:event_btn_inscreverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -561,6 +606,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_inscrever;
     private javax.swing.JButton btn_maisestudante;
     private javax.swing.JButton btn_maispe;
     private javax.swing.JButton btn_maisservidor;
@@ -569,6 +615,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
     private javax.swing.JButton btn_menosservidor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_Categoria;
     private javax.swing.JLabel lbl_componente02;
     private javax.swing.JLabel lbl_componente1;
     private javax.swing.JLabel lbl_datafinal;

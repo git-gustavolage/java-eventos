@@ -236,7 +236,9 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="574" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="332" max="-2" attributes="0"/>
+                              <Component id="lbl_Categoria" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="btn_maisestudante" min="-2" max="-2" attributes="0"/>
@@ -264,6 +266,11 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="443" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btn_inscrever" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -297,6 +304,7 @@
                           <Component id="btn_menosservidor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_servidor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_maisservidor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_Categoria" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -304,7 +312,9 @@
                           <Component id="lbl_pe" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_menospe" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="184" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                      <Component id="btn_inscrever" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -516,6 +526,19 @@
             <Component class="javax.swing.JLabel" name="lbl_pe">
               <Properties>
                 <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_inscrever">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Realizar inscri&#xe7;&#xe3;o"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_inscreverActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_Categoria">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Categoria de inscri&#xe7;&#xe3;o"/>
               </Properties>
             </Component>
           </SubComponents>
