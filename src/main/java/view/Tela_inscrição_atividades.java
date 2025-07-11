@@ -4,11 +4,23 @@
  */
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -16,11 +28,106 @@ import java.sql.SQLException;
  */
 public class Tela_inscrição_atividades extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela_inscrição_atividades
-     */
+    private void carregarAtividadesDoEvento(long idEvento) {
+       String url = "jdbc:mysql://localhost:3306/system_event";
+      String usuario = "root";
+      String senha = "12345";
+
+      String sql = "SELECT a.data, a.titulo, a.hora_inicio, a.hora_termino, amb.nome AS local " +
+                 "FROM atividades a " +
+                 "JOIN ambientes amb ON a.id_ambiente = amb.id " +
+                 "WHERE a.id_evento = ? " +
+                 "ORDER BY a.data, a.hora_inicio";
+
+    try (Connection conn = DriverManager.getConnection(url, usuario, senha);
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setLong(1, idEvento);
+        ResultSet rs = stmt.executeQuery();
+
+        pnl_atividades.removeAll();
+        pnl_atividades.setLayout(new BoxLayout(pnl_atividades, BoxLayout.Y_AXIS));
+
+        LocalDate dataAtual = null;
+        int contadorDias = 1;
+
+        JPanel painelDia = null;
+
+        while (rs.next()) {
+            LocalDate data = rs.getDate("data").toLocalDate();
+            String titulo = rs.getString("titulo");
+            String horaInicio = rs.getString("hora_inicio");
+            String horaTermino = rs.getString("hora_termino");
+            String local = rs.getString("local");
+
+            
+            if (!data.equals(dataAtual)) {
+                dataAtual = data;
+
+                // Cria o cabeçalho do dia
+                JLabel lblDia = new JLabel("Dia " + contadorDias + " - " + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                lblDia.setFont(new Font("SansSerif", Font.BOLD, 16));
+                lblDia.setForeground(new Color(33, 64, 128));
+                lblDia.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
+
+                // Cria o painel de atividades daquele dia
+                painelDia = new JPanel();
+                painelDia.setLayout(new BoxLayout(painelDia, BoxLayout.Y_AXIS));
+                painelDia.setBackground(Color.WHITE);
+                painelDia.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createLineBorder(new Color(200, 200, 200)),
+                    BorderFactory.createEmptyBorder(10, 15, 10, 15)
+                ));
+
+                
+                pnl_atividades.add(lblDia);
+                pnl_atividades.add(painelDia);
+
+                contadorDias++;
+            }
+
+           
+            JPanel atividadePanel = new JPanel(new BorderLayout());
+            atividadePanel.setBackground(new Color(245, 245, 245));
+            atividadePanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+            atividadePanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
+
+            JLabel lblTitulo = new JLabel(titulo);
+            lblTitulo.setFont(new Font("SansSerif", Font.PLAIN, 14));
+
+            JLabel lblHorarioLocal = new JLabel(horaInicio + " - " + horaTermino + " | " + local);
+            lblHorarioLocal.setFont(new Font("SansSerif", Font.ITALIC, 12));
+            lblHorarioLocal.setForeground(new Color(100, 100, 100));
+
+            atividadePanel.add(lblTitulo, BorderLayout.WEST);
+            atividadePanel.add(lblHorarioLocal, BorderLayout.EAST);
+
+            if (painelDia != null) {
+                painelDia.add(atividadePanel);
+                painelDia.add(Box.createVerticalStrut(5)); // espaço entre atividades
+            }
+        }
+
+        pnl_atividades.revalidate();
+        pnl_atividades.repaint();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
     public Tela_inscrição_atividades() {
         initComponents();
+        
+        // Configurar layout vertical para o painel de atividades
+        pnl_atividades.setLayout(new BoxLayout(pnl_atividades, BoxLayout.Y_AXIS));
+        pnl_atividades.setBackground(Color.WHITE);
+        scr_atividades.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+
+        //aqui quando o gustavo juntar tudo tem q fazer de forma mulodar pra escolher qual evento é qual, por enquanto vamos passar o id de forma manual
+        carregarAtividadesDoEvento(1); // ou outro ID conforme o evento selecionado
+
         
         String url = "jdbc:mysql://localhost:3306/system_event";
         String usuario = "root";
@@ -81,6 +188,8 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         lbl_informaatividades = new javax.swing.JLabel();
         lbl_titulo = new javax.swing.JLabel();
+        scr_atividades = new javax.swing.JScrollPane();
+        pnl_atividades = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -220,6 +329,21 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         lbl_titulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_titulo.setText("titulo");
 
+        pnl_atividades.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout pnl_atividadesLayout = new javax.swing.GroupLayout(pnl_atividades);
+        pnl_atividades.setLayout(pnl_atividadesLayout);
+        pnl_atividadesLayout.setHorizontalGroup(
+            pnl_atividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 568, Short.MAX_VALUE)
+        );
+        pnl_atividadesLayout.setVerticalGroup(
+            pnl_atividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        scr_atividades.setViewportView(pnl_atividades);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -230,17 +354,21 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
                 .addComponent(btn_inscricao, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(pnl_menudescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lbl_titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                 .addComponent(btn_inscricao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -317,8 +445,10 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_titulosistema;
     private javax.swing.JLabel lbl_topoevento;
+    private javax.swing.JPanel pnl_atividades;
     private javax.swing.JPanel pnl_descricao;
     private javax.swing.JPanel pnl_menudescricao;
     private javax.swing.JPanel pnl_topo;
+    private javax.swing.JScrollPane scr_atividades;
     // End of variables declaration//GEN-END:variables
 }
