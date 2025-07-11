@@ -520,7 +520,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                                 .addComponent(btn_maisestudante)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_inscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))))
+                        .addGap(28, 28, 28))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -631,25 +631,46 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_menospeActionPerformed
 
     private void btn_inscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inscreverActionPerformed
-        String nomeEvento = lbl_titulo.getText();
-        String qtdEstudante = lbl_estudante.getText();
-        String qtdServidor = lbl_servidor.getText();
-        String qtdPE = lbl_pe.getText();
+    String nomeEvento = lbl_titulo.getText();
+    String qtdEstudante = lbl_estudante.getText();
+    String qtdServidor = lbl_servidor.getText();
+    String qtdPE = lbl_pe.getText();
 
-        // Verifica se o nome do evento está preenchido
-        if (nomeEvento != null && !nomeEvento.isEmpty()) {
-            String mensagem = String.format(
-                "Você se inscreveu no evento: %s\n\nIngressos selecionados:\n- Estudante: %s\n- Servidor: %s\n- Público Externo: %s",
-                nomeEvento, qtdEstudante, qtdServidor, qtdPE
-            );
+    // Verifica se o nome do evento está preenchido
+    if (nomeEvento != null && !nomeEvento.isEmpty()) {
 
-            JOptionPane.showMessageDialog(null, mensagem, "Inscrição Realizada", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null,
-                "Nenhum evento selecionado!",
-                "Erro",
-                JOptionPane.ERROR_MESSAGE);
-        }
+    // Verifica se todas as quantidades estão vazias ou zero
+    boolean nenhumaCategoriaSelecionada = 
+        (qtdEstudante == null || qtdEstudante.trim().isEmpty() || qtdEstudante.equals("0")) &&
+        (qtdServidor == null || qtdServidor.trim().isEmpty() || qtdServidor.equals("0")) &&
+        (qtdPE == null || qtdPE.trim().isEmpty() || qtdPE.equals("0"));
+
+    if (nenhumaCategoriaSelecionada) {
+        JOptionPane.showMessageDialog(null,
+            "Você precisa selecionar pelo menos uma categoria de ingresso (Estudante, Servidor ou Público Externo) antes de se inscrever.",
+            "Categoria Obrigatória",
+            JOptionPane.WARNING_MESSAGE);
+        return; // impede a continuação da inscrição
+    }
+
+    // Monta a mensagem com os ingressos
+    String mensagem = String.format(
+        "Você se inscreveu no evento: %s\n\nIngressos selecionados:\n- Estudante: %s\n- Servidor: %s\n- Público Externo: %s",
+        nomeEvento,
+        qtdEstudante.isEmpty() ? "0" : qtdEstudante,
+        qtdServidor.isEmpty() ? "0" : qtdServidor,
+        qtdPE.isEmpty() ? "0" : qtdPE
+    );
+
+    JOptionPane.showMessageDialog(null, mensagem, "Inscrição Realizada", JOptionPane.INFORMATION_MESSAGE);
+
+    } else {
+    JOptionPane.showMessageDialog(null,
+        "Nenhum evento selecionado!",
+        "Erro",
+        JOptionPane.ERROR_MESSAGE);
+}
+
     }//GEN-LAST:event_btn_inscreverActionPerformed
 
     /**
