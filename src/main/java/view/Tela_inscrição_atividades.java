@@ -10,6 +10,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -37,7 +39,7 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
     String usuario = "root";
     String senha = "12345";
 
-    String sql = "SELECT a.data, a.titulo, a.hora_inicio, a.hora_termino, amb.nome AS local " +
+    String sql = "SELECT a.id, a.data, a.titulo, a.hora_inicio, a.hora_termino, amb.nome AS local " +
                  "FROM atividades a " +
                  "JOIN ambientes amb ON a.id_ambiente = amb.id " +
                  "WHERE a.id_evento = ? " +
@@ -57,6 +59,7 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         JPanel painelDia = null;
 
         while (rs.next()) {
+            long idAtividade = rs.getLong("id");
             LocalDate data = rs.getDate("data").toLocalDate();
             String titulo = rs.getString("titulo");
             String horaInicio = rs.getString("hora_inicio");
@@ -66,7 +69,7 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
             if (!data.equals(dataAtual)) {
                 dataAtual = data;
 
-                // Painel do título do dia (alinhado à esquerda)
+                // Painel com alinhamento à esquerda para o rótulo do dia
                 JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
                 headerPanel.setBackground(Color.WHITE);
 
@@ -75,7 +78,7 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
                 lblDia.setForeground(new Color(33, 64, 128));
                 headerPanel.add(lblDia);
 
-                // Painel de atividades
+                // Painel das atividades daquele dia
                 painelDia = new JPanel();
                 painelDia.setLayout(new BoxLayout(painelDia, BoxLayout.Y_AXIS));
                 painelDia.setBackground(Color.WHITE);
@@ -92,10 +95,14 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
 
             // Painel da atividade
             JPanel atividadePanel = new JPanel(new BorderLayout());
-            atividadePanel.setBackground(new Color(245, 245, 245));
+            atividadePanel.setBackground(new Color(245, 245, 245)); // Cor padrão
             atividadePanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
             atividadePanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
 
+            atividadePanel.putClientProperty("selecionado", false); // inicialmente não selecionado
+            atividadePanel.putClientProperty("id", idAtividade);    // salva o ID da atividade, se precisar depois
+
+            // Informações da atividade
             JLabel lblTitulo = new JLabel(titulo);
             lblTitulo.setFont(new Font("SansSerif", Font.PLAIN, 14));
 
@@ -105,6 +112,20 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
 
             atividadePanel.add(lblTitulo, BorderLayout.WEST);
             atividadePanel.add(lblHorarioLocal, BorderLayout.EAST);
+
+            // Clique para seleção
+            atividadePanel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    boolean selecionado = (boolean) atividadePanel.getClientProperty("selecionado");
+                    if (!selecionado) {
+                        atividadePanel.setBackground(new Color(173, 216, 230)); // azul claro
+                    } else {
+                        atividadePanel.setBackground(new Color(245, 245, 245)); // cor padrão
+                    }
+                    atividadePanel.putClientProperty("selecionado", !selecionado);
+                }
+            });
 
             if (painelDia != null) {
                 painelDia.add(atividadePanel);
@@ -119,6 +140,7 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         e.printStackTrace();
     }
 }
+
 
     public Tela_inscrição_atividades() {
         initComponents();
