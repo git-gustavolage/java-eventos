@@ -11,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -113,8 +115,13 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
 
             if (rs.next()) {
                 lbl_titulo.setText(rs.getString("titulo"));
-                lbl_datainicio.setText(rs.getDate("data_inicio").toString());
-                lbl_datafinal.setText(rs.getDate("data_termino").toString());
+                
+                DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate dataInicio = rs.getDate("data_inicio").toLocalDate();
+                LocalDate dataTermino = rs.getDate("data_termino").toLocalDate();
+                lbl_datainicio.setText(dataInicio.format(formatoData));
+                lbl_datafinal.setText(dataTermino.format(formatoData));
+
                 lbl_tipo.setText(rs.getString("formato"));
                 lbl_descricao.setText(rs.getString("descricao"));
                 lbl_organizador.setText(rs.getString("organizador"));
