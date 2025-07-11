@@ -11,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -96,14 +98,17 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
             System.out.println("Erro na conexão: " + e.getMessage());
         }
         
-           String sql = "SELECT titulo, data_inicio, data_termino, descricao, formato FROM eventos WHERE id = ?";
+           // ---------- Consulta 1: Dados principais do evento + organizador ----------
+        String sqlEvento = "SELECT e.titulo, e.data_inicio, e.data_termino, e.descricao, e.formato, " +
+                   "u.nome AS organizador " +
+                   "FROM eventos e " +
+                   "JOIN usuarios u ON e.id_organizador = u.id " +
+                   "WHERE e.id = ?";
 
         try (Connection conn = DriverManager.getConnection(url, usuario, senha);
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sqlEvento)) {
 
-            //aqui quando o gustavo juntar tudo tem q fazer de forma mulodar pra escolher qual evento é qual, por enquanto vamos passar o id de forma manual
-            //stmt.setLong(1, idEvento);// define o ID do evento
-            stmt.setLong(1, 1); 
+            stmt.setLong(1, 1); // ID do evento manualmente por enquanto
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
@@ -112,6 +117,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                 lbl_datafinal.setText(rs.getDate("data_termino").toString());
                 lbl_tipo.setText(rs.getString("formato"));
                 lbl_descricao.setText(rs.getString("descricao"));
+                lbl_organizador.setText(rs.getString("organizador"));
             } else {
                 System.out.println("Evento não encontrado.");
             }
@@ -120,6 +126,33 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
+        // ---------- Consulta 2: Locais distintos das atividades do evento ----------
+        String sqlLocais = "SELECT DISTINCT amb.nome AS local " +
+                           "FROM atividades a " +
+                           "JOIN ambientes amb ON a.id_ambiente = amb.id " +
+                           "WHERE a.id_evento = ?";
+
+        try (Connection conn = DriverManager.getConnection(url, usuario, senha);
+             PreparedStatement stmt = conn.prepareStatement(sqlLocais)) {
+
+            stmt.setLong(1, 1); // ID do mesmo evento
+            ResultSet rs = stmt.executeQuery();
+
+            List<String> locais = new ArrayList<>();
+            while (rs.next()) {
+                locais.add(rs.getString("local"));
+            }
+
+            if (!locais.isEmpty()) {
+                String locaisFormatados = String.join(", ", locais);
+                lbl_local.setText(locaisFormatados);
+            } else {
+                lbl_local.setText("Nenhum local definido");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
          //faz com q abra em tela cheia
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -177,7 +210,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
         lbl_componente02 = new javax.swing.JLabel();
         lbl_eventos = new javax.swing.JLabel();
         lbl_organizador = new javax.swing.JLabel();
-        lbl_LCE = new javax.swing.JLabel();
+        lbl_local = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -234,7 +267,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
             .addGroup(pnl_descricaoLayout.createSequentialGroup()
                 .addGap(388, 388, 388)
                 .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 416, Short.MAX_VALUE)
+                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(119, 119, 119)
                 .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +275,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                     .addComponent(lbl_linkevento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_links)
                     .addComponent(lbl_linkatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 133, Short.MAX_VALUE))
         );
         pnl_descricaoLayout.setVerticalGroup(
             pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +295,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                     .addGroup(pnl_descricaoLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -426,8 +459,8 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
         lbl_organizador.setForeground(new java.awt.Color(102, 102, 102));
         lbl_organizador.setText("Organizador responsável");
 
-        lbl_LCE.setForeground(new java.awt.Color(102, 102, 102));
-        lbl_LCE.setText("Local - Cidade - Estado");
+        lbl_local.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_local.setText("Local ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -439,9 +472,23 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_LCE, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_local, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_organizador, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbl_datainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbl_datafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_AtvEventos)
+                            .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_descricaoevento)
+                            .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_Categoria)
+                            .addComponent(lbl_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -471,23 +518,9 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                                 .addComponent(lbl_estudante)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btn_maisestudante)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 368, Short.MAX_VALUE)
-                        .addComponent(btn_inscrever)
-                        .addGap(75, 75, 75))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_datainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbl_datafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_AtvEventos)
-                            .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_descricaoevento)
-                            .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_Categoria)
-                            .addComponent(lbl_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_inscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,7 +531,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_organizador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_LCE)
+                .addComponent(lbl_local)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_datainicio)
@@ -534,7 +567,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                     .addComponent(btn_menospe)
                     .addComponent(lbl_pe)
                     .addComponent(btn_maispe)
-                    .addComponent(btn_inscrever))
+                    .addComponent(btn_inscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -617,8 +650,6 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
                 "Erro",
                 JOptionPane.ERROR_MESSAGE);
         }
-    
-
     }//GEN-LAST:event_btn_inscreverActionPerformed
 
     /**
@@ -668,7 +699,6 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_AtvEventos;
     private javax.swing.JLabel lbl_Categoria;
     private javax.swing.JLabel lbl_ESTUDANTE;
-    private javax.swing.JLabel lbl_LCE;
     private javax.swing.JLabel lbl_PE;
     private javax.swing.JLabel lbl_SERVIDOR;
     private javax.swing.JLabel lbl_componente02;
@@ -686,6 +716,7 @@ public class Tela_inscricao_eventos extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_linkcronograma;
     private javax.swing.JLabel lbl_linkevento;
     private javax.swing.JLabel lbl_links;
+    private javax.swing.JLabel lbl_local;
     private javax.swing.JLabel lbl_organizador;
     private javax.swing.JLabel lbl_pe;
     private javax.swing.JLabel lbl_servidor;

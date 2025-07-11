@@ -96,7 +96,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="388" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lbl_titulosistema" alignment="0" pref="416" max="32767" attributes="0"/>
+                      <Component id="lbl_titulosistema" alignment="0" max="32767" attributes="0"/>
                       <Component id="lbl_descricaosistema" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
@@ -106,7 +106,7 @@
                       <Component id="lbl_links" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_linkatividades" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="133" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -132,7 +132,7 @@
                           <Component id="lbl_descricaosistema" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="130" max="32767" attributes="0"/>
+                  <EmptySpace pref="122" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -216,10 +216,27 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_LCE" min="-2" pref="136" max="-2" attributes="0"/>
+                              <Component id="lbl_local" min="-2" pref="136" max="-2" attributes="0"/>
                               <Component id="lbl_organizador" min="-2" pref="145" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lbl_datainicio" min="-2" pref="85" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="lbl_datafinal" min="-2" pref="85" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lbl_titulo" alignment="0" min="-2" pref="360" max="-2" attributes="0"/>
+                              <Component id="lbl_AtvEventos" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_descricao" alignment="0" min="-2" pref="550" max="-2" attributes="0"/>
+                              <Component id="lbl_descricaoevento" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="scr_atividades" alignment="0" min="-2" pref="564" max="-2" attributes="0"/>
+                              <Component id="lbl_Categoria" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_tipo" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -258,26 +275,9 @@
                                   <Component id="btn_maisestudante" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="368" max="32767" attributes="0"/>
-                          <Component id="btn_inscrever" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lbl_datainicio" min="-2" pref="85" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="lbl_datafinal" min="-2" pref="85" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="lbl_titulo" alignment="0" min="-2" pref="360" max="-2" attributes="0"/>
-                              <Component id="lbl_AtvEventos" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_descricao" alignment="0" min="-2" pref="550" max="-2" attributes="0"/>
-                              <Component id="lbl_descricaoevento" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="scr_atividades" alignment="0" min="-2" pref="564" max="-2" attributes="0"/>
-                              <Component id="lbl_Categoria" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_tipo" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                          </Group>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btn_inscrever" min="-2" pref="107" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -292,7 +292,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="lbl_organizador" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="lbl_LCE" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_local" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbl_datainicio" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -332,7 +332,7 @@
                       <Component id="btn_menospe" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_pe" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_maispe" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_inscrever" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_inscrever" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="13" max="32767" attributes="0"/>
               </Group>
@@ -630,12 +630,12 @@
             <Property name="text" type="java.lang.String" value="Organizador respons&#xe1;vel"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbl_LCE">
+        <Component class="javax.swing.JLabel" name="lbl_local">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Local - Cidade - Estado"/>
+            <Property name="text" type="java.lang.String" value="Local "/>
           </Properties>
         </Component>
       </SubComponents>
