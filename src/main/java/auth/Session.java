@@ -57,6 +57,12 @@ public class Session {
         Session.regenerate();
     }
 
+    public static void clear() {
+        Session.user = null;
+        Session.session.clear();
+        regenerate();
+    }
+
     private static boolean isExpired() {
         if (createdAt == null) {
             return true;

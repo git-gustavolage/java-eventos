@@ -1,12 +1,128 @@
 package view;
 
+import java.awt.Color;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import controllers.AuthController;
+import exceptions.AuthenticationException;
+import model.bean.User;
+
 public class Tela_cadastro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela_login
-     */
+    private final AuthController controller;
+
+    public boolean isEmailValido(String email) {
+        String regex = "^[\\w\\.-]+@[\\w\\.-]+\\.[a-zA-Z]{2,}$";
+        return email.matches(regex);
+    }
+
     public Tela_cadastro() {
         initComponents();
+        controller = new AuthController();
+
+        //faz com q abra em tela cheia.
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        // logica para abrir a tela de login
+        lbl_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_entrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dispose(); // fecha a tela de cadastro 
+                Tela_login l = new Tela_login();
+                l.setVisible(true);
+            }
+        });
+
+        txt_nome.setText("Digite seu Nome...");
+        txt_nome.setForeground(Color.BLACK);
+        txt_nome.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (txt_nome.getText().equals("Digite seu Nome...")) {
+                    txt_nome.setText("");
+                    txt_nome.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (txt_nome.getText().isEmpty()) {
+                    txt_nome.setText("Digite seu Nome...");
+                    txt_nome.setForeground(Color.GRAY);
+                }
+            }
+        });
+
+        txt_email.setText("Digite seu Email...");
+        txt_email.setForeground(Color.GRAY);
+        txt_email.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (txt_email.getText().equals("Digite seu Email...")) {
+                    txt_email.setText("");
+                    txt_email.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                String email = txt_email.getText().trim();
+                if (email.isEmpty()) {
+                    txt_email.setText("Digite seu Email...");
+                    txt_email.setForeground(Color.GRAY);
+                } else if (!isEmailValido(email)) {
+                    JOptionPane.showMessageDialog(null, "Email inválido. Por favor, digite um email válido.");
+                    txt_email.requestFocus();
+                }
+            }
+        });
+
+        //Placeholder para pwd_senha
+        pwd_senha.setEchoChar((char) 0);
+        pwd_senha.setText("Senha");
+        pwd_senha.setForeground(Color.GRAY);
+        pwd_senha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha.getPassword()).equals("Senha")) {
+                    pwd_senha.setText("");
+                    pwd_senha.setForeground(Color.BLACK);
+                    pwd_senha.setEchoChar('*');
+                }
+            }
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha.getPassword()).isEmpty()) {
+                    pwd_senha.setText("Senha");
+                    pwd_senha.setForeground(Color.GRAY);
+                    pwd_senha.setEchoChar((char) 0);
+                }
+            }
+        });
+
+        //Placeholder para pwd_senha
+        pwd_senha02.setEchoChar((char) 0);
+        pwd_senha02.setText("Senha");
+        pwd_senha02.setForeground(Color.GRAY);
+        pwd_senha02.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha02.getPassword()).equals("Senha")) {
+                    pwd_senha02.setText("");
+                    pwd_senha02.setForeground(Color.BLACK);
+                    pwd_senha02.setEchoChar('*');
+                }
+            }
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (String.valueOf(pwd_senha02.getPassword()).isEmpty()) {
+                    pwd_senha02.setText("Senha");
+                    pwd_senha02.setForeground(Color.GRAY);
+                    pwd_senha02.setEchoChar((char) 0);
+                }
+            }
+        });
     }
 
     /**
@@ -18,201 +134,243 @@ public class Tela_cadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        botao_cadastro_cdtr = new javax.swing.JButton();
-        text_senha_cdtr = new javax.swing.JPasswordField();
-        campo_email_cdtr = new javax.swing.JTextField();
-        text_conta_cdtr = new javax.swing.JLabel();
-        botao_entrar_cdtr = new javax.swing.JLabel();
-        Campo_usuario_cdtr = new javax.swing.JTextField();
-        rec_senha_cdtr = new javax.swing.JPasswordField();
-        jPanel2 = new javax.swing.JPanel();
-
-        jTextField1.setText("jTextField1");
-
-        jScrollPane1.setViewportView(jTextPane1);
-
-        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel3.setText("Cadastra-se");
+        pnl_barraazul = new javax.swing.JPanel();
+        pnl_fundo = new javax.swing.JPanel();
+        pnl_cadastro = new javax.swing.JPanel();
+        lbl_cadastro = new javax.swing.JLabel();
+        btn_cadastrar = new javax.swing.JButton();
+        pwd_senha = new javax.swing.JPasswordField();
+        txt_email = new javax.swing.JTextField();
+        lbl_pergunta = new javax.swing.JLabel();
+        lbl_entrar = new javax.swing.JLabel();
+        txt_nome = new javax.swing.JTextField();
+        pwd_senha02 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnl_barraazul.setBackground(new java.awt.Color(43, 127, 255));
+        pnl_barraazul.setForeground(new java.awt.Color(43, 127, 255));
 
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 32)); // NOI18N
-        jLabel1.setText("CADASTRO");
-        jLabel1.setToolTipText("");
+        javax.swing.GroupLayout pnl_barraazulLayout = new javax.swing.GroupLayout(pnl_barraazul);
+        pnl_barraazul.setLayout(pnl_barraazulLayout);
+        pnl_barraazulLayout.setHorizontalGroup(
+                pnl_barraazulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 190, Short.MAX_VALUE)
+        );
+        pnl_barraazulLayout.setVerticalGroup(
+                pnl_barraazulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 640, Short.MAX_VALUE)
+        );
 
-        botao_cadastro_cdtr.setBackground(new java.awt.Color(0, 212, 146));
-        botao_cadastro_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        botao_cadastro_cdtr.setForeground(new java.awt.Color(255, 255, 255));
-        botao_cadastro_cdtr.setText("Cadastrar-se");
-        botao_cadastro_cdtr.setBorderPainted(false);
-        botao_cadastro_cdtr.addActionListener(new java.awt.event.ActionListener() {
+        pnl_fundo.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnl_cadastro.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_cadastro.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        lbl_cadastro.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 35)); // NOI18N
+        lbl_cadastro.setText("CADASTRO");
+        lbl_cadastro.setToolTipText("");
+
+        btn_cadastrar.setBackground(new java.awt.Color(0, 212, 146));
+        btn_cadastrar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        btn_cadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cadastrar.setText("Cadastrar");
+        btn_cadastrar.setBorderPainted(false);
+        btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_cadastro_cdtrActionPerformed(evt);
+                btn_cadastrarActionPerformed(evt);
             }
         });
 
-        text_senha_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        text_senha_cdtr.setForeground(new java.awt.Color(212, 212, 216));
-        text_senha_cdtr.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        text_senha_cdtr.setText("Senha");
-        text_senha_cdtr.setToolTipText("");
-        text_senha_cdtr.addActionListener(new java.awt.event.ActionListener() {
+        pwd_senha.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        pwd_senha.setForeground(new java.awt.Color(212, 212, 216));
+        pwd_senha.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pwd_senha.setText("Senha");
+        pwd_senha.setToolTipText("");
+        pwd_senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_senha_cdtrActionPerformed(evt);
+                pwd_senhaActionPerformed(evt);
             }
         });
 
-        campo_email_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        campo_email_cdtr.setForeground(new java.awt.Color(212, 212, 216));
-        campo_email_cdtr.setText("E-mail");
-        campo_email_cdtr.setToolTipText("");
-        campo_email_cdtr.addActionListener(new java.awt.event.ActionListener() {
+        txt_email.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_email.setForeground(new java.awt.Color(212, 212, 216));
+        txt_email.setText("E-mail");
+        txt_email.setToolTipText("");
+        txt_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_email_cdtrActionPerformed(evt);
+                txt_emailActionPerformed(evt);
             }
         });
 
-        text_conta_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        text_conta_cdtr.setText("Já possui uma conta?");
+        lbl_pergunta.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 16)); // NOI18N
+        lbl_pergunta.setText("Já possui uma conta?");
 
-        botao_entrar_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        botao_entrar_cdtr.setForeground(new java.awt.Color(43, 127, 255));
-        botao_entrar_cdtr.setText("Entrar");
+        lbl_entrar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 16)); // NOI18N
+        lbl_entrar.setForeground(new java.awt.Color(43, 127, 255));
+        lbl_entrar.setText("Entrar");
 
-        Campo_usuario_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        Campo_usuario_cdtr.setForeground(new java.awt.Color(212, 212, 216));
-        Campo_usuario_cdtr.setText("Nome de usuário");
-        Campo_usuario_cdtr.addActionListener(new java.awt.event.ActionListener() {
+        txt_nome.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_nome.setForeground(new java.awt.Color(212, 212, 216));
+        txt_nome.setText("Nome completo");
+        txt_nome.setToolTipText("");
+        txt_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_usuario_cdtrActionPerformed(evt);
+                txt_nomeActionPerformed(evt);
             }
         });
 
-        rec_senha_cdtr.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        rec_senha_cdtr.setForeground(new java.awt.Color(212, 212, 216));
-        rec_senha_cdtr.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        rec_senha_cdtr.setText("Confirmação da senha");
-        rec_senha_cdtr.setToolTipText("");
-        rec_senha_cdtr.addActionListener(new java.awt.event.ActionListener() {
+        pwd_senha02.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        pwd_senha02.setForeground(new java.awt.Color(212, 212, 216));
+        pwd_senha02.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pwd_senha02.setText("Confirmação da senha");
+        pwd_senha02.setToolTipText("");
+        pwd_senha02.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rec_senha_cdtrActionPerformed(evt);
+                pwd_senha02ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(rec_senha_cdtr)
-                            .addComponent(text_senha_cdtr)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(text_conta_cdtr)
+        javax.swing.GroupLayout pnl_cadastroLayout = new javax.swing.GroupLayout(pnl_cadastro);
+        pnl_cadastro.setLayout(pnl_cadastroLayout);
+        pnl_cadastroLayout.setHorizontalGroup(
+                pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_cadastroLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(pnl_cadastroLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_cadastroLayout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(lbl_cadastro)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(pnl_cadastroLayout.createSequentialGroup()
+                                                .addGroup(pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(txt_email)
+                                                        .addComponent(pwd_senha02, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(txt_nome)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_cadastroLayout.createSequentialGroup()
+                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                .addComponent(lbl_pergunta)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(lbl_entrar)
+                                                                .addGap(228, 228, 228))
+                                                        .addComponent(pwd_senha))
+                                                .addContainerGap())))
+        );
+        pnl_cadastroLayout.setVerticalGroup(
+                pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_cadastroLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl_cadastro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botao_entrar_cdtr)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(Campo_usuario_cdtr, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campo_email_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(96, 96, 96))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(botao_cadastro_cdtr)
-                                .addGap(112, 112, 112))))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Campo_usuario_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(campo_email_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(text_senha_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(rec_senha_cdtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(text_conta_cdtr)
-                    .addComponent(botao_entrar_cdtr))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botao_cadastro_cdtr)
-                .addContainerGap(16, Short.MAX_VALUE))
+                                .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pwd_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pwd_senha02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addGroup(pnl_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lbl_pergunta)
+                                        .addComponent(lbl_entrar))
+                                .addGap(23, 23, 23)
+                                .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26))
         );
 
-        jPanel2.setBackground(new java.awt.Color(43, 127, 255));
-        jPanel2.setForeground(new java.awt.Color(43, 127, 255));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnl_fundoLayout = new javax.swing.GroupLayout(pnl_fundo);
+        pnl_fundo.setLayout(pnl_fundoLayout);
+        pnl_fundoLayout.setHorizontalGroup(
+                pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_fundoLayout.createSequentialGroup()
+                                .addContainerGap(130, Short.MAX_VALUE)
+                                .addComponent(pnl_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(164, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+        pnl_fundoLayout.setVerticalGroup(
+                pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_fundoLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pnl_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(pnl_barraazul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pnl_fundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(pnl_barraazul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnl_fundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campo_email_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_email_cdtrActionPerformed
+    private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campo_email_cdtrActionPerformed
+    }//GEN-LAST:event_txt_emailActionPerformed
 
-    private void botao_cadastro_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_cadastro_cdtrActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botao_cadastro_cdtrActionPerformed
+    private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
 
-    private void text_senha_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_senha_cdtrActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_senha_cdtrActionPerformed
+        String nome = txt_nome.getText().trim();
+        String email = txt_email.getText().trim();
+        String senha = new String(pwd_senha.getPassword()).trim();
+        String senha2 = new String(pwd_senha02.getPassword()).trim();
 
-    private void Campo_usuario_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo_usuario_cdtrActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Campo_usuario_cdtrActionPerformed
+        if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || senha2.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    private void rec_senha_cdtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rec_senha_cdtrActionPerformed
+        if (!senha.equals(senha2)) {
+            JOptionPane.showMessageDialog(this, "As senhas não coincidem!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        User user = new User();
+        user.setNome(nome);
+        user.setEmail(email);
+        user.setPassword(senha);
+
+        try {
+            user = controller.store(user);
+
+            if (user == null) {
+                throw new AuthenticationException("Erro ao cadastrar!");
+            }
+
+            JOptionPane.showMessageDialog(this, "Seu cadastro foi realizado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+
+            this.dispose();
+            Tela_login login = new Tela_login();
+            login.setVisible(true);
+        } catch (AuthenticationException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_cadastrarActionPerformed
+
+    private void pwd_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_senhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rec_senha_cdtrActionPerformed
+    }//GEN-LAST:event_pwd_senhaActionPerformed
+
+    private void txt_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nomeActionPerformed
+
+    private void pwd_senha02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_senha02ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwd_senha02ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,19 +409,16 @@ public class Tela_cadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Campo_usuario_cdtr;
-    private javax.swing.JButton botao_cadastro_cdtr;
-    private javax.swing.JLabel botao_entrar_cdtr;
-    private javax.swing.JTextField campo_email_cdtr;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JPasswordField rec_senha_cdtr;
-    private javax.swing.JLabel text_conta_cdtr;
-    private javax.swing.JPasswordField text_senha_cdtr;
+    private javax.swing.JButton btn_cadastrar;
+    private javax.swing.JLabel lbl_cadastro;
+    private javax.swing.JLabel lbl_entrar;
+    private javax.swing.JLabel lbl_pergunta;
+    private javax.swing.JPanel pnl_barraazul;
+    private javax.swing.JPanel pnl_cadastro;
+    private javax.swing.JPanel pnl_fundo;
+    private javax.swing.JPasswordField pwd_senha;
+    private javax.swing.JPasswordField pwd_senha02;
+    private javax.swing.JTextField txt_email;
+    private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
 }

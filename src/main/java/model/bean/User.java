@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class User {
     private Long id;
-    private String username;
     private String nome;
     private String email;
     private String password;
     private Date data_nascimento;
+    private Boolean admin = false;
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", username=" + username + ", nome=" + nome + ", email=" + email + ", password=" + password + ", data_nascimento=" + data_nascimento + '}';
+        return "User{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", password=" + password + ", data_nascimento=" + data_nascimento + '}';
     }
 
     public User() {}
@@ -23,14 +23,6 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String user) {
-        this.username = user;
     }
 
     public String getNome() {
@@ -63,6 +55,14 @@ public class User {
 
     public void setData_nascimento(Date data_nascimento) {
         this.data_nascimento = data_nascimento;
+    }
+
+    public Boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean is_admin) {
+        this.admin = is_admin;
     }
     
 }
