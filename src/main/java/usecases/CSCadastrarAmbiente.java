@@ -18,8 +18,6 @@ public class CSCadastrarAmbiente {
      */
     public boolean execute(Ambiente ambiente) {
 
-        //TODO: adicionar constraint unique para a coluna "nome" da tabela ambientes
-
         try (Connection conn = ConnectionFactory.getNewConnection()) {
             return new AmbienteDAO().create(conn, ambiente) == 1;
         } catch (DatabaseException | SQLException e) {

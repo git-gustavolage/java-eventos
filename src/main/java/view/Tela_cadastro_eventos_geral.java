@@ -561,7 +561,7 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
             evento.setTitulo(nome);
             evento.setDescricao(descricao);
             evento.setFormato(EventoFormato.valueOf(formato));
-            evento.setDataInicio(parseData(dataFim));
+            evento.setDataInicio(parseData(dataInicio));
             evento.setDataTermino(parseData(dataFim));
 
             controller.store(evento);
