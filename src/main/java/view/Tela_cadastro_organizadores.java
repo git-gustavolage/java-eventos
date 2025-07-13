@@ -33,73 +33,69 @@ public class Tela_cadastro_organizadores extends javax.swing.JFrame {
         //faz com q abra em tela cheia
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-          String texto = "<html><font color = 'GRAY'>Preencha os formulários<br>com as informações<br>do organizador responsável.</html>";
+        String texto = "<html><font color = 'GRAY'>Preencha os formulários<br>com as informações<br>do organizador responsável.</html>";
         lbl_menudescricao.setText(texto);
-        
+
         String texto2 = "<html><font color = 'WHITE'>Este sistema tem como objetivo gerenciar os eventos organizados<br>pelo Instituto Federal de Educação, Ciência e Tecnologia de<br>Rondônia - Campus Calama (IFRO), oferecendo ferramentas para<br>cadastro, divulgação, inscrições, controle de participante e<br>emissão de certificados</html>";
         lbl_descricaosistema.setText(texto2);
-        
-        
- // Altera o texto do checkbox já existente
-pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
+
+        // Altera o texto do checkbox já existente
+        pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
 
 // Lógica do botão confirmar
-    btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
-    public void actionPerformed(java.awt.event.ActionEvent evt) {
-        pnl_resultado.removeAll(); // limpa antes de adicionar
+        btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pnl_resultado.removeAll(); // limpa antes de adicionar
 
-        if (check_CordenadorTecnico.isSelected()) {
-            pnl_resultado.add(new JLabel("Responsável - Coordenador Tecnico"));
-            pnl_resultado.add(new JTextField(20));
-        }
+                if (check_CordenadorTecnico.isSelected()) {
+                    pnl_resultado.add(new JLabel("Responsável - Coordenador Tecnico"));
+                    pnl_resultado.add(new JTextField(20));
+                }
 
-        if (check_TecnicoSegurança.isSelected()) {
-            pnl_resultado.add(new JLabel("Responsável - Tecnico de Segurança"));
-            pnl_resultado.add(new JTextField(20));
-        }
+                if (check_TecnicoSegurança.isSelected()) {
+                    pnl_resultado.add(new JLabel("Responsável - Tecnico de Segurança"));
+                    pnl_resultado.add(new JTextField(20));
+                }
 
-        if (check_SuporteTI.isSelected()) {
-            pnl_resultado.add(new JLabel("Responsável - Suporte de TI"));
-            pnl_resultado.add(new JTextField(20));
-        }
+                if (check_SuporteTI.isSelected()) {
+                    pnl_resultado.add(new JLabel("Responsável - Suporte de TI"));
+                    pnl_resultado.add(new JTextField(20));
+                }
 
-        if (check_TecnicoTI.isSelected()) {
-            pnl_resultado.add(new JLabel("Responsável - Tecnico de TI"));
-            pnl_resultado.add(new JTextField(20));
-        }
+                if (check_TecnicoTI.isSelected()) {
+                    pnl_resultado.add(new JLabel("Responsável - Tecnico de TI"));
+                    pnl_resultado.add(new JTextField(20));
+                }
 
-        if (check_TecnicoIluminacao.isSelected()) {
-            pnl_resultado.add(new JLabel("Responsável - Técnico de Iluminação"));
-            pnl_resultado.add(new JTextField(20));
-        }
+                if (check_TecnicoIluminacao.isSelected()) {
+                    pnl_resultado.add(new JLabel("Responsável - Técnico de Iluminação"));
+                    pnl_resultado.add(new JTextField(20));
+                }
 
-        if (check_TecnicoSom.isSelected()) {
-            pnl_resultado.add(new JLabel("Responsável - Técnico de Som"));
-            pnl_resultado.add(new JTextField(20));
-        }
-        if (check_TecnicoVideo.isSelected()) {
-            pnl_resultado.add(new JLabel("Responsável - Técnico de Video"));
-            pnl_resultado.add(new JTextField(20));
-        }
+                if (check_TecnicoSom.isSelected()) {
+                    pnl_resultado.add(new JLabel("Responsável - Técnico de Som"));
+                    pnl_resultado.add(new JTextField(20));
+                }
+                if (check_TecnicoVideo.isSelected()) {
+                    pnl_resultado.add(new JLabel("Responsável - Técnico de Video"));
+                    pnl_resultado.add(new JTextField(20));
+                }
 
-        if (check_EletricistaEventos.isSelected()) {
-            pnl_resultado.add(new JLabel("Responsável - Eletricista de Eventos"));
-            pnl_resultado.add(new JTextField(20));
-        }
-        if (check_MontadorPalco.isSelected()) {
-            pnl_resultado.add(new JLabel("Responsável - Montador de Palco"));
-            pnl_resultado.add(new JTextField(20));
-        }
+                if (check_EletricistaEventos.isSelected()) {
+                    pnl_resultado.add(new JLabel("Responsável - Eletricista de Eventos"));
+                    pnl_resultado.add(new JTextField(20));
+                }
+                if (check_MontadorPalco.isSelected()) {
+                    pnl_resultado.add(new JLabel("Responsável - Montador de Palco"));
+                    pnl_resultado.add(new JTextField(20));
+                }
 
+                pnl_resultado.revalidate();
+                pnl_resultado.repaint();
+            }
+        });
 
-        pnl_resultado.revalidate();
-        pnl_resultado.repaint();
-    }
-});
-        
-        
-        
-       // logica para abrir a tela de cadastro
+        // logica para abrir a tela de cadastro
         lbl_atividades.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_atividades.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -108,9 +104,9 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
                 Tela_cadastro_atividades cadastro = new Tela_cadastro_atividades();
                 cadastro.setVisible(true);
             }
-        }); 
-        
-               // logica para abrir a tela de cadastro
+        });
+
+        // logica para abrir a tela de cadastro
         lbl_geral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_geral.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -119,10 +115,9 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
                 Tela_cadastro_eventos_geral cadastro2 = new Tela_cadastro_eventos_geral();
                 cadastro2.setVisible(true);
             }
-        }); 
-        
-    }
+        });
 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -142,6 +137,7 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
         lbl_menudescricao = new javax.swing.JLabel();
         pnl_topo = new javax.swing.JPanel();
         lbl_topoevento = new javax.swing.JLabel();
+        btn_inicio = new javax.swing.JButton();
         pnl_cadastroatividades = new javax.swing.JPanel();
         lbl_ORGANIZADORES = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
@@ -233,6 +229,20 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
         lbl_topoevento.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lbl_topoevento.setText("EVENTOS");
 
+        btn_inicio.setBackground(new java.awt.Color(0, 212, 146));
+        btn_inicio.setForeground(new java.awt.Color(255, 255, 255));
+        btn_inicio.setText("Início");
+        btn_inicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_inicioMouseClicked(evt);
+            }
+        });
+        btn_inicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_inicioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnl_topoLayout = new javax.swing.GroupLayout(pnl_topo);
         pnl_topo.setLayout(pnl_topoLayout);
         pnl_topoLayout.setHorizontalGroup(
@@ -240,13 +250,17 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
             .addGroup(pnl_topoLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(lbl_topoevento)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnl_topoLayout.setVerticalGroup(
             pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_topoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_topoevento)
+                .addGroup(pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_topoevento)
+                    .addComponent(btn_inicio))
                 .addContainerGap())
         );
 
@@ -265,6 +279,11 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
         lbl_nome.setText("Organizador Responsável:");
 
         lbl_inicio.setText("Inicio");
+        lbl_inicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_inicioMouseClicked(evt);
+            }
+        });
 
         lbl_cadastro02.setText("Cadastro");
 
@@ -402,7 +421,7 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
                                         .addGap(69, 69, 69)
                                         .addComponent(btn_confirmar))))
                             .addComponent(scroll_pane_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(352, Short.MAX_VALUE))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
         pnl_cadastroatividadesLayout.setVerticalGroup(
             pnl_cadastroatividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -553,24 +572,20 @@ pnl_resultado.setLayout(new BoxLayout(pnl_resultado, BoxLayout.Y_AXIS));
     }//GEN-LAST:event_txt_fiscalActionPerformed
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-          dispose(); // fecha a tela de login
-        Tela_cadastro_atividades cadastro = new Tela_cadastro_atividades();
-        cadastro.setVisible(true);
-        
-        
+        new Tela_cadastro_atividades().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void bnt_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_salvarActionPerformed
         String nome = txt_nome.getText().trim();
-        
 
         if (nome.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-JOptionPane.showMessageDialog(this, "Cadastro Realizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            
+        JOptionPane.showMessageDialog(this, "Cadastro Realizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_bnt_salvarActionPerformed
 
     private void check_SuporteTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_SuporteTIActionPerformed
@@ -580,6 +595,20 @@ JOptionPane.showMessageDialog(this, "Cadastro Realizado com sucesso!", "Sucesso"
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_confirmarActionPerformed
+
+    private void lbl_inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_inicioMouseClicked
+        new Tela_Inicial().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lbl_inicioMouseClicked
+
+    private void btn_inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_inicioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_inicioMouseClicked
+
+    private void btn_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inicioActionPerformed
+        new Tela_Inicial().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_inicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -619,6 +648,7 @@ JOptionPane.showMessageDialog(this, "Cadastro Realizado com sucesso!", "Sucesso"
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bnt_salvar;
     private javax.swing.JButton btn_confirmar;
+    private javax.swing.JButton btn_inicio;
     private javax.swing.JButton btn_voltar;
     private javax.swing.JCheckBox check_CordenadorTecnico;
     private javax.swing.JCheckBox check_EletricistaEventos;
