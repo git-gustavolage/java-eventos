@@ -8,6 +8,7 @@ public class User {
     private String email;
     private String password;
     private Date data_nascimento;
+    private Boolean admin = false;
 
     @Override
     public String toString() {
@@ -54,6 +55,14 @@ public class User {
 
     public void setData_nascimento(Date data_nascimento) {
         this.data_nascimento = data_nascimento;
+    }
+
+    public Boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean is_admin) {
+        this.admin = is_admin;
     }
     
 }

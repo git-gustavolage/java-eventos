@@ -5,25 +5,26 @@ import java.sql.SQLException;
 
 import database.ConnectionFactory;
 import exceptions.DatabaseException;
-import model.bean.Ambiente;
-import model.dao.AmbienteDAO;
+import model.bean.Inscricao;
+import model.dao.InscricaoDAO;
 
-public class CSCadastrarAmbiente {
+public class CSInscrever {
 
     /**
-     * Cadastra um ambiente. Campos obrigatorios: nome, descricao
+     * Inscreve um usuario em um evento
      * 
-     * @param ambiente
-     * @return true se cadastrou, false caso contrario
+     * @param inscricao
+     * @return true se conseguiu inscrever ou false caso contrario
      */
-    public boolean execute(Ambiente ambiente) {
+    public boolean execute(Inscricao inscricao) {
 
         try (Connection conn = ConnectionFactory.getNewConnection()) {
-            return new AmbienteDAO().create(conn, ambiente) == 1;
+            return new InscricaoDAO().create(conn, inscricao) == 1;
         } catch (DatabaseException | SQLException e) {
             System.err.println("Error: " + e.getMessage());
             return false;
         }
+
     }
 
 }

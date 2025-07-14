@@ -26,6 +26,8 @@ public class CSCadastrarEvento {
             return false;
         }
 
+        //TODO: não permitir que um mesmo usuario cadastre 2 eventos com o mesmo nome
+
         LocalDate hoje = LocalDate.now();
         LocalDate inicio = evento.getDataInicio();
         LocalDate termino = evento.getDataTermino();
