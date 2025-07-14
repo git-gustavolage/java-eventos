@@ -32,6 +32,11 @@ import javax.swing.table.TableRowSorter;
         jScrollPane1 = new javax.swing.JScrollPane();
         Tbl_Eventos = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
+        lbl_titulosistema = new javax.swing.JLabel();
+        lbl_links = new javax.swing.JLabel();
+        lbl_linkevento = new javax.swing.JLabel();
+        lbl_linkatividades = new javax.swing.JLabel();
+        lbl_linkcronograma = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         txt_pesquisa = new javax.swing.JTextField();
@@ -147,15 +152,70 @@ import javax.swing.table.TableRowSorter;
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
 
+        lbl_titulosistema.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_titulosistema.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl_titulosistema.setForeground(new java.awt.Color(60, 181, 132));
+        lbl_titulosistema.setText("SISTEMA DE GERENCIAMENTO DE EVENTOS");
+
+        lbl_links.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl_links.setForeground(new java.awt.Color(60, 181, 132));
+        lbl_links.setText("Links");
+
+        lbl_linkevento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_linkevento.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_linkevento.setText("• Eventos");
+        lbl_linkevento.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lbl_linkeventoMouseDragged(evt);
+            }
+        });
+        lbl_linkevento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_linkeventoMouseClicked(evt);
+            }
+        });
+
+        lbl_linkatividades.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_linkatividades.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_linkatividades.setText("• Atividades");
+
+        lbl_linkcronograma.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_linkcronograma.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_linkcronograma.setText("• Cronograma");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(114, 114, 114)
+                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(119, 119, 119)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_linkcronograma)
+                        .addComponent(lbl_linkevento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_links)
+                        .addComponent(lbl_linkatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(115, 115, 115)))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 91, Short.MAX_VALUE)
+            .addGap(0, 117, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_links)
+                        .addComponent(lbl_titulosistema))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbl_linkevento)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbl_linkatividades)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbl_linkcronograma)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -239,10 +299,19 @@ import javax.swing.table.TableRowSorter;
         String titulo = Tbl_Eventos.getValueAt(linhaSelecionada, 0).toString();
 
         // Abre nova tela e envia o título
-        Tela_evento tela = new Tela_evento(titulo);
-        tela.setVisible(true);
+//        Tela_evento tela = new Tela_evento(titulo);
+//        tela.setVisible(true);
     }
     }//GEN-LAST:event_Tbl_EventosMouseClicked
+
+    private void lbl_linkeventoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_linkeventoMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbl_linkeventoMouseDragged
+
+    private void lbl_linkeventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_linkeventoMouseClicked
+        //    new Tela_Inicial().setVisible(true);
+        //    this.dispose();        
+    }//GEN-LAST:event_lbl_linkeventoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -293,6 +362,11 @@ import javax.swing.table.TableRowSorter;
     private javax.swing.JLabel lbl_ListaEventos;
     private javax.swing.JLabel lbl_ListaEventos1;
     private javax.swing.JLabel lbl_evenos;
+    private javax.swing.JLabel lbl_linkatividades;
+    private javax.swing.JLabel lbl_linkcronograma;
+    private javax.swing.JLabel lbl_linkevento;
+    private javax.swing.JLabel lbl_links;
+    private javax.swing.JLabel lbl_titulosistema;
     private javax.swing.JTextField txt_pesquisa;
     // End of variables declaration//GEN-END:variables
 }
