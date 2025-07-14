@@ -16,7 +16,7 @@ public class CSFindUserByID {
      * @param ID
      * @return o usuario encontrado ou null caso nao seja encontrado
      */
-    public static User execute(Long ID) {
+    public User execute(Long ID) {
         User result;
 
         try (Connection conn = new ConnectionFactory().open()) {
