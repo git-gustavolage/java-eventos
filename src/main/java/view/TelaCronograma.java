@@ -64,21 +64,20 @@ public class AtividadeController {
     }
 }
 
-public List<Atividade> listByUsuario(Connection conn, Long usuarioId) throws DatabaseException {
-    String sql = "SELECT atividade_id FROM inscricao_atividade WHERE usuario_id = ?;";
-    
-    return new DB().executeQuery(conn, sql, stmt -> stmt.setLong(1, usuarioId), rs -> {
-        List<Atividade> atividades = new ArrayList<>();
-        
-        while (rs.next()) {
-            Long atividadeId = rs.getLong("atividade_id");
-            Atividade atividade = find(conn, atividadeId);
-            if (atividade != null) {
-                atividades.add(atividade);
-            }
-        }
-        return atividades;
-    });
+private void loadCronograma(Long usuarioId) {
+    List<Atividade> atividades = controller.listarCronogramaDoUsuario(usuarioId);
+    DefaultTableModel model = (DefaultTableModel) Tbl_Cronograma.getModel();
+    model.setRowCount(0); // limpa a tabela
+
+    for (Atividade atividade : atividades) {
+        Object[] row = {
+            atividade.getTitulo(),
+            atividade.getDescricao(),
+            atividade.getData(),
+            atividade.getHora_inicio().toString() + " - " + atividade.getHora_termino().toString()
+        };
+        model.addRow(row);
+    }
 }
 
 
@@ -400,9 +399,9 @@ public class TelaCronograma {
             Long id = Long.valueOf(Tab_cronograma.getValueAt(linhaSelecionada, 0).toString());
 
             System.out.println(id);
-// QUANDO ADICIONAR A TELA DE INICIO
-//            new Tela_evento().setVisible(true);
-//            this.dispose();
+
+            new Tela_evento().setVisible(true);
+            this.dispose();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_Tab_cronogramaMouseClicked
 
