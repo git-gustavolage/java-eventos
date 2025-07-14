@@ -41,6 +41,11 @@ public class TelaCronograma extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tab_certificados = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
+        lbl_titulosistema = new javax.swing.JLabel();
+        lbl_links = new javax.swing.JLabel();
+        lbl_linkevento = new javax.swing.JLabel();
+        lbl_linkatividades = new javax.swing.JLabel();
+        lbl_linkcronograma = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -178,15 +183,60 @@ public class TelaCronograma extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
+        lbl_titulosistema.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_titulosistema.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl_titulosistema.setForeground(new java.awt.Color(60, 181, 132));
+        lbl_titulosistema.setText("SISTEMA DE GERENCIAMENTO DE EVENTOS");
+
+        lbl_links.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl_links.setForeground(new java.awt.Color(60, 181, 132));
+        lbl_links.setText("Links");
+
+        lbl_linkevento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_linkevento.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_linkevento.setText("• Eventos");
+
+        lbl_linkatividades.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_linkatividades.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_linkatividades.setText("• Atividades");
+
+        lbl_linkcronograma.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_linkcronograma.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_linkcronograma.setText("• Cronograma");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(96, 96, 96)
+                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(119, 119, 119)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_linkcronograma)
+                        .addComponent(lbl_linkevento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_links)
+                        .addComponent(lbl_linkatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(97, 97, 97)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 128, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(11, 11, 11)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_links)
+                        .addComponent(lbl_titulosistema))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbl_linkevento)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbl_linkatividades)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbl_linkcronograma)
+                    .addContainerGap(12, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -268,6 +318,11 @@ public class TelaCronograma extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_cronograma_e_cerificado;
     private javax.swing.JLabel lbl_evenos;
     private javax.swing.JLabel lbl_inicio;
+    private javax.swing.JLabel lbl_linkatividades;
+    private javax.swing.JLabel lbl_linkcronograma;
+    private javax.swing.JLabel lbl_linkevento;
+    private javax.swing.JLabel lbl_links;
+    private javax.swing.JLabel lbl_titulosistema;
     private javax.swing.JTable tab_certificados;
     private javax.swing.JTable tab_cronograma;
     // End of variables declaration//GEN-END:variables
