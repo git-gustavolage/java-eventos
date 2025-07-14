@@ -4,17 +4,111 @@
  */
 package view;
 
+import com.sun.jdi.connect.spi.Connection;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import javax.lang.model.SourceVersion;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.bean.Evento;
+import model.bean.User;
+
+import model.bean.Atividade;
+import model.bean.User;
 /**
  *
  * @author user
  */
-public class TelaCronograma extends javax.swing.JFrame {
+public class AtividadeController {
+
+    private final AtividadeUseCase atividadeUseCase;
+
+    public AtividadeController(AtividadeUseCase atividadeUseCase) {
+        this.atividadeUseCase = atividadeUseCase;
+    }
+
+    public List<Atividade> listByUsuario(int usuarioId) {
+        List<Atividade> atividades = new ArrayList<>();
+
+        String sql = "SELECT atividade_id FROM inscricao_atividade WHERE usuario_id = ?";
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventos", "root", "");
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, usuarioId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int atividadeId = rs.getInt("atividade_id");
+
+                // Usa o use case existente para buscar a atividade completa
+                Optional<Atividade> atividadeOpt = atividadeUseCase.findById(atividadeId);
+
+                atividadeOpt.ifPresent(atividades::add);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao carregar atividades do usuário.");
+        }
+
+        return atividades;
+    }
+}
+
+public List<Atividade> listByUsuario(Connection conn, Long usuarioId) throws DatabaseException {
+    String sql = "SELECT atividade_id FROM inscricao_atividade WHERE usuario_id = ?;";
+    
+    return new DB().executeQuery(conn, sql, stmt -> stmt.setLong(1, usuarioId), rs -> {
+        List<Atividade> atividades = new ArrayList<>();
+        
+        while (rs.next()) {
+            Long atividadeId = rs.getLong("atividade_id");
+            Atividade atividade = find(conn, atividadeId);
+            if (atividade != null) {
+                atividades.add(atividade);
+            }
+        }
+        return atividades;
+    });
+}
+
+
+public class TelaCronograma {
+
+}
+
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.latest();
+    }
+}
+
+
+    private static class EventoController {
+
+        public EventoController() {
+        }
+    }
+    public class TelaCronograma extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaCronograma
      */
     public TelaCronograma() {
         initComponents();
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        this.loadEventos();
     }
 
     /**
@@ -36,7 +130,7 @@ public class TelaCronograma extends javax.swing.JFrame {
         lbl_cronograma_e_cerificado = new javax.swing.JLabel();
         lbl_Acompanhe = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tab_cronograma = new javax.swing.JTable();
+        Tab_cronograma = new javax.swing.JTable();
         lbl_certificados = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tab_certificados = new javax.swing.JTable();
@@ -93,6 +187,11 @@ public class TelaCronograma extends javax.swing.JFrame {
 
         lbl_inicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_inicio.setText("Iinicio");
+        lbl_inicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_inicioMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText(">");
@@ -103,7 +202,7 @@ public class TelaCronograma extends javax.swing.JFrame {
         lbl_Acompanhe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_Acompanhe.setText("Acompanhe aqui o cronograma dos eventos inscritos");
 
-        tab_cronograma.setModel(new javax.swing.table.DefaultTableModel(
+        Tab_cronograma.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -111,10 +210,23 @@ public class TelaCronograma extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome do evento", "Nome da atividade", "Dia da atividade", "Hora da Atividade"
+                "Titulo", "Atividade", "Dia da atividade", "Hora da Atividade"
             }
-        ));
-        jScrollPane1.setViewportView(tab_cronograma);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        Tab_cronograma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tab_cronogramaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Tab_cronograma);
 
         lbl_certificados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_certificados.setText("Aqui estão seu certificados.");
@@ -129,7 +241,15 @@ public class TelaCronograma extends javax.swing.JFrame {
             new String [] {
                 "Nome do evento", "Nome da atividade", "Download"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tab_certificados);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -269,6 +389,23 @@ public class TelaCronograma extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_menuActionPerformed
 
+    private void lbl_inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_inicioMouseClicked
+                // TODO add your handling code here:
+    }//GEN-LAST:event_lbl_inicioMouseClicked
+
+    private void Tab_cronogramaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab_cronogramaMouseClicked
+        int linhaSelecionada = Tab_cronograma.getSelectedRow();
+
+        if (linhaSelecionada != -1) {
+            Long id = Long.valueOf(Tab_cronograma.getValueAt(linhaSelecionada, 0).toString());
+
+            System.out.println(id);
+// QUANDO ADICIONAR A TELA DE INICIO
+//            new Tela_evento().setVisible(true);
+//            this.dispose();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_Tab_cronogramaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -305,6 +442,7 @@ public class TelaCronograma extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tab_cronograma;
     private javax.swing.JButton btn_menu;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -324,6 +462,9 @@ public class TelaCronograma extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_links;
     private javax.swing.JLabel lbl_titulosistema;
     private javax.swing.JTable tab_certificados;
-    private javax.swing.JTable tab_cronograma;
     // End of variables declaration//GEN-END:variables
+
+    private void loadEventos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
