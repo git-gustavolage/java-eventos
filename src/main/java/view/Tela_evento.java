@@ -13,7 +13,7 @@ import model.bean.Evento;
 public class Tela_evento extends javax.swing.JFrame {
 
     private final EventoController controller = new EventoController();
-    private Long id_evento = 2L;
+    private Long id_evento = null;
 
     private void loadEvento() {
         Evento evento = controller.find(id_evento);
@@ -66,10 +66,16 @@ public class Tela_evento extends javax.swing.JFrame {
         this.loadAtividades();
     }
 
-    public void setIdEvento(Long id) {
-        this.id_evento = id;
-    }
+    public Tela_evento(Long id_evento) {
+        this.id_evento = id_evento;
 
+        initComponents();
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        this.loadEvento();
+        this.loadAtividades();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -514,7 +520,8 @@ public class Tela_evento extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_inicialMouseClicked
 
     private void btn_inscriçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inscriçãoActionPerformed
-        //TODO
+        new Tela_inscricao_eventos().setEventoId(id_evento).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_inscriçãoActionPerformed
 
     private void btn_inscriçãoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_inscriçãoMouseClicked
