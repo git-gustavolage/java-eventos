@@ -1,21 +1,13 @@
+package view;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
-
-import java.sql.DriverManager;
-import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JOptionPane;
-import javax.swing.JFrame;
-import java.util.List;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
-import model.bean.Evento;
-import usecases.CSListarEventos;
-
 /**
  *
  * @author user
@@ -37,7 +29,7 @@ import usecases.CSListarEventos;
 //    DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
 //    modelo.setRowCount(0); // limpa a tabela antes de carregar novamente
 //
-//    String sql = "SELECT titulo, data, hora FROM eventos";
+//    String sql = "SELECT titulo, data_inicio FROM eventos";
 //
 //    try (Connection conn = conectar();
 //         PreparedStatement stmt = conn.prepareStatement(sql);
