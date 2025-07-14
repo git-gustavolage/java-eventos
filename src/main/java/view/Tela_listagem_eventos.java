@@ -324,7 +324,8 @@ public class Tela_listagem_eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_menuMouseClicked
 
     private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
-        // TODO add your handling code here:
+        new Tela_Inicial().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_menuActionPerformed
 
     private void txt_pesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pesquisaKeyReleased
@@ -344,7 +345,7 @@ public class Tela_listagem_eventos extends javax.swing.JFrame {
 
             System.out.println(id);
 
-            new Tela_evento().setVisible(true);
+            new Tela_evento(id).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_Tbl_EventosMouseClicked
