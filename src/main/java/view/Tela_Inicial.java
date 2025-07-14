@@ -16,6 +16,12 @@ public class Tela_Inicial extends javax.swing.JFrame {
         String texto = "<html><font color = 'WHITE'>Este sistema tem como objetivo gerenciar os eventos organizados<br>pelo Instituto Federal de Educação, Ciência e Tecnologia de<br>Rondônia - Campus Calama (IFRO), oferecendo ferramentas para<br>cadastro, divulgação, inscrições, controle de participante e<br>emissão de certificados</html>";
         lbl_descricaosistema.setText(texto);
         
+        
+        String texto1 = "<html>"
+            + "<font color='black' size='5'><b>INSTITUTO FEDERAL DE EDUCAÇÃO<br>CIÊNCIA E TECNOLOGIA</b></font>"
+            + "</html>";
+        lbl_if.setText(texto1);
+        
         /**
          String texto2 = "<html><font color = 'BLACK'>Cronograma<br>e Certificados</html>";
         btn_cronograma.setText(texto2);
@@ -38,7 +44,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        pnl_ = new javax.swing.JPanel();
         lbl_eventos = new javax.swing.JLabel();
         pnl_fundopreto = new javax.swing.JPanel();
         lbl_descricaosistema = new javax.swing.JLabel();
@@ -52,6 +58,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
         btn_listarEventos = new javax.swing.JButton();
         btn_listarParticipante = new javax.swing.JButton();
         btn_cronograma = new javax.swing.JButton();
+        lbl_imagem = new javax.swing.JLabel();
+        lbl_if = new javax.swing.JLabel();
+        lbl_campus = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -82,23 +91,23 @@ public class Tela_Inicial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_eventos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_eventos.setText("Eventos");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnl_Layout = new javax.swing.GroupLayout(pnl_);
+        pnl_.setLayout(pnl_Layout);
+        pnl_Layout.setHorizontalGroup(
+            pnl_Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(lbl_eventos)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnl_Layout.setVerticalGroup(
+            pnl_Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(lbl_eventos)
                 .addContainerGap(8, Short.MAX_VALUE))
@@ -197,47 +206,87 @@ public class Tela_Inicial extends javax.swing.JFrame {
         });
 
         btn_cronograma.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_cronograma.setText("Cronograma ");
+        btn_cronograma.setText("<html><font color = 'BLACK'>Cronograma<br>e Certificados</html>");
+        btn_cronograma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cronogramaActionPerformed(evt);
+            }
+        });
+
+        lbl_imagem.setText("logo");
+
+        lbl_if.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_if.setText("IFRO");
+
+        lbl_campus.setText("CAMPUS");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_listarParticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_listarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_cronograma, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_cadastrarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_listarParticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_listarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl_if, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(243, 243, 243))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(227, 227, 227)
+                                .addComponent(lbl_campus)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_cronograma, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_cadastrarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(391, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_listarParticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_listarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(lbl_if, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(lbl_campus))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(lbl_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_cadastrarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cronograma, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cadastrarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_listarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_listarParticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnl_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnl_fundopreto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -248,6 +297,14 @@ public class Tela_Inicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_cronogramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cronogramaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cronogramaActionPerformed
+
+    private void btn_listarParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarParticipanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_listarParticipanteActionPerformed
+
     private void btn_listarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarEventosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_listarEventosActionPerformed
@@ -255,10 +312,6 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private void btn_cadastrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarEventosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_cadastrarEventosActionPerformed
-
-    private void btn_listarParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarParticipanteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_listarParticipanteActionPerformed
 
     private void btn_cadastrarEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cadastrarEventosMouseClicked
         new Tela_cadastro_eventos_geral().setVisible(true);
@@ -308,17 +361,20 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private javax.swing.JButton btn_listarParticipante;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lbl_campus;
     private javax.swing.JLabel lbl_descricaosistema;
     private javax.swing.JLabel lbl_eventos;
+    private javax.swing.JLabel lbl_if;
+    private javax.swing.JLabel lbl_imagem;
     private javax.swing.JLabel lbl_linkatividades;
     private javax.swing.JLabel lbl_linkcronograma;
     private javax.swing.JLabel lbl_linkevento;
     private javax.swing.JLabel lbl_links;
     private javax.swing.JLabel lbl_titulosistema;
+    private javax.swing.JPanel pnl_;
     private javax.swing.JPanel pnl_fundopreto;
     // End of variables declaration//GEN-END:variables
 }
