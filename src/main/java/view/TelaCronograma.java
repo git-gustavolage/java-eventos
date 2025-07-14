@@ -66,7 +66,7 @@ public class AtividadeController {
 
 private void loadCronograma(Long usuarioId) {
     List<Atividade> atividades = controller.listarCronogramaDoUsuario(usuarioId);
-    DefaultTableModel model = (DefaultTableModel) Tbl_Cronograma.getModel();
+    DefaultTableModel model = (DefaultTableModel) Tab_Cronograma.getModel();
     model.setRowCount(0); // limpa a tabela
 
     for (Atividade atividade : atividades) {
@@ -78,6 +78,9 @@ private void loadCronograma(Long usuarioId) {
         };
         model.addRow(row);
     }
+}
+        return atividades;
+    });
 }
 
 
@@ -109,6 +112,56 @@ public class TelaCronograma {
 
         this.loadEventos();
     }
+
+// Codigo a baixo é referente a tabela de certificado
+
+    public List<Atividade> listAtividadesComCertificado(Connection conn, Long usuarioId) throws DatabaseException {
+    String sql = """
+        SELECT a.* FROM certificados c
+        JOIN atividades a ON c.atividade_id = a.id
+        WHERE c.usuario_id = ?
+    """;
+
+    return new DB().executeQuery(conn, sql, stmt -> stmt.setLong(1, usuarioId), rs -> {
+        List<Atividade> atividades = new ArrayList<>();
+        while (rs.next()) {
+            Atividade atividade = parse(rs);
+            if (atividade != null) {
+                atividades.add(atividade);
+            }
+        }
+        return atividades;
+    });
+}
+// 
+    private void loadCertificados(Long usuarioId) {
+        try (Connection conn = DB.getConnection()) {
+            List<Atividade> atividades = atividadeDAO.listAtividadesComCertificado(conn, usuarioId);
+            DefaultTableModel model = (DefaultTableModel) tab_certificados.getModel();
+            model.setRowCount(0);
+
+        for (Atividade atividade : atividades) {
+            Object[] row = {
+                // Nome do evento pode estar em outro DAO, ou você adapta a consulta para já trazer.
+                atividade.getTitulo(), // ou atividade.getEvento().getNome()
+                atividade.getTitulo(), // título da atividade
+                false // checkbox desmarcado por padrão
+            };
+            model.addRow(row);
+        }
+
+    } catch (DatabaseException e) {
+        e.printStackTrace();
+    }
+}
+
+for (int i = 0; i < tblCertificados.getRowCount(); i++) {
+    boolean selecionado = (Boolean) tab_certificados.getValueAt(i, 2);
+    if (selecionado) {
+        String tituloAtividade = (String) tab_certificados.getValueAt(i, 1);
+        // chamar método para gerar/download do certificado
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
