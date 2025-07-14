@@ -1,3 +1,7 @@
+CREATE DATAVASE eventos;
+
+USE eventos;
+
 CREATE TABLE usuarios (
 	id bigint(20) primary key not null auto_increment,
 	email varchar(255) unique not null,
@@ -29,8 +33,7 @@ CREATE TABLE eventos (
 	is_cancelado tinyint(1) not null default 0,
 	
 	CONSTRAINT eventos_id_organizador_foreign FOREIGN KEY (id_organizador)
-	REFERENCES usuarios(id)
-    ON DELETE CASCADE
+	REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
 CREATE TABLE atividades (
@@ -62,6 +65,7 @@ CREATE TABLE inscricoes (
 	id bigint(20) primary key not null auto_increment,
 	id_usuario bigint(20) not null,
 	id_evento bigint(20) not null,
+	categoria varchar(255) not null,
 	data date not null,
 	
 	CONSTRAINT inscricoes_id_usuario_foreign FOREIGN KEY (id_usuario)

@@ -27,6 +27,8 @@ cd java-eventos
 
 Copie e rode os comandos SQL encontrados dentro do arquivo `eventos.sql` para criar as tabelas necessários para executar projeto.
 
+(Recomendado) Execute também o arquivo `seed.sql` para inserir dados iniciais dentro do banco, melhorando a experiência no primeiro uso do sistema.
+
 ### 3. Variáveis de ambiente
 
 - Renomeie o arquivo `config.properties.example` para `config.properties`
