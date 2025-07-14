@@ -95,6 +95,7 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_menudescricao = new javax.swing.JLabel();
         pnl_topo = new javax.swing.JPanel();
         lbl_topoevento = new javax.swing.JLabel();
+        btn_inicio = new javax.swing.JButton();
         pnl_eventos = new javax.swing.JPanel();
         lbl_informainicio = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -152,34 +153,34 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         javax.swing.GroupLayout pnl_menuLayout = new javax.swing.GroupLayout(pnl_menu);
         pnl_menu.setLayout(pnl_menuLayout);
         pnl_menuLayout.setHorizontalGroup(
-                pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_menuLayout.createSequentialGroup()
-                                .addContainerGap(16, Short.MAX_VALUE)
-                                .addGroup(pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lbl_menudescricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lbl_cadastrogeral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(pnl_menuLayout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addGroup(pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lbl_menuorganizadores)
-                                                        .addComponent(lbl_menuatividades)
-                                                        .addComponent(lbl_menueventos))))
-                                .addContainerGap(35, Short.MAX_VALUE))
+            pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_menuLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addGroup(pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbl_menudescricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_cadastrogeral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_menuLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_menuorganizadores)
+                            .addComponent(lbl_menuatividades)
+                            .addComponent(lbl_menueventos))))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         pnl_menuLayout.setVerticalGroup(
-                pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_menuLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(lbl_cadastrogeral, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_menudescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_menueventos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_menuatividades)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_menuorganizadores)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_menuLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(lbl_cadastrogeral, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_menudescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_menueventos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_menuatividades)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_menuorganizadores)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnl_topo.setBackground(new java.awt.Color(255, 255, 255));
@@ -187,26 +188,49 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_topoevento.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lbl_topoevento.setText("EVENTOS");
 
+        btn_inicio.setBackground(new java.awt.Color(0, 212, 146));
+        btn_inicio.setForeground(new java.awt.Color(255, 255, 255));
+        btn_inicio.setText("Início");
+        btn_inicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_inicioMouseClicked(evt);
+            }
+        });
+        btn_inicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_inicioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnl_topoLayout = new javax.swing.GroupLayout(pnl_topo);
         pnl_topo.setLayout(pnl_topoLayout);
         pnl_topoLayout.setHorizontalGroup(
-                pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_topoLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(lbl_topoevento)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_topoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lbl_topoevento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnl_topoLayout.setVerticalGroup(
-                pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_topoLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbl_topoevento)
-                                .addContainerGap())
+            pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_topoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_topoevento)
+                    .addComponent(btn_inicio))
+                .addContainerGap())
         );
 
         pnl_eventos.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_informainicio.setText("Inicio");
+        lbl_informainicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_informainicioMouseClicked(evt);
+            }
+        });
 
         jLabel10.setText(">");
 
@@ -222,15 +246,19 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_nome.setText("Nome do evento:");
 
-        txt_nome.addActionListener((java.awt.event.ActionEvent evt) -> {
-            txt_nomeActionPerformed(evt);
+        txt_nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nomeActionPerformed(evt);
+            }
         });
 
         lbl_descricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_descricao.setText("Descrição do evento:");
 
-        txt_descricao.addActionListener((java.awt.event.ActionEvent evt) -> {
-            txt_descricaoActionPerformed(evt);
+        txt_descricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_descricaoActionPerformed(evt);
+            }
         });
 
         lbl_formato.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -239,8 +267,10 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_categoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_categoria.setText("Categoria do evento:");
 
-        txt_categoria.addActionListener((java.awt.event.ActionEvent evt) -> {
-            txt_categoriaActionPerformed(evt);
+        txt_categoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_categoriaActionPerformed(evt);
+            }
         });
 
         lbl_data.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -249,8 +279,10 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_datainicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_datainicio.setText("Inicio do evento:");
 
-        txt_datainicio.addActionListener((java.awt.event.ActionEvent evt) -> {
-            txt_datainicioActionPerformed(evt);
+        txt_datainicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_datainicioActionPerformed(evt);
+            }
         });
 
         lbl_localizacao.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -262,139 +294,145 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         lbl_datafim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_datafim.setText("Fim do evento:");
 
-        txt_datafim.addActionListener((java.awt.event.ActionEvent evt) -> {
-            txt_datafimActionPerformed(evt);
+        txt_datafim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_datafimActionPerformed(evt);
+            }
         });
 
         lbl_local.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_local.setText("Local:");
 
-        txt_local.addActionListener((java.awt.event.ActionEvent evt) -> {
-            txt_localActionPerformed(evt);
+        txt_local.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_localActionPerformed(evt);
+            }
         });
 
         btn_salvar.setBackground(new java.awt.Color(0, 212, 146));
         btn_salvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_salvar.setForeground(new java.awt.Color(255, 255, 255));
         btn_salvar.setText("Salvar");
-        btn_salvar.addActionListener((java.awt.event.ActionEvent evt) -> {
-            btn_salvarActionPerformed(evt);
+        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salvarActionPerformed(evt);
+            }
         });
 
         lbl_cidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_cidade.setText("Cidade:");
 
-        cmb_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"}));
+        cmb_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
 
-        cmb_formato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Online", "Presencial", "Hibrido"}));
+        cmb_formato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Online", "Presencial", "Hibrido" }));
 
         javax.swing.GroupLayout pnl_eventosLayout = new javax.swing.GroupLayout(pnl_eventos);
         pnl_eventos.setLayout(pnl_eventosLayout);
         pnl_eventosLayout.setHorizontalGroup(
-                pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_eventosLayout.createSequentialGroup()
-                                .addGap(43, 43, 43)
+            pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_eventosLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_eventosLayout.createSequentialGroup()
+                        .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_eventos)
+                            .addGroup(pnl_eventosLayout.createSequentialGroup()
+                                .addComponent(lbl_informainicio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_informacadastro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_informaevento))
+                            .addGroup(pnl_eventosLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmb_formato, 0, 230, Short.MAX_VALUE)
+                                    .addComponent(lbl_estado)
+                                    .addComponent(lbl_categoria)
+                                    .addComponent(lbl_descricao)
+                                    .addComponent(lbl_nome)
+                                    .addComponent(lbl_formato)
+                                    .addComponent(lbl_datainicio)
+                                    .addComponent(txt_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                                    .addComponent(txt_categoria)
+                                    .addComponent(txt_datainicio)
+                                    .addComponent(txt_nome)
+                                    .addComponent(cmb_estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(49, 49, 49)
                                 .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnl_eventosLayout.createSequentialGroup()
-                                                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lbl_eventos)
-                                                        .addGroup(pnl_eventosLayout.createSequentialGroup()
-                                                                .addComponent(lbl_informainicio)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jLabel10)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(lbl_informacadastro)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jLabel11)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(lbl_informaevento))
-                                                        .addGroup(pnl_eventosLayout.createSequentialGroup()
-                                                                .addGap(27, 27, 27)
-                                                                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                        .addComponent(cmb_formato, 0, 230, Short.MAX_VALUE)
-                                                                        .addComponent(lbl_estado)
-                                                                        .addComponent(lbl_categoria)
-                                                                        .addComponent(lbl_descricao)
-                                                                        .addComponent(lbl_nome)
-                                                                        .addComponent(lbl_formato)
-                                                                        .addComponent(lbl_datainicio)
-                                                                        .addComponent(txt_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                                                                        .addComponent(txt_categoria)
-                                                                        .addComponent(txt_datainicio)
-                                                                        .addComponent(txt_nome)
-                                                                        .addComponent(cmb_estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                                .addGap(49, 49, 49)
-                                                                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(lbl_datafim)
-                                                                        .addComponent(txt_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(txt_datafim, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(lbl_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                .addGap(55, 55, 55)
-                                                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(pnl_eventosLayout.createSequentialGroup()
-                                                                .addComponent(txt_local, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(btn_salvar))
-                                                        .addComponent(lbl_local)))
-                                        .addGroup(pnl_eventosLayout.createSequentialGroup()
-                                                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lbl_data)
-                                                        .addComponent(lbl_localizacao))
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                .addContainerGap())
+                                    .addComponent(lbl_datafim)
+                                    .addComponent(txt_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_datafim, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(55, 55, 55)
+                        .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnl_eventosLayout.createSequentialGroup()
+                                .addComponent(txt_local, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_salvar))
+                            .addComponent(lbl_local)))
+                    .addGroup(pnl_eventosLayout.createSequentialGroup()
+                        .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_data)
+                            .addComponent(lbl_localizacao))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pnl_eventosLayout.setVerticalGroup(
-                pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_eventosLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lbl_informainicio)
-                                        .addComponent(jLabel10)
-                                        .addComponent(lbl_informacadastro)
-                                        .addComponent(jLabel11)
-                                        .addComponent(lbl_informaevento))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbl_eventos)
-                                .addGap(12, 12, 12)
-                                .addComponent(lbl_nome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbl_descricao)
-                                .addGap(12, 12, 12)
-                                .addComponent(txt_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_formato)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmb_formato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(lbl_categoria)
-                                .addGap(9, 9, 9)
-                                .addComponent(txt_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(lbl_data)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lbl_datainicio)
-                                        .addComponent(lbl_datafim))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txt_datainicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_datafim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29)
-                                .addComponent(lbl_localizacao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lbl_estado)
-                                        .addComponent(lbl_cidade)
-                                        .addComponent(lbl_local))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txt_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_local, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btn_salvar)
-                                        .addComponent(cmb_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(21, 21, 21))
+            pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_eventosLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_informainicio)
+                    .addComponent(jLabel10)
+                    .addComponent(lbl_informacadastro)
+                    .addComponent(jLabel11)
+                    .addComponent(lbl_informaevento))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_eventos)
+                .addGap(12, 12, 12)
+                .addComponent(lbl_nome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_descricao)
+                .addGap(12, 12, 12)
+                .addComponent(txt_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_formato)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmb_formato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(lbl_categoria)
+                .addGap(9, 9, 9)
+                .addComponent(txt_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(lbl_data)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_datainicio)
+                    .addComponent(lbl_datafim))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_datainicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_datafim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(lbl_localizacao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_estado)
+                    .addComponent(lbl_cidade)
+                    .addComponent(lbl_local))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_local, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_salvar)
+                    .addComponent(cmb_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
         pnl_descrição.setBackground(new java.awt.Color(51, 51, 51));
@@ -423,67 +461,67 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         javax.swing.GroupLayout pnl_descriçãoLayout = new javax.swing.GroupLayout(pnl_descrição);
         pnl_descrição.setLayout(pnl_descriçãoLayout);
         pnl_descriçãoLayout.setHorizontalGroup(
-                pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_descriçãoLayout.createSequentialGroup()
-                                .addGap(388, 388, 388)
-                                .addGroup(pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lbl_titulosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(119, 119, 119)
-                                .addGroup(pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbl_linkcronograma)
-                                        .addComponent(lbl_linkevento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbl_links)
-                                        .addComponent(lbl_linkatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 113, Short.MAX_VALUE))
+            pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_descriçãoLayout.createSequentialGroup()
+                .addGap(388, 388, 388)
+                .addGroup(pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(119, 119, 119)
+                .addGroup(pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_linkcronograma)
+                    .addComponent(lbl_linkevento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_links)
+                    .addComponent(lbl_linkatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 113, Short.MAX_VALUE))
         );
         pnl_descriçãoLayout.setVerticalGroup(
-                pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_descriçãoLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lbl_links)
-                                        .addComponent(lbl_titulosistema))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(pnl_descriçãoLayout.createSequentialGroup()
-                                                .addComponent(lbl_linkevento)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lbl_linkatividades)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lbl_linkcronograma))
-                                        .addGroup(pnl_descriçãoLayout.createSequentialGroup()
-                                                .addGap(3, 3, 3)
-                                                .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addContainerGap(27, Short.MAX_VALUE))
+            pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_descriçãoLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_links)
+                    .addComponent(lbl_titulosistema))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_descriçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnl_descriçãoLayout.createSequentialGroup()
+                        .addComponent(lbl_linkevento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_linkatividades)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_linkcronograma))
+                    .addGroup(pnl_descriçãoLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(pnl_descrição, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(pnl_topo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(pnl_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(pnl_eventos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnl_descrição, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_topo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(pnl_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnl_eventos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(pnl_topo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(pnl_eventos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(pnl_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pnl_descrição, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(pnl_topo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnl_eventos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnl_descrição, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -523,7 +561,7 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
             evento.setTitulo(nome);
             evento.setDescricao(descricao);
             evento.setFormato(EventoFormato.valueOf(formato));
-            evento.setDataInicio(parseData(dataFim));
+            evento.setDataInicio(parseData(dataInicio));
             evento.setDataTermino(parseData(dataFim));
 
             controller.store(evento);
@@ -576,6 +614,20 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_descricaoActionPerformed
 
+    private void lbl_informainicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_informainicioMouseClicked
+        new Tela_Inicial().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lbl_informainicioMouseClicked
+
+    private void btn_inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_inicioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_inicioMouseClicked
+
+    private void btn_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inicioActionPerformed
+        new Tela_Inicial().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_inicioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -612,6 +664,7 @@ public class Tela_cadastro_eventos_geral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_inicio;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JComboBox<String> cmb_estado;
     private javax.swing.JComboBox<String> cmb_formato;

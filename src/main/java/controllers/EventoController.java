@@ -12,6 +12,8 @@ import model.bean.User;
 import usecases.CSCadastrarEvento;
 import usecases.CSFindEventoById;
 import usecases.CSListarAtividades;
+import usecases.CSFindUserByID;
+import usecases.CSListarEventos;
 
 public class EventoController {
 
@@ -67,4 +69,22 @@ public class EventoController {
         return new CSListarAtividades().execute(id_evento);
     }
 
+    public List<Evento> list() {
+        List<Evento> eventos = new CSListarEventos().execute();
+
+        if (eventos == null) {
+            return null;
+        }
+
+        if (eventos.isEmpty()) {
+            return null;
+        }
+
+        for (Evento e : eventos) {
+            User organizador = new CSFindUserByID().execute(e.getId_organizador());
+            e.setOrganizador(organizador);
+        }
+
+        return eventos;
+    }
 }

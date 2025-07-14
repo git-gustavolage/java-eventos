@@ -33,7 +33,6 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        btn_menu = new javax.swing.JButton();
         lbl_eventos = new javax.swing.JLabel();
         pnl_fundopreto = new javax.swing.JPanel();
         lbl_descricaosistema = new javax.swing.JLabel();
@@ -79,20 +78,6 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btn_menu.setBackground(new java.awt.Color(0, 212, 146));
-        btn_menu.setForeground(new java.awt.Color(255, 255, 255));
-        btn_menu.setText("Menu");
-        btn_menu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_menuMouseClicked(evt);
-            }
-        });
-        btn_menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_menuActionPerformed(evt);
-            }
-        });
-
         lbl_eventos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_eventos.setText("Eventos");
 
@@ -103,18 +88,14 @@ public class Tela_Inicial extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(lbl_eventos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 807, Short.MAX_VALUE)
-                .addComponent(btn_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addContainerGap(918, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_menu)
-                    .addComponent(lbl_eventos))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lbl_eventos)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pnl_fundopreto.setBackground(new java.awt.Color(0, 0, 0));
@@ -269,14 +250,6 @@ public class Tela_Inicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menuMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_menuMouseClicked
-
-    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_menuActionPerformed
-
     private void btn_listarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarEventosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_listarEventosActionPerformed
@@ -290,9 +263,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_listarParticipanteActionPerformed
 
     private void btn_cadastrarEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cadastrarEventosMouseClicked
-                // TODO add your handling code here:
-                new TelaCadastroEventoGeral().setVisible(true);  // Abre a Tela2
-            dispose(); // Fecha a Tela1 (opcional)
+        new Tela_cadastro_eventos_geral().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btn_cadastrarEventosMouseClicked
 
     private void btn_cronogramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cronogramaActionPerformed
@@ -340,7 +312,6 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private javax.swing.JButton btn_cronograma;
     private javax.swing.JButton btn_listarEventos;
     private javax.swing.JButton btn_listarParticipante;
-    private javax.swing.JButton btn_menu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;

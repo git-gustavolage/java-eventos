@@ -15,6 +15,7 @@ public class Evento {
     private EventoFormato formato;
     private Boolean publicado = false;
     private Boolean cancelado = false;
+    private User organizador = null;
 
     public Evento() {
     }
@@ -122,5 +123,12 @@ public class Evento {
         this.cancelado = cancelado;
     }
 
+    public void setOrganizador(User organizador) {
+        this.organizador = organizador;
+    }
+
+    public User getOrganizador() {
+        return organizador;
+    }
     
 }

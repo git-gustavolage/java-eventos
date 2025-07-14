@@ -501,7 +501,7 @@ public class Tela_evento extends javax.swing.JFrame {
 
     private void btn_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menuMouseClicked
         new Tela_Inicial().setVisible(true);
-        dispose();        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btn_menuMouseClicked
 
     private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
