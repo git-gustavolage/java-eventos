@@ -12,42 +12,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author user
  */
-//public Connection conectar() {
-//    try {
-//        Class.forName("com.mysql.cj.jdbc.Driver");
-//        return DriverManager.getConnection(
-//            "jdbc:mysql://localhost:3306/eventos", "root", ""
-//        );
-//    } catch (Exception e) {
-//        e.printStackTrace();
-//        JOptionPane.showMessageDialog(null, "Erro de conexão com o banco!");
-//        return null;
-//    }
-//}
 
-//private void Conectar() {
-//    DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-//    modelo.setRowCount(0); // limpa a tabela antes de carregar novamente
-//
-//    String sql = "SELECT titulo, data_inicio FROM eventos";
-//
-//    try (Connection conn = conectar();
-//         PreparedStatement stmt = conn.prepareStatement(sql);
-//         ResultSet rs = stmt.executeQuery()) {
-//
-//        while (rs.next()) {
-//            String titulo = rs.getString("titulo");
-//            String data = rs.getString("data");
-//            String hora = rs.getString("hora");
-//
-//            modelo.addRow(new Object[]{titulo, data, hora});
-//        }
-//
-//    } catch (Exception e) {
-//        e.printStackTrace();
-//        JOptionPane.showMessageDialog(this, "Erro ao carregar eventos!");
-//    }
-//}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -139,7 +104,7 @@ import javax.swing.table.TableRowSorter;
 
             },
             new String [] {
-                "Titulo", "Dia", "Hora"
+                "Titulo", "Dia inicial", "Dia final"
             }
         ) {
             Class[] types = new Class [] {
@@ -148,6 +113,11 @@ import javax.swing.table.TableRowSorter;
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        Tbl_Eventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tbl_EventosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(Tbl_Eventos);
@@ -260,6 +230,19 @@ import javax.swing.table.TableRowSorter;
             trs.setRowFilter(RowFilter.regexFilter(txt_pesquisa.getText()));
 
     }//GEN-LAST:event_txt_pesquisaKeyReleased
+
+    private void Tbl_EventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_EventosMouseClicked
+    int linhaSelecionada = Tbl_Eventos.getSelectedRow();
+
+    if (linhaSelecionada != -1) {
+        // Pega o título do evento da linha selecionada
+        String titulo = Tbl_Eventos.getValueAt(linhaSelecionada, 0).toString();
+
+        // Abre nova tela e envia o título
+        Tela_evento tela = new Tela_evento(titulo);
+        tela.setVisible(true);
+    }
+    }//GEN-LAST:event_Tbl_EventosMouseClicked
 
     /**
      * @param args the command line arguments
