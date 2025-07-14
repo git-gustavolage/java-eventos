@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.List;
+
 import auth.Auth;
 import exceptions.AuthenticationException;
 import exceptions.DomainException;
@@ -7,6 +9,8 @@ import exceptions.InvalidInputException;
 import model.bean.Evento;
 import model.bean.User;
 import usecases.CSCadastrarEvento;
+import usecases.CSFindUserByID;
+import usecases.CSListarEventos;
 
 public class EventoController {
 
@@ -54,4 +58,22 @@ public class EventoController {
         }
     }
 
+    public List<Evento> list() {
+        List<Evento> eventos = new CSListarEventos().execute();
+
+        if (eventos == null) {
+            return null;
+        }
+
+        if (eventos.isEmpty()) {
+            return null;
+        }
+
+        for (Evento e : eventos) {
+            User organizador = new CSFindUserByID().execute(e.getId_organizador());
+            e.setOrganizador(organizador);
+        }
+
+        return eventos;
+    }
 }
