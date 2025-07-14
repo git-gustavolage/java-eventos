@@ -18,6 +18,12 @@ public class AtividadeController {
 
     public boolean store(Atividade atividade, String evento, String ambiente) throws AuthenticationException, InvalidInputException, DomainException {
 
+        System.out.println("\n\n\n");
+        System.out.println("Evento no controller: " + evento);
+        System.out.println("Ambiente no controller: " + ambiente);
+        System.out.println("Atividade no controller: " + atividade.toString());
+        System.out.println("\n\n\n");
+
         User user = Auth.user();
 
         if (user == null) {
@@ -46,7 +52,9 @@ public class AtividadeController {
 
         List<Evento> eventos = new CSListarEventos().execute();
         for (Evento e : eventos) {
+            System.out.println(e.toString());
             if (e.getTitulo().equals(evento)) {
+                System.out.println("\nSelecionado: " + e.toString());
                 atividade.setId_evento(e.getId());
                 break;
             }
@@ -58,7 +66,9 @@ public class AtividadeController {
 
         List<Ambiente> ambientes = new CSListarAmbientes().execute();
         for (Ambiente a : ambientes) {
+            System.out.println(a.toString());
             if (a.getNome().equals(ambiente)) {
+                System.out.println("\nSelecionado: " + a.toString());
                 atividade.setId_ambiente(a.getId());
                 break;
             }
@@ -67,6 +77,8 @@ public class AtividadeController {
         if(atividade.getId_ambiente() == null) {
             throw new InvalidInputException("Ambiente nao encontrado!");
         }
+
+        System.out.println("\n\nAtividade no controller: " + atividade.toString());
 
         atividade.setId_responsavel(user.getId());
 

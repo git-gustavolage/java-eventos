@@ -226,7 +226,6 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pnl_topo = new javax.swing.JPanel();
         lbl_topoevento = new javax.swing.JLabel();
-        btn_menu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -371,7 +370,7 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
                     .addComponent(txt_deficiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(scr_atividades, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(563, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_inscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -403,17 +402,21 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
         pnl_descricaoLayout.setHorizontalGroup(
             pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_descricaoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_descricaoLayout.createSequentialGroup()
+                        .addContainerGap(238, Short.MAX_VALUE)
+                        .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE))
+                    .addGroup(pnl_descricaoLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_titulosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(pnl_descricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_linkcronograma)
                     .addComponent(lbl_linkevento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_links)
                     .addComponent(lbl_linkatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(466, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnl_descricaoLayout.setVerticalGroup(
@@ -435,27 +438,13 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
                     .addGroup(pnl_descricaoLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(lbl_descricaosistema, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pnl_topo.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_topoevento.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lbl_topoevento.setText("EVENTOS");
-
-        btn_menu.setBackground(new java.awt.Color(0, 212, 146));
-        btn_menu.setForeground(new java.awt.Color(255, 255, 255));
-        btn_menu.setText("Menu");
-        btn_menu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_menuMouseClicked(evt);
-            }
-        });
-        btn_menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_menuActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnl_topoLayout = new javax.swing.GroupLayout(pnl_topo);
         pnl_topo.setLayout(pnl_topoLayout);
@@ -464,17 +453,13 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
             .addGroup(pnl_topoLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(lbl_topoevento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_topoLayout.setVerticalGroup(
             pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_topoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnl_topoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_topoevento)
-                    .addComponent(btn_menu))
+                .addComponent(lbl_topoevento)
                 .addContainerGap())
         );
 
@@ -578,16 +563,6 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_btn_inscreverActionPerformed
 
-    private void btn_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menuMouseClicked
-        new Tela_Inicial().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btn_menuMouseClicked
-
-    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
-        new Tela_Inicial().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btn_menuActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -625,7 +600,6 @@ public class Tela_inscrição_atividades extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_inscrever;
-    private javax.swing.JButton btn_menu;
     private javax.swing.JCheckBox chk_deficiencia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
