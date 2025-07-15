@@ -1,0 +1,522 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package view;
+
+import com.sun.jdi.connect.spi.Connection;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import javax.lang.model.SourceVersion;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.bean.Evento;
+import model.bean.User;
+
+import model.bean.Atividade;
+import model.bean.User;
+/**
+ *
+ * @author user
+ */
+public class AtividadeController {
+
+    private final AtividadeUseCase atividadeUseCase;
+
+    public AtividadeController(AtividadeUseCase atividadeUseCase) {
+        this.atividadeUseCase = atividadeUseCase;
+    }
+
+    public List<Atividade> listByUsuario(int usuarioId) {
+        List<Atividade> atividades = new ArrayList<>();
+
+        String sql = "SELECT atividade_id FROM inscricao_atividade WHERE usuario_id = ?";
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventos", "root", "");
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, usuarioId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int atividadeId = rs.getInt("atividade_id");
+
+                // Usa o use case existente para buscar a atividade completa
+                Optional<Atividade> atividadeOpt = atividadeUseCase.findById(atividadeId);
+
+                atividadeOpt.ifPresent(atividades::add);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao carregar atividades do usuário.");
+        }
+
+        return atividades;
+    }
+}
+
+private void loadCronograma(Long usuarioId) {
+    List<Atividade> atividades = controller.listarCronogramaDoUsuario(usuarioId);
+    DefaultTableModel model = (DefaultTableModel) Tab_Cronograma.getModel();
+    model.setRowCount(0); // limpa a tabela
+
+    for (Atividade atividade : atividades) {
+        Object[] row = {
+            atividade.getTitulo(),
+            atividade.getDescricao(),
+            atividade.getData(),
+            atividade.getHora_inicio().toString() + " - " + atividade.getHora_termino().toString()
+        };
+        model.addRow(row);
+    }
+}
+        return atividades;
+    });
+}
+
+
+public class TelaCronograma {
+
+}
+
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.latest();
+    }
+}
+
+
+    private static class EventoController {
+
+        public EventoController() {
+        }
+    }
+    public class TelaCronograma extends javax.swing.JFrame {
+
+    /**
+     * Creates new form TelaCronograma
+     */
+    public TelaCronograma() {
+        initComponents();
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        this.loadEventos();
+    }
+
+// Codigo a baixo é referente a tabela de certificado
+
+    public List<Atividade> listAtividadesComCertificado(Connection conn, Long usuarioId) throws DatabaseException {
+    String sql = """
+        SELECT a.* FROM certificados c
+        JOIN atividades a ON c.atividade_id = a.id
+        WHERE c.usuario_id = ?
+    """;
+
+    return new DB().executeQuery(conn, sql, stmt -> stmt.setLong(1, usuarioId), rs -> {
+        List<Atividade> atividades = new ArrayList<>();
+        while (rs.next()) {
+            Atividade atividade = parse(rs);
+            if (atividade != null) {
+                atividades.add(atividade);
+            }
+        }
+        return atividades;
+    });
+}
+// 
+    private void loadCertificados(Long usuarioId) {
+        try (Connection conn = DB.getConnection()) {
+            List<Atividade> atividades = atividadeDAO.listAtividadesComCertificado(conn, usuarioId);
+            DefaultTableModel model = (DefaultTableModel) tab_certificados.getModel();
+            model.setRowCount(0);
+
+        for (Atividade atividade : atividades) {
+            Object[] row = {
+                // Nome do evento pode estar em outro DAO, ou você adapta a consulta para já trazer.
+                atividade.getTitulo(), // ou atividade.getEvento().getNome()
+                atividade.getTitulo(), // título da atividade
+                false // checkbox desmarcado por padrão
+            };
+            model.addRow(row);
+        }
+
+    } catch (DatabaseException e) {
+        e.printStackTrace();
+    }
+}
+
+for (int i = 0; i < tblCertificados.getRowCount(); i++) {
+    boolean selecionado = (Boolean) tab_certificados.getValueAt(i, 2);
+    if (selecionado) {
+        String tituloAtividade = (String) tab_certificados.getValueAt(i, 1);
+        // chamar método para gerar/download do certificado
+    }
+}
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        btn_menu = new javax.swing.JButton();
+        lbl_evenos = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_inicio = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lbl_cronograma_e_cerificado = new javax.swing.JLabel();
+        lbl_Acompanhe = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tab_cronograma = new javax.swing.JTable();
+        lbl_certificados = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tab_certificados = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        lbl_titulosistema = new javax.swing.JLabel();
+        lbl_links = new javax.swing.JLabel();
+        lbl_linkevento = new javax.swing.JLabel();
+        lbl_linkatividades = new javax.swing.JLabel();
+        lbl_linkcronograma = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        btn_menu.setBackground(new java.awt.Color(0, 212, 146));
+        btn_menu.setForeground(new java.awt.Color(255, 255, 255));
+        btn_menu.setText("Menu");
+        btn_menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_menuMouseClicked(evt);
+            }
+        });
+        btn_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menuActionPerformed(evt);
+            }
+        });
+
+        lbl_evenos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbl_evenos.setText("Eventos");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lbl_evenos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_menu)
+                    .addComponent(lbl_evenos))
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        lbl_inicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_inicio.setText("Iinicio");
+        lbl_inicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_inicioMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText(">");
+
+        lbl_cronograma_e_cerificado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_cronograma_e_cerificado.setText("Cronograma & Certificado");
+
+        lbl_Acompanhe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_Acompanhe.setText("Acompanhe aqui o cronograma dos eventos inscritos");
+
+        Tab_cronograma.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Titulo", "Atividade", "Dia da atividade", "Hora da Atividade"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        Tab_cronograma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tab_cronogramaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Tab_cronograma);
+
+        lbl_certificados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_certificados.setText("Aqui estão seu certificados.");
+
+        tab_certificados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome do evento", "Nome da atividade", "Download"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tab_certificados);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lbl_inicio)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel2)
+                .addGap(4, 4, 4)
+                .addComponent(lbl_cronograma_e_cerificado)
+                .addContainerGap(577, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lbl_certificados)
+                        .addContainerGap(604, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbl_Acompanhe)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane2)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addGap(32, 32, 32))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_inicio)
+                    .addComponent(jLabel2)
+                    .addComponent(lbl_cronograma_e_cerificado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_Acompanhe)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_certificados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+
+        lbl_titulosistema.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_titulosistema.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl_titulosistema.setForeground(new java.awt.Color(60, 181, 132));
+        lbl_titulosistema.setText("SISTEMA DE GERENCIAMENTO DE EVENTOS");
+
+        lbl_links.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbl_links.setForeground(new java.awt.Color(60, 181, 132));
+        lbl_links.setText("Links");
+
+        lbl_linkevento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_linkevento.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_linkevento.setText("• Eventos");
+
+        lbl_linkatividades.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_linkatividades.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_linkatividades.setText("• Atividades");
+
+        lbl_linkcronograma.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_linkcronograma.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_linkcronograma.setText("• Cronograma");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(96, 96, 96)
+                    .addComponent(lbl_titulosistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(119, 119, 119)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_linkcronograma)
+                        .addComponent(lbl_linkevento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_links)
+                        .addComponent(lbl_linkatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(97, 97, 97)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 128, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(11, 11, 11)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_links)
+                        .addComponent(lbl_titulosistema))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbl_linkevento)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbl_linkatividades)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbl_linkcronograma)
+                    .addContainerGap(12, Short.MAX_VALUE)))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(1, 1, 1)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menuMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_menuMouseClicked
+
+    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_menuActionPerformed
+
+    private void lbl_inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_inicioMouseClicked
+                // TODO add your handling code here:
+    }//GEN-LAST:event_lbl_inicioMouseClicked
+
+    private void Tab_cronogramaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab_cronogramaMouseClicked
+        int linhaSelecionada = Tab_cronograma.getSelectedRow();
+
+        if (linhaSelecionada != -1) {
+            Long id = Long.valueOf(Tab_cronograma.getValueAt(linhaSelecionada, 0).toString());
+
+            System.out.println(id);
+
+            new Tela_evento().setVisible(true);
+            this.dispose();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_Tab_cronogramaMouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TelaCronograma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TelaCronograma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TelaCronograma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaCronograma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaCronograma().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tab_cronograma;
+    private javax.swing.JButton btn_menu;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lbl_Acompanhe;
+    private javax.swing.JLabel lbl_certificados;
+    private javax.swing.JLabel lbl_cronograma_e_cerificado;
+    private javax.swing.JLabel lbl_evenos;
+    private javax.swing.JLabel lbl_inicio;
+    private javax.swing.JLabel lbl_linkatividades;
+    private javax.swing.JLabel lbl_linkcronograma;
+    private javax.swing.JLabel lbl_linkevento;
+    private javax.swing.JLabel lbl_links;
+    private javax.swing.JLabel lbl_titulosistema;
+    private javax.swing.JTable tab_certificados;
+    // End of variables declaration//GEN-END:variables
+
+    private void loadEventos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+}
