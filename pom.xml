@@ -66,6 +66,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         01-tela-inicial-admin
         <maven.compiler.release>21</maven.compiler.release>
-        <exec.mainClass>view.Tela_Inicial</exec.mainClass>
+        <exec.mainClass>view.Tela_inscricao_eventos</exec.mainClass>
     </properties>
 </project>
