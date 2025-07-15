@@ -60,7 +60,7 @@ public class AtividadeController {
             }
         }
 
-        if(atividade.getId_evento() == null) {
+        if (atividade.getId_evento() == null) {
             throw new InvalidInputException("Evento nao encontrado!");
         }
 
@@ -74,7 +74,7 @@ public class AtividadeController {
             }
         }
 
-        if(atividade.getId_ambiente() == null) {
+        if (atividade.getId_ambiente() == null) {
             throw new InvalidInputException("Ambiente nao encontrado!");
         }
 

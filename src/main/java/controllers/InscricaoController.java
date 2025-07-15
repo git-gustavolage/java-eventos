@@ -37,9 +37,9 @@ public class InscricaoController {
             throw new DomainException("O evento foi encerrado.");
         }
 
-        if (!evento.isPublicado()) {
-            throw new DomainException("Não é possivel se inscrever neste evento!");
-        }
+        // if (!evento.isPublicado()) {
+        //     throw new DomainException("Não é possivel se inscrever neste evento!");
+        // }
 
         inscricao.setId_usuario(user.getId());
         inscricao.setData(LocalDate.now());
