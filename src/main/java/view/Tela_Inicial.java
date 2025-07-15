@@ -1,14 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import java.awt.Image;
 import java.awt.MediaTracker;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import view.Tela_cadastro_eventos_geral;
 
 public class Tela_Inicial extends javax.swing.JFrame {
 
@@ -312,7 +307,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_listarParticipanteActionPerformed
 
     private void btn_listarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarEventosActionPerformed
-        // TODO add your handling code here:
+        new Tela_listagem_eventos().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_listarEventosActionPerformed
 
     private void btn_cadastrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarEventosActionPerformed
