@@ -44,6 +44,8 @@ public class CSCadastrarEvento {
             throw new DomainException("A data de término não pode ser anterior à data atual.");
         }
 
+        evento.setPublicado(true);
+
         try (Connection conn = ConnectionFactory.getNewConnection()) {
             return new EventoDAO().create(conn, evento) == 1;
         } catch (DatabaseException | SQLException e) {
