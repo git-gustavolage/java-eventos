@@ -42,7 +42,7 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento e executar o
 -   Uma **IDE Java** (NetBeans, IntelliJ, Eclipse).
 -   **MySQL Server** e um cliente de banco de dados (MySQL Workbench, DBeaver).
   
-## 2. Passos de Instalação e Execução
+## Passos de Instalação e Execução
 
 ### 1. Clonar o repositório
 ```bash
