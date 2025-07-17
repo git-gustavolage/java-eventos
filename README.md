@@ -102,7 +102,7 @@ Abra um Pull Request: Ao finalizar o desenvolvimento na sua branch, abra um Pull
 
 | Nome                         | Função                             | Contato                       |
 | :--------------------------- | :--------------------------------- | :---------------------------- |
-| *Breno Carvalho Santos* | *Figma/Front-end* | brenoleno111@gmail.com   |
+| *Breno Carvalho Santos* | *Prototipação/Front-end* | brenoleno111@gmail.com   |
 | *Erick do Couto Ferreira* | *Back-end* | *erickcouto749@gmail.com* |
 |  *Gustavo Lage Dos Santos* | *FullStack* | *lageg901@gmail.com* |
 | *Kassandra de Oliveira Rodrigues* | *FullStack* | *kassandra.olv.rodrigues@gmail.com* |
